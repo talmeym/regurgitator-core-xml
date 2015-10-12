@@ -14,17 +14,16 @@ an xml configuration file provides an easy way to configure regurgitator
 <?xml version="1.0" encoding="UTF-8"?>
 <rg:regurgitator-configuration 
             	   xmlns:rg="http://core.regurgitator.emarte.com"
-							   xmlns:rgcct="http://stuff.test.regurgitator.emarte.com"
 							   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-							   xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd
-							                       http://stuff.test.regurgitator.emarte.com test.xsd">
+							   xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd">
 	<rg:decision id="decision-1">
 		<rg:steps>
-			<rgcct:test-step id="test-step-1"/>
+			<rg:create-response id="before-lunch" value="it is before lunch"/>
+			<rg:create-response id="after-lunch" value="it is after lunch"/>
 		</rg:steps>
-		<rg:rules>
-			<rg:rule id="rule-1" step="test-step-1">
-				<rg:condition id="condition-1" source="context:location" contains="value"/>
+		<rg:rules defaultStep="after-lunch">
+			<rg:rule step="before-lunch">
+				<rg:condition source="greeting" behaviour="equals" value="good morning"/>
 			</rg:rule>
 		</rg:rules>
 	</rg:decision>
