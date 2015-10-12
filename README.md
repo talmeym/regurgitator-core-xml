@@ -1,7 +1,7 @@
 regurgitator
 ============
 
-regurgitator is a modular, light-weight, extendable java-based processing engine designed to 'regurgitate' canned or clever responses to incoming requests.
+regurgitator is a modular, light-weight, extendable java-based processing framework designed to 'regurgitate' canned or clever responses to incoming requests.
 
 See more at [regurgitator-core](http://github.com/talmeym/regurgitator-core)
 
