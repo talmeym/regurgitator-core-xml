@@ -31,5 +31,18 @@ an xml configuration file provides an easy way to configure regurgitator
 </rg:regurgitator-configuration>
 ```
 
+```java
+import com.emarte.regurgitator.core.*;
+
+public class MyClass {
+	private Regurgitator regurgitator;
+
+	public MyClass() {
+		Step rootStep = ConfigurationFile.loadFile("classpath:/my_configuration.xml");
+		regurgitator = new Regurgitator(rootStep);
+	}
+}
+```
+
 all regurgitator xml files are schema validated on document load. two main schemas are provided for xml configuration, ``regurgitatorCommon.xsd`` and ``regurgitatorCore.xsd``. the former provides basic definitions of types used in all regurgitator schemas (incuding yours if you extend the system) and the latter provides definitions for all the core regurgitator steps.
 
