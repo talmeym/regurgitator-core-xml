@@ -16,7 +16,8 @@ an xml configuration file provides an easy way to configure regurgitator
             	   xmlns:rg="http://core.regurgitator.emarte.com"
 							   xmlns:rgcct="http://stuff.test.regurgitator.emarte.com"
 							   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-							   xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd                                                           http://stuff.test.regurgitator.emarte.com test.xsd">
+							   xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd                                                           
+							                       http://stuff.test.regurgitator.emarte.com test.xsd">
 	<rg:decision id="decision-1">
 		<rg:steps>
 			<rgcct:test-step id="test-step-1"/>
