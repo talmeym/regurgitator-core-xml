@@ -12,8 +12,7 @@ an xml configuration file provides an easy way to configure regurgitator
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<rg:regurgitator-configuration 
-            	   xmlns:rg="http://core.regurgitator.emarte.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd">
+<rg:regurgitator-configuration xmlns:rg="http://core.regurgitator.emarte.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd">
 	<rg:decision id="check-greeting">
 		<rg:steps>
 			<rg:create-response id="before-lunch" value="it is before lunch"/>
