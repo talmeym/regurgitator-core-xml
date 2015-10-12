@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rgc="http://common.regurgitator.emarte.com"
+           targetNamespace="http://common.regurgitator.emarte.com" elementFormDefault="qualified">
+
+    <xs:simpleType name="populated-string">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="capital-string">
+        <xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z_]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="conflict-policy">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LEAVE"/>
+            <xs:enumeration value="REPLACE"/>
+            <xs:enumeration value="CONCAT"/>
+            <xs:enumeration value="CONCAT_AS_SUFFIX"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+	<xs:complexType name="contains-one-child">
+		<xs:sequence>
+			<xs:any maxOccurs="1" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+    <xs:attributeGroup name="prototyped">
+        <xs:attribute name="id" type="rgc:populated-string"/>
+        <xs:attribute name="name" type="rgc:populated-string" use="required"/>
+        <xs:attribute name="type" type="rgc:capital-string"/>
+        <xs:attribute name="merge" type="rgc:conflict-policy"/>
+	</xs:attributeGroup>
+
+</xs:schema>
