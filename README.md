@@ -39,7 +39,7 @@ public class MyClass {
 
 	public MyClass() {
 		Step rootStep = ConfigurationFile.loadFile("classpath:/my_configuration.xml");
-		regurgitator = new Regurgitator(rootStep);
+		regurgitator = new Regurgitator("my-regurgitator", rootStep);
 	}
 }
 ```
