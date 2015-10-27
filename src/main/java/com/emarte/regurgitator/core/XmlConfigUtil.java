@@ -56,11 +56,11 @@ public class XmlConfigUtil {
 		return new ContextLocation(element.attributeValue(NAME)).getContext();
 	}
 
-	public static String loadValueFromElementOrAttribute(Element element, String name) throws RegurgitatorException {
-		return loadValueFromElementOrAttribute(element, name, true);
+	public static String loadStringFromElementOrAttribute(Element element, String name) throws RegurgitatorException {
+		return loadStringFromElementOrAttribute(element, name, true);
 	}
 
-	public static String loadValueFromElementOrAttribute(Element element, String name, boolean mandatory) throws RegurgitatorException {
+	public static String loadStringFromElementOrAttribute(Element element, String name, boolean mandatory) throws RegurgitatorException {
 		String value = element.elementText(name);
 
 		if(element.attributeValue(name) != null) {

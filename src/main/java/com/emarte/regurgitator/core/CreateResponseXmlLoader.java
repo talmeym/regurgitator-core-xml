@@ -14,9 +14,9 @@ public class CreateResponseXmlLoader extends CreateResponseLoader implements Xml
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         String id = loadId(element, allIds);
 
-		String source = loadValueFromElementOrAttribute(element, SOURCE, false);
-        String value = loadValueFromElementOrAttribute(element, VALUE, false);
-        String file = loadValueFromElementOrAttribute(element, FILE, false);
+		String source = loadStringFromElementOrAttribute(element, SOURCE, false);
+        String value = loadStringFromElementOrAttribute(element, VALUE, false);
+        String file = loadStringFromElementOrAttribute(element, FILE, false);
 
 		ValueProcessor processor = loadOptionalValueProcessor(element, allIds);
 

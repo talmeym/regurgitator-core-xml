@@ -42,28 +42,28 @@
 
     <xs:complexType name="create-parameter">
 		<xs:sequence>
+			<xs:element name="source" type="rgc:populated-string" minOccurs="0"/>
 			<xs:element name="value" type="rgc:populated-string" minOccurs="0"/>
 			<xs:element name="file" type="rgc:populated-string" minOccurs="0"/>
-			<xs:element name="source" type="rgc:populated-string" minOccurs="0"/>
 			<xs:element name="processor" type="rgc:contains-one-child" minOccurs="0"/>
 		</xs:sequence>
+        <xs:attribute name="source" type="rgc:populated-string"/>
         <xs:attribute name="value" type="rgc:populated-string"/>
         <xs:attribute name="file" type="rgc:populated-string"/>
-        <xs:attribute name="source" type="rgc:populated-string"/>
 		<xs:attribute name="processor" type="rgc:populated-string"/>
         <xs:attributeGroup ref="rgc:prototyped"/>
     </xs:complexType>
 
 	<xs:complexType name="create-response">
 		<xs:sequence>
+			<xs:element name="source" type="rgc:populated-string" minOccurs="0"/>
 			<xs:element name="value" type="rgc:populated-string" minOccurs="0"/>
 			<xs:element name="file" type="rgc:populated-string" minOccurs="0"/>
-			<xs:element name="source" type="rgc:populated-string" minOccurs="0"/>
 			<xs:element name="processor" type="rgc:contains-one-child" minOccurs="0"/>
 		</xs:sequence>
+		<xs:attribute name="source" type="rgc:populated-string"/>
 		<xs:attribute name="value" type="rgc:populated-string"/>
 		<xs:attribute name="file" type="rgc:populated-string"/>
-		<xs:attribute name="source" type="rgc:populated-string"/>
 		<xs:attribute name="processor" type="rgc:populated-string"/>
 		<xs:attribute name="id" type="rgc:populated-string"/>
 	</xs:complexType>
@@ -131,6 +131,26 @@
 		<xs:attribute name="max" type="xs:integer"/>
 	</xs:complexType>
 
+	<xs:complexType name="index-of-processor">
+		<xs:sequence>
+			<xs:element name="source" type="rgc:populated-string" minOccurs="0"/>
+			<xs:element name="value" type="rgc:populated-string" minOccurs="0"/>
+			<xs:element name="last" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="source" type="rgc:populated-string"/>
+		<xs:attribute name="value" type="rgc:populated-string"/>
+		<xs:attribute name="last" type="xs:boolean"/>
+	</xs:complexType>
+
+	<xs:complexType name="index-processor">
+		<xs:sequence>
+			<xs:element name="source" type="rgc:populated-string" minOccurs="0"/>
+			<xs:element name="value" type="rgc:populated-string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="source" type="rgc:populated-string"/>
+		<xs:attribute name="value" type="rgc:populated-string"/>
+	</xs:complexType>
+
     <xs:element name="regurgitator-configuration" type="rg:sequence"/>
 	<xs:element name="sequence" type="rg:sequence"/>
 	<xs:element name="sequence-ref" type="rg:sequence-ref"/>
@@ -146,5 +166,7 @@
 	<xs:element name="contains" type="rgc:populated-string"/>
 	<xs:element name="exists" type="xs:boolean"/>
 	<xs:element name="number-generator" type="rg:number-generator"/>
+	<xs:element name="index-of-processor" type="rg:index-of-processor"/>
+	<xs:element name="index-processor" type="rg:index-processor"/>
 
 </xs:schema>
