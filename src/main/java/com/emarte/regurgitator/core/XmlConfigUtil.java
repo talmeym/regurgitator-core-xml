@@ -56,28 +56,6 @@ public class XmlConfigUtil {
 		return new ContextLocation(element.attributeValue(NAME)).getContext();
 	}
 
-	public static String loadStringFromElementOrAttribute(Element element, String name) throws RegurgitatorException {
-		return loadStringFromElementOrAttribute(element, name, true);
-	}
-
-	public static String loadStringFromElementOrAttribute(Element element, String name, boolean mandatory) throws RegurgitatorException {
-		String value = element.elementText(name);
-
-		if(element.attributeValue(name) != null) {
-			if(value == null) {
-				return element.attributeValue(name);
-			}
-
-			throw new RegurgitatorException(name + " cannot be specified twice");
-		} else if (value == null) {
-			if(mandatory) {
-				throw new RegurgitatorException(name + " not specified");
-			}
-		}
-
-		return value;
-	}
-
 	public static ValueProcessor loadOptionalValueProcessor(Element element, Set<Object> allIds) throws RegurgitatorException {
 		String processorAttr = element.attributeValue(PROCESSOR);
 		ValueProcessor processor = null;
