@@ -19,7 +19,7 @@
             <xs:enumeration value="LEAVE"/>
             <xs:enumeration value="REPLACE"/>
             <xs:enumeration value="CONCAT"/>
-            <xs:enumeration value="CONCAT_AS_SUFFIX"/>
+            <xs:enumeration value="REMOVE"/>
         </xs:restriction>
     </xs:simpleType>
 

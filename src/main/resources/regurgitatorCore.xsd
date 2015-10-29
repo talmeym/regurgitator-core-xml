@@ -153,5 +153,4 @@
 	<xs:element name="number-generator" type="rg:number-generator"/>
 	<xs:element name="index-of-processor" type="rg:index-of-processor"/>
 	<xs:element name="index-processor" type="rg:index-processor"/>
-	<xs:element name="size-processor" type="xs:element"/>
 </xs:schema>
