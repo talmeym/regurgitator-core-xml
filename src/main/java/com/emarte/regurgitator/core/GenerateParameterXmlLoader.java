@@ -11,27 +11,27 @@ import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 public class GenerateParameterXmlLoader implements XmlLoader<Step> {
 	private static final Log log = Log.getLog(GenerateParameterXmlLoader.class);
 
-	private static XmlLoaderUtil<XmlLoader<ValueGenerator>> generatorLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueGenerator>>();
+	private static final XmlLoaderUtil<XmlLoader<ValueGenerator>> generatorLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueGenerator>>();
 
 	@Override
 	public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
 		String generatorAttr = element.attributeValue(GENERATOR);
 		ValueGenerator generator;
+		int processorIndex = 0;
 
 		if (generatorAttr != null) {
 			generator = valueGenerator(generatorAttr);
 		} else {
-			Element generatorElement = element.element(GENERATOR);
-
-			if(generatorElement == null) {
+			if(element.elements().size() == 0) {
 				throw new RegurgitatorException("no generator defined");
 			}
 
-			Element childElement = getChild(generatorElement);
-			generator = generatorLoaderUtil.deriveLoader(childElement).load(childElement, allIds);
+			Element generatorElement = getChild(element);
+			generator = generatorLoaderUtil.deriveLoader(generatorElement).load(generatorElement, allIds);
+			processorIndex++;
 		}
 
-		ValueProcessor processor = loadOptionalValueProcessor(element, allIds);
+		ValueProcessor processor = loadOptionalValueProcessor(element, processorIndex, allIds);
 
 		String id = loadId(element, allIds);
 		log.debug("Loaded generate parameter extractor '" + id + "'");

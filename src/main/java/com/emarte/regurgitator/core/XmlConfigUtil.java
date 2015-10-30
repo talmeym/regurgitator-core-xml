@@ -52,21 +52,25 @@ public class XmlConfigUtil {
 		return (Element) element.elements().get(0);
 	}
 
+	public static Element getOptionalChild(Element element, int index) {
+		List elements = element.elements();
+		return index < elements.size() ? (Element) elements.get(index) : null;
+	}
+
 	public static String loadContext(Element element) {
 		return new ContextLocation(element.attributeValue(NAME)).getContext();
 	}
 
-	public static ValueProcessor loadOptionalValueProcessor(Element element, Set<Object> allIds) throws RegurgitatorException {
+	public static ValueProcessor loadOptionalValueProcessor(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
 		String processorAttr = element.attributeValue(PROCESSOR);
 		ValueProcessor processor = null;
 
 		if (processorAttr != null) {
 			processor = valueProcessor(processorAttr);
 		} else {
-			Element processorContainerElement = element.element(PROCESSOR);
+			Element processorElement = getOptionalChild(element, expectedChildIndex);
 
-			if (processorContainerElement != null) {
-				Element processorElement = getChild(processorContainerElement);
+			if (processorElement != null) {
 				processor = processorLoaderUtil.deriveLoader(processorElement).load(processorElement, allIds);
 			}
 		}

@@ -17,28 +17,24 @@ public class BuildParameterXmlLoader implements XmlLoader<Step> {
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
 		String builderAttr = element.attributeValue(BUILDER);
 		ValueBuilder valueBuilder;
+		int processorIndex = 0;
 
 		if(builderAttr != null) {
 			valueBuilder = valueBuilder(builderAttr);
 		} else {
-			Element builderElement = element.element(BUILDER);
-
-			if(builderElement == null) {
+			if(element.elements().size() == 0) {
 				throw new RegurgitatorException("no builder defined");
 			}
 
-			Element childElement = getChild(builderElement);
-			valueBuilder = builderLoaderUtil.deriveLoader(childElement).load(childElement, allIds);
+			Element builderElement = getChild(element);
+			valueBuilder = builderLoaderUtil.deriveLoader(builderElement).load(builderElement, allIds);
+			processorIndex++;
 		}
 
-		ValueProcessor processor = loadOptionalValueProcessor(element, allIds);
+		ValueProcessor processor = loadOptionalValueProcessor(element, processorIndex, allIds);
 
-		String id = XmlConfigUtil.loadId(element, allIds);
+		String id = loadId(element, allIds);
 		log.debug("Loaded built parameter extractor '" + id + '\'');
         return new BuildParameter(id, loadPrototype(element), loadContext(element), valueBuilder, processor);
-    }
-
-	private Element getChild(Element element) {
-        return (Element) element.elements().get(0);
     }
 }

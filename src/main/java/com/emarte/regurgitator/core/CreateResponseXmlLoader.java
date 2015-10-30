@@ -18,7 +18,7 @@ public class CreateResponseXmlLoader extends CreateResponseLoader implements Xml
         String value = element.attributeValue(VALUE);
         String file = element.attributeValue(FILE);
 
-		ValueProcessor processor = loadOptionalValueProcessor(element, allIds);
+		ValueProcessor processor = loadOptionalValueProcessor(element, 0, allIds);
 
 		return buildCreateResponse(id, source, value, file, processor, log);
     }

@@ -18,7 +18,7 @@ public class CreateParameterXmlLoader extends CreateParameterLoader implements X
 		String value = element.attributeValue(VALUE);
         String file = element.attributeValue(FILE);
 
-		ValueProcessor processor = loadOptionalValueProcessor(element, allIds);
+		ValueProcessor processor = loadOptionalValueProcessor(element, 0, allIds);
 
 		return buildCreateParameter(id, loadPrototype(element), loadContext(element), source, value, file, processor, log);
     }
