@@ -9,8 +9,7 @@ import static com.emarte.regurgitator.core.EntityLookup.*;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class ConditionXmlLoader {
-	private static Log log = Log.getLog(ConditionXmlLoader.class);
-
+	private static final Log log = Log.getLog(ConditionXmlLoader.class);
 	private static final XmlLoaderUtil<XmlLoader<ConditionBehaviour>> conditionBehaviourLoaderUtil = new XmlLoaderUtil<XmlLoader<ConditionBehaviour>>();
 
 	public static Condition load(Element element, Set<Object> allIds) throws RegurgitatorException {
