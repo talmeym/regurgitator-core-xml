@@ -15,6 +15,6 @@ public class IndexProcessorXmlLoader implements XmlLoader<ValueProcessor> {
 		String value = element.attributeValue(VALUE);
 
 		log.debug("Loaded index processor");
-		return new IndexProcessor(source != null ? new ContextLocation(source) : null, value);
+		return new IndexProcessor(new ValueSource(source != null ? new ContextLocation(source) : null, value));
 	}
 }

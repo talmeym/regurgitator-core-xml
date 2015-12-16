@@ -17,6 +17,6 @@ public class IndexOfProcessorXmlLoader implements XmlLoader<ValueProcessor> {
 		String backwards = element.attributeValue(LAST);
 
 		log.debug("Loaded index of processor");
-		return new IndexOfProcessor(source != null ? new ContextLocation(source) : null, value, parseBoolean(backwards));
+		return new IndexOfProcessor(new ValueSource(source != null ? new ContextLocation(source) : null, value), parseBoolean(backwards));
 	}
 }
