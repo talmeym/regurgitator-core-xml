@@ -42,7 +42,7 @@
 
     <xs:complexType name="create-parameter">
 		<xs:sequence>
-			<xs:any maxOccurs="1" minOccurs="0"/>
+			<xs:any minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
         <xs:attribute name="source" type="rgc:populated-string"/>
         <xs:attribute name="value" type="rgc:populated-string"/>
@@ -53,7 +53,7 @@
 
 	<xs:complexType name="create-response">
 		<xs:sequence>
-			<xs:any maxOccurs="1" minOccurs="0"/>
+			<xs:any minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attribute name="source" type="rgc:populated-string"/>
 		<xs:attribute name="value" type="rgc:populated-string"/>
@@ -74,7 +74,7 @@
 
     <xs:complexType name="build-parameter">
         <xs:sequence>
-			<xs:any maxOccurs="2" minOccurs="0"/>
+			<xs:any minOccurs="0" maxOccurs="2"/>
         </xs:sequence>
 		<xs:attribute name="builder" type="rgc:populated-string"/>
 		<xs:attribute name="processor" type="rgc:populated-string"/>
@@ -83,7 +83,7 @@
 
     <xs:complexType name="generate-parameter">
         <xs:sequence>
-			<xs:any maxOccurs="2" minOccurs="0"/>
+			<xs:any minOccurs="0" maxOccurs="2"/>
         </xs:sequence>
 		<xs:attribute name="generator" type="rgc:populated-string"/>
 		<xs:attribute name="processor" type="rgc:populated-string"/>
@@ -134,6 +134,14 @@
 		<xs:attribute name="value" type="rgc:populated-string"/>
 	</xs:complexType>
 
+	<xs:complexType name="isolate">
+		<xs:sequence>
+			<xs:any/>
+		</xs:sequence>
+		<xs:attribute name="include-session" type="xs:boolean"/>
+		<xs:attribute name="id" type="rgc:populated-string"/>
+	</xs:complexType>
+	
     <xs:element name="regurgitator-configuration" type="rg:sequence"/>
 	<xs:element name="sequence" type="rg:sequence"/>
 	<xs:element name="sequence-ref" type="rg:sequence-ref"/>
@@ -151,4 +159,5 @@
 	<xs:element name="number-generator" type="rg:number-generator"/>
 	<xs:element name="index-of-processor" type="rg:index-of-processor"/>
 	<xs:element name="index-processor" type="rg:index-processor"/>
+	<xs:element name="isolate" type="rg:isolate"/>
 </xs:schema>
