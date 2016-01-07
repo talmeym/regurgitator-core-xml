@@ -139,6 +139,7 @@
 			<xs:any/>
 		</xs:sequence>
 		<xs:attribute name="include-session" type="xs:boolean"/>
+		<xs:attribute name="include-parameters" type="xs:boolean"/>
 		<xs:attribute name="id" type="rgc:populated-string"/>
 	</xs:complexType>
 	

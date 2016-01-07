@@ -4,7 +4,7 @@ import org.dom4j.Element;
 
 import java.util.Set;
 
-import static com.emarte.regurgitator.core.CoreConfigConstants.INCLUDE_SESSION;
+import static com.emarte.regurgitator.core.CoreConfigConstants.*;
 import static com.emarte.regurgitator.core.XmlConfigUtil.getChild;
 import static com.emarte.regurgitator.core.XmlConfigUtil.loadId;
 
@@ -18,8 +18,10 @@ public class IsolateXmlLoader implements XmlLoader<Isolate> {
 		Step step = loaderUtil.deriveLoader(child).load(child, allIds);
 		String includeSessionStr = element.attributeValue(INCLUDE_SESSION);
 		boolean includeSession = includeSessionStr != null ? Boolean.valueOf(includeSessionStr) : false;
+		String includeParametersStr = element.attributeValue(INCLUDE_PARAMETERS);
+		boolean includeParameters = includeParametersStr != null ? Boolean.valueOf(includeParametersStr) : false;
 		String id = loadId(element, allIds);
 		log.debug("Loaded isolate '" + id + "'");
-		return new Isolate(id, step, includeSession);
+		return new Isolate(id, step, includeSession, includeParameters);
 	}
 }
