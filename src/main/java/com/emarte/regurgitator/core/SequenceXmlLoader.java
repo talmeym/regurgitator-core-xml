@@ -12,15 +12,15 @@ public class SequenceXmlLoader implements XmlLoader<Step> {
 
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
-        List<Step> allSteps = new ArrayList<Step>();
+        List<Step> steps = new ArrayList<Step>();
 
         for(Iterator<Element> iterator = element.elementIterator(); iterator.hasNext(); ) {
             Element stepElement = iterator.next();
-            allSteps.add(loaderUtil.deriveLoader(stepElement).load(stepElement, allIds));
+            steps.add(loaderUtil.deriveLoader(stepElement).load(stepElement, allIds));
         }
 
         String id = loadId(element, allIds);
         log.debug("Loaded sequence '" + id + "'");
-        return new Sequence(id, allSteps);
+        return new Sequence(id, steps);
     }
 }

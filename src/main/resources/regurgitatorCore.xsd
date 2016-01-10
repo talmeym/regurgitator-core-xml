@@ -136,7 +136,7 @@
 
 	<xs:complexType name="isolate">
 		<xs:sequence>
-			<xs:any/>
+			<xs:any minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="include-session" type="xs:boolean"/>
 		<xs:attribute name="include-parameters" type="xs:boolean"/>

@@ -2,11 +2,10 @@ package com.emarte.regurgitator.core;
 
 import org.dom4j.Element;
 
-import java.util.Set;
+import java.util.*;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
-import static com.emarte.regurgitator.core.XmlConfigUtil.getChild;
-import static com.emarte.regurgitator.core.XmlConfigUtil.loadId;
+import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class IsolateXmlLoader implements XmlLoader<Isolate> {
 	private static final Log log = Log.getLog(IsolateXmlLoader.class);
@@ -14,14 +13,18 @@ public class IsolateXmlLoader implements XmlLoader<Isolate> {
 
 	@Override
 	public Isolate load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		Element child = getChild(element);
-		Step step = loaderUtil.deriveLoader(child).load(child, allIds);
-		String includeSessionStr = element.attributeValue(INCLUDE_SESSION);
-		boolean includeSession = includeSessionStr != null ? Boolean.valueOf(includeSessionStr) : false;
-		String includeParametersStr = element.attributeValue(INCLUDE_PARAMETERS);
-		boolean includeParameters = includeParametersStr != null ? Boolean.valueOf(includeParametersStr) : false;
+		List<Step> steps = new ArrayList<Step>();
+
+		for(Iterator<Element> iterator = element.elementIterator(); iterator.hasNext(); ) {
+			Element stepElement = iterator.next();
+			steps.add(loaderUtil.deriveLoader(stepElement).load(stepElement, allIds));
+		}
+
+		boolean includeSession = loadOptionalBoolean(element.attributeValue(INCLUDE_SESSION));
+		boolean includeParameters = loadOptionalBoolean(element.attributeValue(INCLUDE_PARAMETERS));
+
 		String id = loadId(element, allIds);
 		log.debug("Loaded isolate '" + id + "'");
-		return new Isolate(id, step, includeSession, includeParameters);
+		return new Isolate(id, steps, includeSession, includeParameters);
 	}
 }
