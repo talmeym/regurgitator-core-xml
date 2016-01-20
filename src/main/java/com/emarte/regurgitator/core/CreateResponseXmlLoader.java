@@ -13,13 +13,10 @@ public class CreateResponseXmlLoader extends CreateResponseLoader implements Xml
 	@Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         String id = loadId(element, allIds);
-
 		String source = element.attributeValue(SOURCE);
         String value = element.attributeValue(VALUE);
         String file = element.attributeValue(FILE);
-
 		ValueProcessor processor = loadOptionalValueProcessor(element, 0, allIds);
-
 		return buildCreateResponse(id, source, value, file, processor, log);
     }
 }
