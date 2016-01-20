@@ -113,6 +113,7 @@
             </xs:choice>
         </xs:sequence>
         <xs:attribute name="id" type="rgc:populated-string"/>
+        <xs:attribute name="isolate" type="rg:isolate"/>
     </xs:complexType>
 
     <xs:complexType name="sequence-ref">
@@ -134,15 +135,15 @@
 		<xs:attribute name="value" type="rgc:populated-string"/>
 	</xs:complexType>
 
-	<xs:complexType name="isolate">
-		<xs:sequence>
-			<xs:any minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attribute name="include-session" type="xs:boolean"/>
-		<xs:attribute name="include-parameters" type="xs:boolean"/>
-		<xs:attribute name="id" type="rgc:populated-string"/>
-	</xs:complexType>
-	
+	<xs:simpleType name="isolate">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="include-session"/>
+			<xs:enumeration value="include-parameters"/>
+			<xs:enumeration value="include-session-and-parameters"/>
+		</xs:restriction>
+	</xs:simpleType>
+
     <xs:element name="regurgitator-configuration" type="rg:sequence"/>
 	<xs:element name="sequence" type="rg:sequence"/>
 	<xs:element name="sequence-ref" type="rg:sequence-ref"/>
@@ -160,5 +161,4 @@
 	<xs:element name="number-generator" type="rg:number-generator"/>
 	<xs:element name="index-of-processor" type="rg:index-of-processor"/>
 	<xs:element name="index-processor" type="rg:index-processor"/>
-	<xs:element name="isolate" type="rg:isolate"/>
 </xs:schema>

@@ -17,7 +17,7 @@ public class SequenceRefXmlLoader implements XmlLoader<Step> {
 
 		if(newId != null) {
 			log.debug("Repackaged sequence '" + sequence.getId() + "' as '" + newId + "'");
-			return new Sequence(newId, sequence.getAll());
+			return new Sequence(newId, sequence);
 		}
 
 		log.debug("Using sequence '" + sequence.getId() + "' as is");

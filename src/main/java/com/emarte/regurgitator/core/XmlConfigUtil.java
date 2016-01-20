@@ -77,7 +77,4 @@ public class XmlConfigUtil {
 
 		return processor;
 	}
-	public static boolean loadOptionalBoolean(String value) {
-		return value != null && Boolean.valueOf(value);
-	}
 }
