@@ -138,9 +138,9 @@
 	<xs:simpleType name="isolate">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="true"/>
-			<xs:enumeration value="include-session"/>
-			<xs:enumeration value="include-parameters"/>
-			<xs:enumeration value="include-session-and-parameters"/>
+			<xs:enumeration value="with-session"/>
+			<xs:enumeration value="with-parameters"/>
+			<xs:enumeration value="with-session-and-parameters"/>
 		</xs:restriction>
 	</xs:simpleType>
 
