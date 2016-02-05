@@ -12,7 +12,7 @@ public class ExtractProcessorXmlLoader implements XmlLoader<ValueProcessor> {
 
 	@Override
 	public ValueProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		log.debug("Loaded extract value");
+		log.debug("Loaded extract processor");
 		return new ExtractProcessor(element.attributeValue(FORMAT), parseInt(element.attributeValue(INDEX)));
 	}
 }
