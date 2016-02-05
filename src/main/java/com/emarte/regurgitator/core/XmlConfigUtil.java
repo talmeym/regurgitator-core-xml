@@ -37,10 +37,7 @@ public class XmlConfigUtil {
     }
 
     public static ConflictPolicy loadConflictPolicy(Element element) {
-        return loadConflictPolicy(element.attributeValue(MERGE));
-    }
-
-    public static ConflictPolicy loadConflictPolicy(String conflictPolicy) {
+		String conflictPolicy = element.attributeValue(MERGE);
         return conflictPolicy != null ? ConflictPolicy.valueOf(conflictPolicy) : REPLACE;
     }
 
