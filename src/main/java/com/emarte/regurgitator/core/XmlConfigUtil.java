@@ -9,6 +9,7 @@ import static com.emarte.regurgitator.core.ConflictPolicy.REPLACE;
 import static com.emarte.regurgitator.core.CoreTypes.STRING;
 import static com.emarte.regurgitator.core.EntityLookup.parameterType;
 import static com.emarte.regurgitator.core.EntityLookup.valueProcessor;
+import static java.lang.Boolean.parseBoolean;
 
 public class XmlConfigUtil {
 	private static XmlLoaderUtil<XmlLoader<ValueProcessor>> processorLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueProcessor>>() ;
@@ -52,6 +53,11 @@ public class XmlConfigUtil {
 	public static Element getOptionalChild(Element element, int index) {
 		List elements = element.elements();
 		return index < elements.size() ? (Element) elements.get(index) : null;
+	}
+
+	public static boolean loadOptionalBoolean(Element element, String name) {
+		String value = element.attributeValue(name);
+		return value != null && parseBoolean(value);
 	}
 
 	public static String loadContext(Element element) {
