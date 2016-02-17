@@ -135,6 +135,10 @@
 		<xs:attribute name="value" type="rgc:populated-string"/>
 	</xs:complexType>
 
+	<xs:complexType name="size-processor">
+		<xs:attribute name="as-index" type="xs:boolean"/>
+	</xs:complexType>
+
 	<xs:simpleType name="isolate">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="true"/>
@@ -161,4 +165,5 @@
 	<xs:element name="number-generator" type="rg:number-generator"/>
 	<xs:element name="index-of-processor" type="rg:index-of-processor"/>
 	<xs:element name="index-processor" type="rg:index-processor"/>
+	<xs:element name="size-processor" type="rg:size-processor"/>
 </xs:schema>
