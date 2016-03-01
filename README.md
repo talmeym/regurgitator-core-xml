@@ -29,7 +29,7 @@ all regurgitator xml files are schema validated on document load. two main schem
 
 ### sequence
 
-a sequence is a step that executes a list of other steps, one after another in order
+a sequence is a step that executes a series of child steps, one after another in order
 
 ```xml
 <rg:sequence id="my-sequence">
@@ -38,7 +38,7 @@ a sequence is a step that executes a list of other steps, one after another in o
 </rg:sequence>
 ```
 
-when the sequence executes each of it's steps, the message passed to the sequence is passed to the child steps. a sequence can isolate it's child steps from some of the data in the message, to avoid the steps interpretting data they shouldn't. 
+when a sequence executes each of it's child steps, it passed on the message object that was passed to it. a sequence can "isolate" it's child steps from the data contained in the message, by defining an isolation level. this prevents the child steps from receiving data they shouldn't or that they won't need. 
 
 ```xml
 <rg:sequence id="my-sequence" isolate="with=parameter">
@@ -51,7 +51,7 @@ isolation has 4 settings:
 
 | value | meaning |
 | :--- | :--- |
-| false | isolation off |
-| with-parameters | pass only the parameters context through in the execution message of the held steps |
-| with-session | pass only the session context through in the execution message of the held steps |
-| with-parameters-and-session | pass both the parameters and session contexts through in the execution message of the held steps |
+| true | isolation on |
+| with-parameters | pass only the parameters context through in the execution message of the child steps |
+| with-session | pass only the session context through in the execution message of the child steps |
+| with-parameters-and-session | pass both the parameters and session contexts through in the execution message of the child steps |
