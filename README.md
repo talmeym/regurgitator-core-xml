@@ -76,6 +76,22 @@ a decision step is a collection of steps where ``rules`` and ``conditions`` dict
 </rg:decision>
 ```
 
-a decision step, when executed, first evaluates all of it's rules to see which passed, then determines which of the passed rules should have their corresponding steps executed, using a ``rules behaviour``. the default rules behaviour is FIRST_MATCH, whereby the first rule that passes dictates the step to be executed.
+a decision step, when executed, first evaluates all of its rules to see which pass, then determines which of the passed rules should have their corresponding steps executed, using its ``rules behaviour``. the default decision rules behaviour is ``FIRST_MATCH``, whereby the first rule that passes dictates the step to be executed.
 
 a rule can have one or more conditions to be satisfied in order to make the rule pass. each condition has a ``condition behaviour`` that dictates the manner in which the data required of the condition is evaluated. the example above uses the equals condition behaviour.
+
+the behaviour of a condition can also be specified as a child element of the parent condition, as below:
+
+```xml
+	...
+	<rg:rules default-step="default-step">
+		<rg:rule step="special-step">
+			<rg:condition source="parameters:special">
+				<rg:equals>true</rg:equals>
+			</rg:condition>
+		</rg:rule>
+	</rg:rules>
+	...
+```
+
+this allows custom condition behaviour to have attributes besides the behaviour value (in the example above, "true") which is always the text of the child element.
