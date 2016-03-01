@@ -32,7 +32,7 @@ all regurgitator xml files are schema validated on document load. two main schem
 ### sequence
 
 ```xml
-<rg:sequence id="my-sequence" isolate="with-parameters">
+<rg:sequence id="my-sequence">
 	<rg:create-parameter id="my-step-1" name="response" value="text/plain"/>
 	<rg:create-response id="my-step-2" source="response"/>
 </rg:sequence>
