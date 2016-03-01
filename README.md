@@ -95,3 +95,11 @@ the behaviour of a condition can also be specified as a child element of the par
 ```
 
 this allows custom condition behaviours to have attributes besides the behaviour value (in the example above, "true") which is always the text of the child element.
+
+there are 3 core condition behaviours:
+
+| behaviour | meaning |
+| :--- | :--- |
+| equals | checks the parameter value equals the operand |
+| exists | checks the parameter value exists (the parameter exists) |
+| contains | checks the parameter value contains the operand |
