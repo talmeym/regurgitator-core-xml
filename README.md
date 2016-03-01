@@ -57,3 +57,21 @@ isolation has 4 settings:
 | with-parameters | child steps given new execution message with only the parameters context of the original |
 | with-session | child steps given new execution message with only the session context of the original |
 | with-parameters-and-session | child steps given new execution message with the parameters and session context of the original |
+
+### decision
+
+a decision step is a collection of steps where ``rules`` and ``conditions`` dictate which steps are run
+
+```xml
+<rg:decision>
+	<rg:steps>
+		<rg:create-response id="default-step" value="this is the default response">
+		<rg:create-response id="special-step" value="this is the special response"/>
+	</rg:steps>
+	<rg:rules default-step="default-step">
+		<rg:rule step="special-step">
+			<rg:condition source="parameters:special" equals="true"/>
+		</rg:rule>
+	</rg:rules>
+</rg:decision>
+```
