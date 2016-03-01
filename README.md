@@ -33,7 +33,7 @@ a sequence is a step that executes a series of child steps, one after another in
 
 ```xml
 <rg:sequence id="my-sequence">
-	<rg:create-parameter id="my-step-1" name="response" value="text/plain"/>
+	<rg:create-parameter id="my-step-1" name="response" value="this is the response"/>
 	<rg:create-response id="my-step-2" source="response"/>
 </rg:sequence>
 ```
@@ -42,7 +42,7 @@ when a sequence executes each of it's steps, it passed on the message object tha
 
 ```xml
 <rg:sequence id="my-sequence" isolate="with-parameter">
-	<rg:create-parameter id="my-step-1" name="response" value="text/plain"/>
+	<rg:create-parameter id="my-step-1" name="response" value="this is the response"/>
 	<rg:create-response id="my-step-2" source="response"/>
 </rg:sequence>
 ```
