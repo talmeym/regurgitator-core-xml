@@ -49,7 +49,6 @@ a sequence can isolate the steps it runs from some of the data in the message ea
 
 isolation has 4 settings:
 
-|   |  |
 | ------------- | ------------- |
 | false | isolation off |
 | with-parameters | pass only the parameters context through in the execution message of the held steps |
