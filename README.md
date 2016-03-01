@@ -1,12 +1,10 @@
-regurgitator-core-xml
-=====================
+## regurgitator-core-xml
 
 regurgitator is a modular, light-weight, extendable java-based processing framework designed to 'regurgitate' canned or clever responses to incoming requests.
 
 See more at [regurgitator-all](http://github.com/talmeym/regurgitator-all)
 
-xml configuration of regurgitator core functionality
-----------------------------------------------------
+## xml configuration of regurgitator core functionality
 
 below is an example of an xml configuration file for regurgitator:
 
