@@ -76,7 +76,7 @@ a decision step is a collection of steps where ``rules`` and ``conditions`` dict
 </rg:decision>
 ```
 
-a decision step, when executed, first evaluates all of its rules to see which pass, then determines which of the passed rules should have their corresponding steps executed, using its ``rules behaviour``. the default decision rules behaviour is ``FIRST_MATCH``, whereby the first rule that passes dictates the step to be executed.
+a decision step, when executed, first evaluates all of its rules to see which pass, then determines which of the passed rules should have their corresponding steps executed, using its ``rules behaviour``. the default decision rules behaviour is ``FIRST_MATCH`` whereby the first rule that passes dictates the step to be executed.
 
 a rule can have one or more conditions to be satisfied in order to make the rule pass. each condition has a ``condition behaviour`` that dictates the manner in which the operand of the condition is evaluated. the example above uses the equals condition behaviour.
 
