@@ -49,10 +49,8 @@ a sequence can isolate the steps it runs from some of the data in the message ea
 
 isolation has 4 settings:
 
-| First Header  | Second Header |
+|   |  |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
 | false | isolation off |
 | with-parameters | pass only the parameters context through in the execution message of the held steps |
 | with-session | pass only the session context through in the execution message of the held steps |
