@@ -38,7 +38,7 @@ a sequence is a step that executes a list of other steps, one after another in o
 </rg:sequence>
 ```
 
-a sequence can isolate the steps it runs from some of the data in the message each step is passed, to avoid the steps interpretting data they shouldn't. 
+when the sequence executes each of it's steps, the message passed to the sequence is passed to the child steps. a sequence can isolate it's child steps from some of the data in the message, to avoid the steps interpretting data they shouldn't. 
 
 ```xml
 <rg:sequence id="my-sequence" isolate="with=parameter">
