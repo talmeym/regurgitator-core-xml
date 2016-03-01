@@ -51,7 +51,7 @@ isolation has 4 settings:
 
 | value | meaning |
 | :--- | :--- |
-| true | isolation on |
-| with-parameters | pass only the parameters context through in the execution message of the child steps |
-| with-session | pass only the session context through in the execution message of the child steps |
-| with-parameters-and-session | pass both the parameters and session contexts through in the execution message of the child steps |
+| true | child steps given blank execution message |
+| with-parameters | child steps given execution message with only the parameters context of the original |
+| with-session | child steps given execution message with only the session context of the original |
+| with-parameters-and-session | child steps given execution message with both the parameters and session contexts of the original |
