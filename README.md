@@ -29,9 +29,25 @@ all regurgitator xml files are schema validated on document load. two main schem
 
 ### sequence
 
+a sequence is a step that executes a list of other steps, one after another in order
+
 ```xml
 <rg:sequence id="my-sequence">
 	<rg:create-parameter id="my-step-1" name="response" value="text/plain"/>
 	<rg:create-response id="my-step-2" source="response"/>
 </rg:sequence>
 ```
+
+a sequence can isolate the steps it runs from some of the data in the message each step is passed, to avoid the steps interpretting data they shouldn't. 
+
+```xml
+<rg:sequence id="my-sequence" isolate="with=parameter">
+	<rg:create-parameter id="my-step-1" name="response" value="text/plain"/>
+	<rg:create-response id="my-step-2" source="response"/>
+</rg:sequence>
+```
+
+isolation has 3 settings:
+
+
+
