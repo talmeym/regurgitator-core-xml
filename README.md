@@ -49,7 +49,7 @@ a sequence can isolate the steps it runs from some of the data in the message ea
 
 isolation has 4 settings:
 
-- false - isolation off
-- with-parameters - pass only the parameters context through in the execution message of the held steps
-- with-session - pass only the session context through in the execution message of the held steps
-- with-parameters-and-session - pass both the parameters and session contexts through in the execution message of the held steps
+|false|isolation off|
+|with-parameters|pass only the parameters context through in the execution message of the held steps|
+|with-session|pass only the session context through in the execution message of the held steps|
+|with-parameters-and-session|pass both the parameters and session contexts through in the execution message of the held steps|
