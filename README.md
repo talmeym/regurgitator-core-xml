@@ -101,5 +101,5 @@ there are 3 core condition behaviours:
 | behaviour | meaning |
 | :--- | :--- |
 | equals | checks the parameter value equals the operand |
-| exists | checks the parameter value exists (the parameter exists) |
+| exists | checks the parameter value exists (read as 'parameter exists') |
 | contains | checks the parameter value contains the operand |
