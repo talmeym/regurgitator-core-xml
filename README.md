@@ -76,9 +76,9 @@ a decision executes one or more child steps, using ``rules`` and ``conditions`` 
 </rg:decision>
 ```
 
-upon execution a decision evaluates all of its rules to see which pass. it then uses its ``rules behaviour`` to determines which of the passed rules should have their corresponding step executed. the default rules behaviour is ``FIRST_MATCH`` whereby the first rule that passes dictates the step to be executed.
+upon execution a decision evaluates all of its rules to see which pass. it then uses its ``rules behaviour`` to determines which of the passed rules should have their corresponding step executed. the default rules behaviour is ``FIRST_MATCH`` whereby the first rule that passes provides the step to be executed.
 
-a rule has one or more conditions to be satisfied to make the rule pass. each condition evaluates the value of a parameter within the message object, specified by the ``source`` attribute. each condition has a ``condition behaviour`` that dictates the manner in which the parameter's value is evaluated against the operand. the example above uses the ``equals`` condition behaviour.
+a rule has one or more conditions to be satisfied to make the rule pass. each condition evaluates the value of a parameter within the message object, specified by the ``source`` attribute, against an operand. each condition has a ``condition behaviour`` that dictates the manner in which the parameter's value is evaluated against the operand. the example above uses the ``equals`` condition behaviour.
 
 the behaviour of a condition can also be specified as a child element of the parent condition, as below:
 
