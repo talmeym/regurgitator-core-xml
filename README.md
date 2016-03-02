@@ -51,12 +51,12 @@ by default, when each child step executes, it is passed the same message object 
 
 isolation has 4 settings:
 
-| value | meaning |
+| value | child step receives |
 | :--- | :--- |
-| true | child steps given new blank message object |
-| with-parameters | child steps given new message object with only the parameters context of the original |
-| with-session | child steps given new message object with only the session context of the original |
-| with-parameters-and-session | child steps given new message object with the parameters and session context of the original |
+| true | new blank message object |
+| with-parameters | new message object with only the parameters context of the original message |
+| with-session | new message object with only the session context of the original message |
+| with-parameters-and-session | new message object with the parameters and session context of the original message |
 
 ### decision
 
