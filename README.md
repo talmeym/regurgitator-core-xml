@@ -60,7 +60,7 @@ isolation has 4 settings:
 
 ### decision
 
-a decision executes one or more child steps, using ``rules`` and ``conditions`` to determine which steps are run
+a decision executes one or more child steps, using ``rules`` and ``conditions`` to determine which steps to run
 
 ```xml
 <rg:decision>
