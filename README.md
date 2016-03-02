@@ -40,7 +40,7 @@ a sequence is a step that executes a series of child steps, one after another in
 </rg:sequence>
 ```
 
-when a sequence executes each of it's steps, it passed on the message object that was passed to it. you can "isolate" a sequence's child steps from the data contained in the message received by the sequence, by giving the sequence an isolation level. this prevents the child steps from receiving data they shouldn't or that they won't need.
+by default, when each child step executes, it is passed the same message object that the sequence received. it is possible to "isolate" a sequence's child steps from the data contained in the message object, by giving the sequence an isolation level. this prevents a child step from receiving data it shouldn't see or that it won't need.
 
 ```xml
 <rg:sequence id="my-sequence" isolate="with-parameter">
