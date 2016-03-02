@@ -26,7 +26,7 @@ public class ConditionXmlLoader {
 		} else {
 			Element innerElement = getChild(element);
 			String type = innerElement.getName();
-			behaviour = hasConditionBehaviour(type) ? conditionBehaviour(type) : conditionBehaviourLoaderUtil.deriveLoader(innerElement).load(innerElement, allIds);
+			behaviour = conditionBehaviourLoaderUtil.deriveLoader(innerElement).load(innerElement, allIds);
 			value = innerElement.getText();
 		}
 
