@@ -80,7 +80,7 @@ upon execution a decision evaluates all of its rules to see which pass. it then 
 
 each rule has one or more conditions that must be satisfied to make the rule pass. each condition evaluates the value of a parameter within the message object, specified by the ``source`` attribute, against an operand. each condition has a ``condition behaviour`` that dictates the manner in which the value is evaluated against the operand. the example above uses the ``equals`` condition behaviour.
 
-the behaviour of a condition can also be specified as a child element of the parent condition, as below:
+the behaviour of a condition can be specified as a child element of the parent condition, as opposed to an attribute, as below:
 
 ```xml
 	...
