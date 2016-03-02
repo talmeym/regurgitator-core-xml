@@ -53,10 +53,10 @@ isolation has 4 settings:
 
 | value | meaning |
 | :--- | :--- |
-| true | child steps given new blank execution message |
-| with-parameters | child steps given new execution message with only the parameters context of the original |
-| with-session | child steps given new execution message with only the session context of the original |
-| with-parameters-and-session | child steps given new execution message with the parameters and session context of the original |
+| true | child steps given new blank message object |
+| with-parameters | child steps given new message object with only the parameters context of the original |
+| with-session | child steps given new message object with only the session context of the original |
+| with-parameters-and-session | child steps given new message object with the parameters and session context of the original |
 
 ### decision
 
@@ -78,7 +78,7 @@ a decision is a collection of steps where ``rules`` and ``conditions`` dictate w
 
 a decision step, when executed, first evaluates all of its rules to see which pass, then determines which of the passed rules should have their corresponding steps executed, using its ``rules behaviour``. the default decision rules behaviour is ``FIRST_MATCH`` whereby the first rule that passes dictates the step to be executed.
 
-a rule has one or more conditions to be satisfied to make the rule pass. each condition evaluates the value of a parameter within the execution message, specified by the ``source`` attribute. each condition has a ``condition behaviour`` that dictates the manner in which the parameter's value is evaluated against the operand. the example above uses the ``equals`` condition behaviour.
+a rule has one or more conditions to be satisfied to make the rule pass. each condition evaluates the value of a parameter within the message object, specified by the ``source`` attribute. each condition has a ``condition behaviour`` that dictates the manner in which the parameter's value is evaluated against the operand. the example above uses the ``equals`` condition behaviour.
 
 the behaviour of a condition can also be specified as a child element of the parent condition, as below:
 
