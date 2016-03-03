@@ -103,3 +103,4 @@ there are 3 core condition behaviours:
 | equals | checks the parameter value equals the operand |
 | exists | checks the parameter value exists (read as 'parameter exists') |
 | contains | checks the parameter value contains the operand |
+| contains-param | checks the parameter value contains the value of another parameter |
