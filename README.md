@@ -78,9 +78,9 @@ a decision executes one or more child steps, using ``rules`` and ``conditions`` 
 
 upon execution a decision evaluates all of its rules to see which pass. it then uses its ``rules behaviour`` to determines which of the passed rules should have their corresponding step executed. the default rules behaviour is ``FIRST_MATCH`` whereby the first rule that passes provides the step to be executed.
 
-each rule has one or more conditions that must be satisfied to make the rule pass. each condition evaluates the value of a parameter within the message object, specified by the ``source`` attribute, against an operand. each condition has a ``condition behaviour`` that dictates the manner in which the value is evaluated against the operand. the example above uses the ``equals`` condition behaviour.
+each rule has one or more conditions that must be satisfied to make the rule pass. each condition evaluates the value of a parameter within the message object, specified by the ``source`` attribute, against an operand. each condition has a ``condition behaviour`` that dictates the manner in which the value is evaluated against the operand. the example above uses the ``equals`` condition behaviour, specified as an attribute.
 
-the behaviour of a condition can be specified as a child element of the parent condition (as opposed to being an attribute) as shown below:
+the behaviour of a condition can also be specified as a child element of the parent condition, as shown below:
 
 ```xml
 	...
@@ -95,7 +95,7 @@ the behaviour of a condition can be specified as a child element of the parent c
 	...
 ```
 
-this allows some condition behaviours to have attributes besides the operand (in the example above, "/rg:config/@id") which is always the text of the child element.
+this allows certain condition behaviours to have attributes beyond the operand (in the example above, "/rg:config/@id") which is always the text of the child element.
 
 there are 5 core condition behaviours:
 
