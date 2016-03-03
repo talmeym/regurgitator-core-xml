@@ -84,13 +84,14 @@ the behaviour of a condition can be specified as a child element of the parent c
 
 ```xml
 	...
-	<rg:rules default-step="default-step">
-		<rg:rule step="special-step">
-			<rg:condition source="parameters:special">
-				<rg:equals>true</rg:equals>
+	<rg:rules default-step="no-id-found">
+		<rg:rule step="found-id">
+			<rg:condition source="parameters:xml">
+				<rge:contains-xpath namespaces="rg=http://core.regurgitator.emarte.com">/rg:regurgitator-config/@id</rge:contains-xpath>
 			</rg:condition>
 		</rg:rule>
 	</rg:rules>
+
 	...
 ```
 
