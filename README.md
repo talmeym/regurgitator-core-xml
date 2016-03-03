@@ -38,6 +38,8 @@ all steps in a regurgitator configuration, from ``regurgitator-configuration`` d
 
 ## steps
 
+core steps of regurgitator are as follows:
+
 ### sequence
 
 a sequence executes a series of child steps, one after another in order
