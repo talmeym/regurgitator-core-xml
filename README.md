@@ -131,3 +131,11 @@ a create-parameter creates a parameter in the message, with a type and a value
 ```xml
 <rg:create-parameter name="index" type="NUMBER" value="5" merge="CONCAT"/>
 ```
+
+a create-parameter can have one of the following value sources:
+
+|attribute|source|
+|---|---|---|
+| ``source`` | value drawn from a parameter |
+| ``value`` | value provided explicitly |
+| ``file`` | value loaded from a file |
