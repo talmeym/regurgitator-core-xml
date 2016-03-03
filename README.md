@@ -29,10 +29,10 @@ below is an example of an xml configuration file for regurgitator:
 </rg:regurgitator-configuration>
 ```
 
-all regurgitator config files are schema validated on document load. each module of regurgitator has it's own namespace uri:
-- regurgitator-core ``http://core.regurgitator.emarte.com``
-- regurgitator-extensions ``http://extensions.regurgitator.emarte.com``
-- regurgitator-extensions-web ``http://web.extensions.regurgitator.emarte.com``
+each module of regurgitator has it's own namespace uri and schema file:
+- regurgitator-core ``http://core.regurgitator.emarte.com`` ``regurgitatorCore.xsd``
+- regurgitator-extensions ``http://extensions.regurgitator.emarte.com``  ``regurgitatorExtensions.xsd``
+- regurgitator-extensions-web ``http://web.extensions.regurgitator.emarte.com``  ``regurgitatorExtensionsWeb.xsd``
 
 ## steps
 
