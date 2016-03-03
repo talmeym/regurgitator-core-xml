@@ -87,7 +87,7 @@ the behaviour of a condition can be specified as a child element of the parent c
 	<rg:rules default-step="no-id-found">
 		<rg:rule step="found-id">
 			<rg:condition source="parameters:xml">
-				<rge:contains-xpath namespaces="rg=http://core.regurgitator.emarte.com">/rg:regurgitator-config/@id</rge:contains-xpath>
+				<rge:contains-xpath namespaces="rg=http://someurl.com">/rg:config/@id</rge:contains-xpath>
 			</rg:condition>
 		</rg:rule>
 	</rg:rules>
