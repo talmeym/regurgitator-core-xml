@@ -151,4 +151,4 @@ there are 4 core conflict policies available:
 | ``CONCAT`` | concatenate the existing and new values | existing:``some`` new: ``thing`` | ``something`` |
 | ``REMOVE`` | remove the new value from the existing | existing:``some`` new: ``me`` | ``so`` |
 
-when using ``NUMBER`` and decimal ``DECIMAL`` parameter types, ``CONCAT`` and ``REMOVE`` conflict policies behave as addition and subtraction operators. when collection-based parameter types are used, ``CONCAT`` behaves like a collection ``add-all``, while remove behaves like a ``remove-all``.
+when using ``NUMBER`` and decimal ``DECIMAL`` parameter types, ``CONCAT`` and ``REMOVE`` conflict policies behave as addition and subtraction operators. when collection-based parameter types are used, ``CONCAT`` and ``REMOVE`` behaves like java collection ``add-all`` and ``remove-all`` operations, respectively.
