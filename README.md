@@ -20,7 +20,7 @@ below is an example of an xml configuration file for regurgitator:
                             http://web.extensions.regurgitator.emarte.com regurgitatorExtensionsWeb.xsd"
 		id="my-configuration">
 
-	<rg:create-parameter id="response" name="response" value="quick">
+	<rg:create-parameter name="response" value="quick">
 		<rge:freemarker-processor>That was ${value}</rge:freemarker-processor>
 	</rg:create-parameter>
 
