@@ -96,7 +96,7 @@ the behaviour of a condition can be specified as a child element of the parent c
 
 this allows custom condition behaviours to have attributes besides the operand (in the example above, "true") which is always the text of the child element.
 
-there are 3 core condition behaviours:
+there are 4 core condition behaviours:
 
 | value | behaviour |
 | :--- | :--- |
