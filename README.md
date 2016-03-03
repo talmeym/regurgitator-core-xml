@@ -10,17 +10,21 @@ below is an example of an xml configuration file for regurgitator:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<rg:regurgitator-configuration 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:rg="http://core.regurgitator.emarte.com" 
-	xmlns:rge="http://extensions.regurgitator.emarte.com" 
-	xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd
-	                    http://extensions.regurgitator.emarte.com regurgitatorExtensions.xsd"
-	id="my-configuration">
-	
-	<rg:create-response id="response" value="quick">
+<rg:regurgitator-configuration
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:rg="http://core.regurgitator.emarte.com"
+		xmlns:rge="http://extensions.regurgitator.emarte.com"
+		xmlns:rgw="http://web.extensions.regurgitator.emarte.com"
+		xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd
+                            http://extensions.regurgitator.emarte.com regurgitatorExtensions.xsd
+                            http://web.extensions.regurgitator.emarte.com regurgitatorExtensionsWeb.xsd"
+		id="my-configuration">
+
+	<rg:create-parameter id="response" name="response" value="quick">
 		<rge:freemarker-processor>That was ${value}</rge:freemarker-processor>
-	</rg:create-response>
+	</rg:create-parameter>
+
+	<rgw:create-http-response content-type="text/plain" status-code="200" source="response"/>
 	
 </rg:regurgitator-configuration>
 ```
