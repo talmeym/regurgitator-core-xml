@@ -140,13 +140,13 @@ a create-parameter can have one of the following value source attributes:
 | ``value`` | value provided explicitly | ``arg1=this,arg2=that`` |
 | ``file`` | value loaded from a file | ``classpath:/query-param.txt`` |
 
-a create-parameter can have a merge attribute that specified what to do if the parameter being created already exists; how to 'merge' the existing and new values. 
+a create-parameter can have a ``merge`` attribute that specified a ``conflict policy`` defining what to do if the parameter being created already exists in the message. 
 
-there are 4 core merge types available:
+there are 4 core conflict policies available:
 
 | merge type | behaviour | example | result |
 |:---|:---|:---|:---|
-| ``LEAVE`` | leave the existing value | existing: ``some`` new: ``thing`` | ``some`` |
-| ``REPLACE`` | replace the existing value | existing: ``some`` new: ``thing`` | ``thing`` |
-| ``CONCAT`` | concatenate the existing with the new | existing:``some`` new: ``thing`` | ``something`` |
-| ``REMOVE`` | remove the new from the existing | existing:``some`` new: ``me`` | ``so`` |
+| ``LEAVE`` | leave the existing value in place | existing: ``some`` new: ``thing`` | ``some`` |
+| ``REPLACE`` | replace the existing value with the new | existing: ``some`` new: ``thing`` | ``thing`` |
+| ``CONCAT`` | concatenate the existing and new values | existing:``some`` new: ``thing`` | ``something`` |
+| ``REMOVE`` | remove the new value from the existing | existing:``some`` new: ``me`` | ``so`` |
