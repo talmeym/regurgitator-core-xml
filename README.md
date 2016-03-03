@@ -14,7 +14,8 @@ below is an example of an xml configuration file for regurgitator:
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:rg="http://core.regurgitator.emarte.com" 
 	xmlns:rge="http://extensions.regurgitator.emarte.com" 
-	xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd http://extensions.regurgitator.emarte.com regurgitatorExtensions.xsd"
+	xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd
+	                    http://extensions.regurgitator.emarte.com regurgitatorExtensions.xsd"
 	id="my-configuration">
 	
 	<rg:create-response id="response" value="quick">
