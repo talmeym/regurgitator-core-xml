@@ -25,7 +25,6 @@ public class ConditionXmlLoader {
 			value = behaviourAttr.getValue();
 		} else {
 			Element innerElement = getChild(element);
-			String type = innerElement.getName();
 			behaviour = conditionBehaviourLoaderUtil.deriveLoader(innerElement).load(innerElement, allIds);
 			value = innerElement.getText();
 		}
