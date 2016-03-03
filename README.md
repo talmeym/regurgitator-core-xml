@@ -4,7 +4,7 @@ regurgitator is a modular, light-weight, extendable java-based processing framew
 
 start your reading here: [regurgitator-all](http://github.com/talmeym/regurgitator-all#regurgitator)
 
-## xml configuration of regurgitator core functionality
+## xml configuration of regurgitator
 
 below is an example of an xml configuration file for regurgitator:
 
