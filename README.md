@@ -11,25 +11,20 @@ below is an example of an xml configuration file for regurgitator:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <rg:regurgitator-configuration 
-	xmlns:rg="http://core.regurgitator.emarte.com" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd">
+	xmlns:rg="http://core.regurgitator.emarte.com" 
+	xmlns:rge="http://extensions.regurgitator.emarte.com" 
+	xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd http://extensions.regurgitator.emarte.com regurgitatorExtensions.xsd"
+	id="my-configuration">
 	
-	<rg:decision id="check-greeting">
-		<rg:steps>
-			<rg:create-response id="before-lunch" value="it is before lunch"/>
-			<rg:create-response id="after-lunch" value="it is after lunch"/>
-		</rg:steps>
-		<rg:rules defaultStep="after-lunch">
-			<rg:rule step="before-lunch">
-				<rg:condition source="greeting" behaviour="equals" value="good morning"/>
-			</rg:rule>
-		</rg:rules>
-	</rg:decision>
+	<rg:create-response id="response" value="quick">
+		<rge:freemarker-processor>That was ${value}</rge:freemarker-processor>
+	</rg:create-response>
+	
 </rg:regurgitator-configuration>
 ```
 
-all regurgitator xml files are schema validated on document load. two main schemas are provided for xml configuration, [``regurgitatorCommon.xsd``](https://github.com/talmeym/regurgitator-core-xml/blob/master/src/main/resources/regurgitatorCommon.xsd) and [``regurgitatorCore.xsd``](https://github.com/talmeym/regurgitator-core-xml/blob/master/src/main/resources/regurgitatorCore.xsd). the former provides basic definitions of types used in all regurgitator schemas (incuding yours if you extend the system) and the latter provides definitions for all the core regurgitator steps.
+all regurgitator config files are schema validated on document load. each module of regurgitator has it's own namespace uri; regurgitator-core using ``http://core.regurgitator.emarte.com`` and regurgitator-extensions using ``http://extensions.regurgitator.emarte.com``. 
 
 ## steps
 
