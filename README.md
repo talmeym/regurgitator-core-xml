@@ -137,5 +137,5 @@ a create-parameter can have one of the following value sources:
 |attribute|value from | example|
 |---|---|---|---|
 | ``source`` | value drawn from a source parameter | ``request-metadata:query-param`` |
-| ``value`` | value provided explicitly | ``"arg1=this,arg2=that"`` |
-| ``file`` | value loaded from a file | ``"classpath:/query-param.txt"`` |
+| ``value`` | value provided explicitly | ``arg1=this,arg2=that`` |
+| ``file`` | value loaded from a file | ``classpath:/query-param.txt`` |
