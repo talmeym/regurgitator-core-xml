@@ -96,11 +96,12 @@ the behaviour of a condition can be specified as a child element of the parent c
 
 this allows custom condition behaviours to have attributes besides the operand (in the example above, "true") which is always the text of the child element.
 
-there are 4 core condition behaviours:
+there are 5 core condition behaviours:
 
 | value | behaviour |
 | :--- | :--- |
 | equals | checks the parameter value equals the operand |
+| equals-param | checks the parameter value equals the value of another parameter |
 | exists | checks the parameter value exists (read as 'parameter exists') |
 | contains | checks the parameter value contains the operand |
 | contains-param | checks the parameter value contains the value of another parameter |
