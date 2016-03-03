@@ -140,7 +140,7 @@ a create-parameter can have one of the following value source attributes:
 | ``value`` | value provided explicitly | ``arg1=this,arg2=that`` |
 | ``file`` | value loaded from a file | ``classpath:/query-param.txt`` |
 
-a create-parameter can have a merge attribute that specified what to do if the parameter being created already exists; how to merge to existing and new values together. 
+a create-parameter can have a merge attribute that specified what to do if the parameter being created already exists; how to 'merge' the existing and new values. 
 
 there are 4 core merge types available:
 
