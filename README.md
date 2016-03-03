@@ -62,10 +62,10 @@ isolation has 4 settings:
 
 | value | child step receives |
 | :--- | :--- |
-| true | new blank message object |
-| with-parameters | new message object containing the parameters context of the original message |
-| with-session | new message object containing the session context of the original message |
-| with-parameters-and-session | new message object containing parameters and session of the original message |
+| ``true`` | new blank message object |
+| ``with-parameters`` | new message object containing the parameters context of the original message |
+| ``with-session`` | new message object containing the session context of the original message |
+| ``with-parameters-and-session`` | new message object containing parameters and session of the original message |
 
 ### decision
 
