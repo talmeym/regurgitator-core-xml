@@ -91,9 +91,9 @@ there are 3 core rules behaviours:
 
 | value | behaviour |
 | :--- | :--- |
-| FIRST_MATCH | execute the step of the first rule passed |
-| FIRST_MATCH_ONWARDS | execute the step of the first rule passed, and all seqsequent steps |
-| ALL_MATCHES | execute the steps of all passed rules |
+| ``FIRST_MATCH`` | execute the step of the first rule passed |
+| ``FIRST_MATCH_ONWARDS`` | execute the step of the first rule passed, and all seqsequent steps |
+| ``ALL_MATCHES`` | execute the steps of all passed rules |
 
 each rule has one or more conditions that must be satisfied to make the rule pass. each condition evaluates the value of a parameter within the message object, specified by the ``source`` attribute, against an operand. each condition has a ``condition behaviour`` that dictates the manner in which the value is evaluated against the operand. the example above uses the ``equals`` condition behaviour, specified as an attribute.
 
@@ -118,13 +118,15 @@ there are 5 core condition behaviours:
 
 | value | behaviour |
 | :--- | :--- |
-| equals | checks the parameter value equals the operand |
-| equals-param | checks the parameter value equals the value of another parameter |
-| exists | checks the parameter value exists (read as 'parameter exists') |
-| contains | checks the parameter value contains the operand |
-| contains-param | checks the parameter value contains the value of another parameter |
+| ``equals`` | checks the parameter value equals the operand |
+| ``equals-param`` | checks the parameter value equals the value of another parameter |
+| ``exists`` | checks the parameter value exists (read as 'parameter exists') |
+| ``contains`` | checks the parameter value contains the operand |
+| ``contains-param`` | checks the parameter value contains the value of another parameter |
 
 ### create-parameter
+
+a create-parameter creates a parameter in the message, with a type and a value
 
 ```xml
 <rg:create-parameter name="index" value="5" merge="CONCAT"/>
