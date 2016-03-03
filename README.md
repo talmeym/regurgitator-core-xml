@@ -144,7 +144,7 @@ a create-parameter can have a ``merge`` attribute that specified a ``conflict po
 
 there are 4 core conflict policies available:
 
-| merge type | behaviour | example | result |
+| merge type | behaviour | ``STRING`` example | result |
 |:---|:---|:---|:---|
 | ``LEAVE`` | leave the existing value in place | existing: ``some`` new: ``thing`` | ``some`` |
 | ``REPLACE`` | replace the existing value with the new | existing: ``some`` new: ``thing`` | ``thing`` |
