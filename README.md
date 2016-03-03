@@ -129,5 +129,5 @@ there are 5 core condition behaviours:
 a create-parameter creates a parameter in the message, with a type and a value
 
 ```xml
-<rg:create-parameter name="index" value="5" merge="CONCAT"/>
+<rg:create-parameter name="index" type="NUMBER" value="5" merge="CONCAT"/>
 ```
