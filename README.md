@@ -140,7 +140,7 @@ a create-parameter can have one of the following value source attributes:
 | ``value`` | value provided explicitly | ``arg1=this,arg2=that`` |
 | ``file`` | value loaded from a file | ``classpath:/query-param.txt`` |
 
-a create-parameter can have a ``merge`` attribute that specified a ``conflict policy`` defining what to do if the parameter being created already exists in the message. 
+a create-parameter can have an optional ``merge`` attribute that specified a ``conflict policy`` defining what to do if the parameter being created already exists in the message. the default conflict policy is ``REPLACE``.
 
 there are 4 core conflict policies available:
 
@@ -152,3 +152,5 @@ there are 4 core conflict policies available:
 | ``REMOVE`` | remove the new value from the existing | existing:``some`` new: ``me`` | ``so`` |
 
 when using ``NUMBER`` and ``DECIMAL`` parameter types, ``CONCAT`` and ``REMOVE`` conflict policies behave as addition and subtraction operators. when collection-based parameter types are used, ``CONCAT`` and ``REMOVE`` behaves like java collection ``add-all`` and ``remove-all`` operations, respectively.
+
+for more details on parameter types, go [here](https://github.com/talmeym/regurgitator-core#core-constructs).
