@@ -191,7 +191,7 @@ a generate-parameter creates a parameter in the message, with it's value generat
 
 as with create-parameter above, a generate-parameter can have optional ``merge`` and ``type`` attributes, their defaults being ``REPLACE`` and ``STRING``, respectively.
 
-generators that require no configuration can be specified through attributes, eg:
+generators that require no configuration can be specified through the ``generator`` attribute, eg:
 
 ```xml
 <rg:generate-parameter name="new-id" type="STRING" generator="uuid-generator"/>
