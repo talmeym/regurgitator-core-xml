@@ -257,3 +257,13 @@ a uuid-generator generates a uuid parameter value.
 
 <rg:generate-parameter name="new-id" type="STRING" generator="uuid-generator"/>
 ```
+
+### extract-processor
+
+an extract-processor extracts a value from another, using the java.text.MessageFormat syntax.
+
+```xml
+<rg:create-parameter name="customer-id" source="request-metadata:query-string">
+	<rg:extract-processor format="order={0}&amp;customer={1}" index="1"/>
+</rg:create-parameter>
+```
