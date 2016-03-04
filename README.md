@@ -192,4 +192,4 @@ a create-response returns a response back from regurgitator via a message's ``re
 ```
 a create-response can have the same value sources as create-parameter, ``source``, ``value``, or ``file``. 
 
-regurgitator can be configured to return as many responses as is desired, but that may be incompatible with single response usages, such as over [http](https://github.com/talmeym/regurgitator-extensions-web#regurgitator-over-http).
+regurgitator can be configured to return as many responses as is desired, but that may be incompatible with some single request / response usages, such as over [http](https://github.com/talmeym/regurgitator-extensions-web#regurgitator-over-http).
