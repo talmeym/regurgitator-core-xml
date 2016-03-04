@@ -240,7 +240,11 @@ a number-generator generates a random number parameter value
 </rg:generate-parameter>
 ```
 
-the ``max`` attribute is optional.
+the ``max`` attribute is optional:
+
+```xml
+<rg:generate-parameter name="param-name" type="NUMBER" generator="number-generator"/>
+```
 
 ### uuid-generator
 
@@ -250,4 +254,6 @@ a uuid-generator generates a uuid parameter value
 <rg:generate-parameter name="new-id" type="STRING">
 	<rg:uuid-generator/>
 </rg:generate-parameter>
+
+<rg:generate-parameter name="new-id" type="STRING" generator="uuid-generator"/>
 ```
