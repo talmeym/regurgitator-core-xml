@@ -179,3 +179,23 @@ a generate-parameter creates a parameter in the message, with it's value generat
 
 as with create-parameter above, a generate-parameter can have optional ``merge`` and ``type`` attributes, their defaults being ``REPLACE`` and ``STRING``, respectively.
 
+### create-response
+
+a create-response returns a response back from regurgitator via a message's ``response-callback`` mechanism. 
+
+```xml
+<rg:create-response source="parameters:response-test"/>
+
+<rg:create-response value="this is the response"/>
+
+<rg:create-response file="classpath:/canned_response.xml"/>
+```
+a create-response can have one of the following value source attributes:
+
+| attribute| value source | example |
+|:---|:---|:---|
+| ``source`` | value drawn from a source parameter | ``request-metadata:query-param`` |
+| ``value`` | value provided explicitly | ``arg1=this,arg2=that`` |
+| ``file`` | value loaded from a file | ``classpath:/query-param.txt`` |
+
+
