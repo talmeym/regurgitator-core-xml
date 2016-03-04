@@ -258,7 +258,7 @@ the ``max`` attribute is optional:
 <rg:generate-parameter name="param-name" type="NUMBER" generator="number-generator"/>
 ```
 
-more info on ``value-generator`` [here](https://github.com/talmeym/regurgitator-core-json#generate-parameter).
+more info on ``value-generator`` [here](https://github.com/talmeym/regurgitator-core-xml#generate-parameter).
 
 ### uuid-generator
 
@@ -272,7 +272,7 @@ a uuid-generator generates a uuid parameter value.
 <rg:generate-parameter name="new-id" type="STRING" generator="uuid-generator"/>
 ```
 
-more info on ``value-generator`` [here](https://github.com/talmeym/regurgitator-core-json#generate-parameter).
+more info on ``value-generator`` [here](https://github.com/talmeym/regurgitator-core-xml#generate-parameter).
 
 ### extract-processor
 
@@ -284,7 +284,7 @@ an extract-processor extracts a value from another value, using the [java.text.M
 </rg:create-parameter>
 ```
 
-more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-json#value-processors).
+more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-xml#value-processors).
 
 ### substitute-processor
 
@@ -296,7 +296,7 @@ a substitute-processor manipulates ``STRING`` values, replacing occurrences of o
 </rg:create-parameter>
 ```
 
-more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-json#value-processors).
+more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-xml#value-processors).
 
 ### index-processor
 
@@ -312,7 +312,7 @@ an index-processor manipulates collection parameter values, such as ``LIST_OF_ST
 
 the index to be looked up can be specified using either a ``value`` attribute, or ``source`` to retrieve the index from a parameter.
 
-more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-json#value-processors).
+more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-xml#value-processors).
 
 ### index-of-processor
 
@@ -328,7 +328,7 @@ an index-of-processor manipulates collection parameter values, such as ``LIST_OF
 
 the data value to be looked up can be specified using either a ``value`` attribute, or ``source`` to retrieve the data value from a parameter.
 
-more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-json#value-processors).
+more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-xml#value-processors).
 
 ### size-processor
 
@@ -350,4 +350,4 @@ the optional ``as-index`` attribute returns the size zero-indexed, eg. 3 items r
 </rg:create-parameter>
 ```
 
-more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-json#value-processors).
+more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-xml#value-processors).
