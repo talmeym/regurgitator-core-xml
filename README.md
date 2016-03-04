@@ -154,3 +154,13 @@ there are 4 core conflict policies available:
 when using ``NUMBER`` and ``DECIMAL`` parameter types, ``CONCAT`` and ``REMOVE`` conflict policies behave as addition and subtraction operators. when collection-based parameter types are used, ``CONCAT`` and ``REMOVE`` behaves like java collection ``add-all`` and ``remove-all`` operations, respectively.
 
 find more details on parameter types in [regurgitator-core](https://github.com/talmeym/regurgitator-core#parameter-types).
+
+### build-parameter
+
+a build-parameter creates a parameter in the message, with it's value provided by a ``value-builder``
+
+```xml
+<rg:build-parameter name="index" type="STRING" merge="CONCAT">
+
+</rg:build-parameter>
+```
