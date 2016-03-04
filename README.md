@@ -221,3 +221,27 @@ having identified your session, you can store and retrieve parameters from the s
 
 <rg:create-parameter name="local-parameter" source="session:stored-value"/>
 ```
+
+## core constructs in xml
+
+### number-generator
+
+a number-generator generates a random number parameter value
+
+```xml
+<rg:generate-parameter name="param-name" type="NUMBER">
+	<rg:number-generator max="1000"/>
+</rg:generate-parameter>
+```
+
+the ``max`` attribute is optional.
+
+### uuid-generator
+
+a uuid-generator generates a uuid parameter value
+
+```xml
+<rg:generate-parameter name="new-id" type="STRING">
+	<rg:uuid-generator/>
+</rg:generate-parameter>
+```
