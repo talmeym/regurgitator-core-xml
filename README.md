@@ -198,4 +198,4 @@ a create-response can have one of the following value source attributes:
 | ``value`` | value provided explicitly | ``arg1=this,arg2=that`` |
 | ``file`` | value loaded from a file | ``classpath:/query-param.txt`` |
 
-
+regurgitator can be configured to return as many responses as is desired, but that may be incompatible with certain single response useages, such as over [http](https://github.com/talmeym/regurgitator-extensions-web#regurgitator-extensions-web).
