@@ -155,6 +155,14 @@ when using ``NUMBER`` and ``DECIMAL`` parameter types, ``CONCAT`` and ``REMOVE``
 
 find more details on parameter types in [regurgitator-core](https://github.com/talmeym/regurgitator-core#parameter-types).
 
+to create a parameter in a particular parameter context, simple prepend your parameters name with the desired context, separated by a colon, eg. 
+
+```xml <rg:create-parameter name="context:param-name" value="some value"/> ```. 
+
+to draw a source parameter value from a particular context, use the same notation in the ``source`` attribute, eg. 
+
+```xml <rg:create-parameter name="some-param" source="context:other-param"``
+
 ### build-parameter
 
 a build-parameter creates a parameter in the message, with it's value built by a ``value-builder``
