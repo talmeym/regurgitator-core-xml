@@ -60,6 +60,11 @@ public class XmlConfigUtil {
 		return value != null && parseBoolean(value);
 	}
 
+	public static Integer loadOptionalInt(Element element, String name) {
+		String value = element.attributeValue(name);
+		return value != null ? Integer.valueOf(value) : null;
+	}
+
 	public static String loadContext(Element element) {
 		return new ContextLocation(element.attributeValue(NAME)).getContext();
 	}

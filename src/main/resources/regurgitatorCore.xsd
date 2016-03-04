@@ -124,6 +124,9 @@
 		<xs:attribute name="max" type="xs:integer"/>
 	</xs:complexType>
 
+	<xs:complexType name="uuid-generator">
+	</xs:complexType>
+
 	<xs:complexType name="index-of-processor">
 		<xs:attribute name="source" type="rgc:populated-string"/>
 		<xs:attribute name="value" type="rgc:populated-string"/>
@@ -163,6 +166,7 @@
 	<xs:element name="contains" type="rgc:populated-string"/>
 	<xs:element name="exists" type="xs:boolean"/>
 	<xs:element name="number-generator" type="rg:number-generator"/>
+	<xs:element name="uuid-generator" type="rg:uuid-generator"/>
 	<xs:element name="index-of-processor" type="rg:index-of-processor"/>
 	<xs:element name="index-processor" type="rg:index-processor"/>
 	<xs:element name="size-processor" type="rg:size-processor"/>

@@ -5,6 +5,7 @@ import org.dom4j.Element;
 import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.MAX;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalInt;
 
 public class NumberGeneratorXmlLoader implements XmlLoader<ValueGenerator> {
 	private static final Log log = Log.getLog(NumberGeneratorXmlLoader.class);
@@ -12,7 +13,6 @@ public class NumberGeneratorXmlLoader implements XmlLoader<ValueGenerator> {
 	@Override
 	public ValueGenerator load(Element element, Set<Object> allIds) throws RegurgitatorException {
 		log.debug("Loaded number generator");
-		String s = element.attributeValue(MAX);
-		return new NumberGenerator(Integer.parseInt(s));
+		return new NumberGenerator(loadOptionalInt(element, MAX));
 	}
 }
