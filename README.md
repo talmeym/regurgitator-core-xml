@@ -283,7 +283,9 @@ a substitute-processor manipulates ``STRING`` values, replacing occurrences of o
 an index-processor manipulates collection parameter values, such as ``LIST_OF_STRING``, returning the data value at a given index, starting from zero.
 
 ```xml
-<rg:create-parameter name="the-one" type="LIST_OF_STRING" value="not this one,or this one,but this one">
+<rg:create-parameter name="data" type="LIST_OF_STRING" value="not this one,or this one,but this one"/>
+
+<rg:create-parameter name="the-one" type="STRING" source="data">
 	<rg:index-processor value="2"/>
 </rg:create-parameter>
 ```
@@ -295,9 +297,31 @@ the index to be looked up can be specified using either a ``value`` attribute, o
 an index-of-processor manipulates collection parameter values, such as ``LIST_OF_STRING``, returning the index of a given data value, starting from zero.
 
 ```xml
-<rg:create-parameter name="index-of-the-one" type="LIST_OF_STRING" value="not this one,or this one,but this one">
+<rg:create-parameter name="data" type="LIST_OF_STRING" value="not this one,or this one,but this one"/>
+
+<rg:create-parameter name="index-of-the-one" type="NUMBER" source="data">
 	<rg:index-of-processor value="but this one"/>
 </rg:create-parameter>
 ```
 
 the data value to be looked up can be specified using either a ``value`` attribute, or ``source`` to retrieve the data value from a parameter.
+
+### size-processor
+
+a size-processor manipulates collection parameter values, such as ``LIST_OF_STRING``, returning the size of the collection
+
+```xml
+<rg:create-parameter name="data" type="LIST_OF_STRING" value="one,two,three,four"/>
+
+<rg:create-parameter name="four" type="STRING" source="data">
+	<rg:size-processor as-index="true"/>
+</rg:create-parameter>
+```
+
+the optional ``as-index`` returns the size zero-indexed, eg. 3 items returning a value of 2. without this attribute, the processor can be in-lined.
+
+```xml
+<rg:create-parameter name="data" type="LIST_OF_STRING" source="one,two,three,four"/>
+
+<rg:create-parameter name="data-size" type="NUMBER" source="data" processor="size-processor"/>
+```
