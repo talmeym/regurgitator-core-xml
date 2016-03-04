@@ -190,7 +190,7 @@ a create-response returns a response back from regurgitator via a message's ``re
 
 <rg:create-response file="classpath:/canned_response.xml"/>
 ```
-a create-response can have one of the following value source attributes:
+a create-response can have the same value sources as create-parameter, namely:
 
 | attribute| value source | example |
 |:---|:---|:---|
