@@ -311,17 +311,17 @@ the data value to be looked up can be specified using either a ``value`` attribu
 a size-processor manipulates collection parameter values, such as ``LIST_OF_STRING``, returning the size of the collection
 
 ```xml
-<rg:create-parameter name="data" type="LIST_OF_STRING" value="one,two,three,four"/>
+<rg:create-parameter name="data" type="LIST_OF_STRING" source="one,two,three,four"/>
 
-<rg:create-parameter name="four" type="STRING" source="data">
-	<rg:size-processor as-index="true"/>
-</rg:create-parameter>
+<rg:create-parameter name="data-size" type="NUMBER" source="data" processor="size-processor"/>
 ```
 
 the optional ``as-index`` returns the size zero-indexed, eg. 3 items returning a value of 2. without this attribute, the processor can be in-lined.
 
 ```xml
-<rg:create-parameter name="data" type="LIST_OF_STRING" source="one,two,three,four"/>
+<rg:create-parameter name="data" type="LIST_OF_STRING" value="one,two,three,four"/>
 
-<rg:create-parameter name="data-size" type="NUMBER" source="data" processor="size-processor"/>
+<rg:create-parameter name="four" type="STRING" source="data">
+	<rg:size-processor as-index="true"/>
+</rg:create-parameter>
 ```
