@@ -232,7 +232,7 @@ having identified your session, you can store and retrieve parameters from the s
 
 ### number-generator
 
-a number-generator generates a random number parameter value
+a number-generator generates a random number parameter value.
 
 ```xml
 <rg:generate-parameter name="param-name" type="NUMBER">
@@ -248,7 +248,7 @@ the ``max`` attribute is optional:
 
 ### uuid-generator
 
-a uuid-generator generates a uuid parameter value
+a uuid-generator generates a uuid parameter value.
 
 ```xml
 <rg:generate-parameter name="new-id" type="STRING">
