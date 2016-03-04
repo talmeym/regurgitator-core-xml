@@ -165,5 +165,5 @@ a build-parameter creates a parameter in the message, with it's value provided b
 </rg:build-parameter>
 ```
 
-as with create-parameter above, a build-parameter can have a ``merge`` and ``type`` attribute, denoting conflict policy and parameter type, respectively. both are optional, their defaults discussed above.
+as with create-parameter above, a build-parameter can have optional ``merge`` and ``type`` attributes, their defaults being ``REPLACE`` and ``STRING``, respectively.
 
