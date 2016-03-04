@@ -153,4 +153,4 @@ there are 4 core conflict policies available:
 
 when using ``NUMBER`` and ``DECIMAL`` parameter types, ``CONCAT`` and ``REMOVE`` conflict policies behave as addition and subtraction operators. when collection-based parameter types are used, ``CONCAT`` and ``REMOVE`` behaves like java collection ``add-all`` and ``remove-all`` operations, respectively.
 
-for more details on parameter types, go [here](https://github.com/talmeym/regurgitator-core#core-constructs).
+find more details on parameter types in [regurgitator-core](https://github.com/talmeym/regurgitator-core#parameter-types).
