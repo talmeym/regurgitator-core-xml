@@ -193,3 +193,19 @@ a create-response returns a response back from regurgitator via a message's ``re
 a create-response can have the same value sources as create-parameter, ``source``, ``value``, or ``file``. 
 
 regurgitator can be configured to return as many responses as is desired, but that may be incompatible with some single request / response usages, such as over [http](https://github.com/talmeym/regurgitator-extensions-web#regurgitator-over-http).
+
+### identify-session
+
+an identify-session step allows you to create or retrieve a cached session parameter context for your message object.
+
+```xml
+<rg:identify-session source="request-metadata:http-session-id"/>
+```
+
+having identified your session, you can store and retrieve parameters from the session context as you would any other context, eg:
+
+```xml 
+<rg:create-parameter name="session:stored-value" value="store this"/> 
+
+<rg:create-parameter name="local-parameter" source="session:stored-value"/>
+```
