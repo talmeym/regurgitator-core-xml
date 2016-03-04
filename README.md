@@ -316,7 +316,7 @@ a size-processor manipulates collection parameter values, such as ``LIST_OF_STRI
 <rg:create-parameter name="data-size" type="NUMBER" source="data" processor="size-processor"/>
 ```
 
-the optional ``as-index`` returns the size zero-indexed, eg. 3 items returning a value of 2. without this attribute, the processor can be in-lined.
+the optional ``as-index`` attribute returns the size zero-indexed, eg. 3 items returning a value of 2. without this attribute, the processor can be in-lined.
 
 ```xml
 <rg:create-parameter name="data" type="LIST_OF_STRING" value="one,two,three,four"/>
