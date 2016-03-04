@@ -62,10 +62,10 @@ isolation has 4 settings:
 
 | value | child step receives |
 | :--- | :--- |
-| true | new blank message object |
-| with-parameters | new message object containing the parameters context of the original message |
-| with-session | new message object containing the session context of the original message |
-| with-parameters-and-session | new message object containing parameters and session of the original message |
+| ``true`` | new blank message object |
+| ``with-parameters`` | new message object containing the parameters context of the original message |
+| ``with-session`` | new message object containing the session context of the original message |
+| ``with-parameters-and-session`` | new message object containing parameters and session of the original message |
 
 ### decision
 
@@ -86,6 +86,14 @@ a decision executes one or more child steps, using ``rules`` and ``conditions`` 
 ```
 
 upon execution a decision evaluates all of its rules to see which pass. it then uses its ``rules behaviour`` to determines which of the passed rules should have their corresponding step executed. the default rules behaviour is ``FIRST_MATCH`` whereby the first rule that passes provides the step to be executed.
+
+there are 3 core rules behaviours:
+
+| value | behaviour |
+| :--- | :--- |
+| ``FIRST_MATCH`` | execute the step of the first rule passed |
+| ``FIRST_MATCH_ONWARDS`` | execute the step of the first rule passed, and the steps of all subsequent passed rules |
+| ``ALL_MATCHES`` | execute the steps of all passed rules |
 
 each rule has one or more conditions that must be satisfied to make the rule pass. each condition evaluates the value of a parameter within the message object, specified by the ``source`` attribute, against an operand. each condition has a ``condition behaviour`` that dictates the manner in which the value is evaluated against the operand. the example above uses the ``equals`` condition behaviour, specified as an attribute.
 
@@ -110,8 +118,64 @@ there are 5 core condition behaviours:
 
 | value | behaviour |
 | :--- | :--- |
-| equals | checks the parameter value equals the operand |
-| equals-param | checks the parameter value equals the value of another parameter |
-| exists | checks the parameter value exists (read as 'parameter exists') |
-| contains | checks the parameter value contains the operand |
-| contains-param | checks the parameter value contains the value of another parameter |
+| ``equals`` | checks the parameter value equals the operand |
+| ``equals-param`` | checks the parameter value equals the value of another parameter |
+| ``exists`` | checks the parameter value exists (read as 'parameter exists') |
+| ``contains`` | checks the parameter value contains the operand |
+| ``contains-param`` | checks the parameter value contains the value of another parameter |
+
+### create-parameter
+
+a create-parameter creates a parameter in the message, with a type and a value
+
+```xml
+<rg:create-parameter name="index" type="NUMBER" value="5" merge="CONCAT"/>
+```
+
+a create-parameter can have one of the following value source attributes:
+
+| attribute| value source | example |
+|:---|:---|:---|
+| ``source`` | value drawn from a source parameter | ``request-metadata:query-param`` |
+| ``value`` | value provided explicitly | ``arg1=this,arg2=that`` |
+| ``file`` | value loaded from a file | ``classpath:/query-param.txt`` |
+
+a create-parameter can have a ``merge`` attribute that specified a ``conflict policy`` defining what to do if the parameter being created already exists in the message. both the ``merge`` and ``type`` attributes are optional, with their defaults being ``REPLACE`` and ``STRING``, respectively.
+
+there are 4 core conflict policies available:
+
+| merge type | behaviour | ``STRING`` example | result |
+|:---|:---|:---|:---|
+| ``LEAVE`` | leave the existing value in place | existing: ``some`` new: ``thing`` | ``some`` |
+| ``REPLACE`` | replace the existing value with the new | existing: ``some`` new: ``thing`` | ``thing`` |
+| ``CONCAT`` | concatenate the existing and new values | existing:``some`` new: ``thing`` | ``something`` |
+| ``REMOVE`` | remove the new value from the existing | existing:``some`` new: ``me`` | ``so`` |
+
+when using ``NUMBER`` and ``DECIMAL`` parameter types, ``CONCAT`` and ``REMOVE`` conflict policies behave as addition and subtraction operators. when collection-based parameter types are used, ``CONCAT`` and ``REMOVE`` behaves like java collection ``add-all`` and ``remove-all`` operations, respectively.
+
+find more details on parameter types in [regurgitator-core](https://github.com/talmeym/regurgitator-core#parameter-types).
+
+### build-parameter
+
+a build-parameter creates a parameter in the message, with it's value built by a ``value-builder``
+
+```xml
+<rg:build-parameter name="response" type="STRING" merge="CONCAT">
+	<rge:freemarker-builder file="classpath:/response_file.ftl"/>
+</rg:build-parameter>
+```
+
+as with create-parameter above, a build-parameter can have optional ``merge`` and ``type`` attributes, their defaults being ``REPLACE`` and ``STRING``, respectively.
+
+### generate-parameter
+
+a generate-parameter creates a parameter in the message, with it's value generated by a ``value-generator``
+
+```xml
+<rg:generate-parameter name="random-number" type="STRING" merge="REPLACE">
+	<rg:number-generator max="10"/>
+</rg:generate-parameter>
+```
+
+as with create-parameter above, a generate-parameter can have optional ``merge`` and ``type`` attributes, their defaults being ``REPLACE`` and ``STRING``, respectively.
+
