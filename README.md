@@ -167,6 +167,18 @@ to draw a source parameter value from a particular context, use the same notatio
 <rg:create-parameter name="some-param" source="context:other-param"/>
 ```
 
+#### value-processors
+
+all steps that create parameters (as well as ``create-response``) have the ability to include a ``value-processor``. this is extra processing that is applied to the steps value after it is built / generated / retrieved, as seen below:
+
+```xml 
+<rg:create-parameter name="positive-spin" value="you are unhappy">
+	<rg:substitute-processor token="un" replacement="very "/>
+</rg:create-parameter>
+```
+
+the manner in which the value is processed depends on the processor included.
+
 ### build-parameter
 
 a build-parameter creates a parameter in the message, with it's value built by a ``value-builder``
