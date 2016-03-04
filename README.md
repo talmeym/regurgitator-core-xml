@@ -160,7 +160,10 @@ find more details on parameter types in [regurgitator-core](https://github.com/t
 a build-parameter creates a parameter in the message, with it's value provided by a ``value-builder``
 
 ```xml
-<rg:build-parameter name="index" type="STRING" merge="CONCAT">
-
+<rg:build-parameter name="response" type="STRING" merge="CONCAT">
+	<rge:freemarker-builder file="classpath:/response_file.ftl"/>
 </rg:build-parameter>
 ```
+
+as with create-parameter above, a build-parameter can have a ``merge`` and ``type`` attribute, denoting conflict policy and parameter type, respectively. both are optional, their defaults discussed above.
+
