@@ -283,7 +283,7 @@ a substitute-processor manipulates ``STRING`` values, replacing occurrences of o
 an index-processor manipulates collection parameter values, such as ``LIST_OF_STRING``, returning the data value at a given index, starting from zero.
 
 ```xml
-<rg:create-parameter name="the-one" type="LIST_OF_STRING" source="not this one,or this one,but this one">
+<rg:create-parameter name="the-one" type="LIST_OF_STRING" value="not this one,or this one,but this one">
 	<rg:index-processor value="2"/>
 </rg:create-parameter>
 ```
@@ -295,7 +295,7 @@ the index to be looked up can be specified using either a ``value`` attribute, o
 an index-of-processor manipulates collection parameter values, such as ``LIST_OF_STRING``, returning the index of a given data value, starting from zero.
 
 ```xml
-<rg:create-parameter name="index-of-the-one" type="LIST_OF_STRING" source="not this one,or this one,but this one">
+<rg:create-parameter name="index-of-the-one" type="LIST_OF_STRING" value="not this one,or this one,but this one">
 	<rg:index-of-processor value="but this one"/>
 </rg:create-parameter>
 ```
