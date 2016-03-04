@@ -267,3 +267,13 @@ an extract-processor extracts a value from another value, using the [java.text.M
 	<rg:extract-processor format="order={0}&amp;customer={1}" index="1"/>
 </rg:create-parameter>
 ```
+
+### substitute-processor
+
+a substitute-processor manipulates ``STRING`` values, replacing occurrences of one value with another.
+
+```xml
+<rg:create-parameter name="positive-spin" value="you are unhappy">
+	<rg:substitute-processor token="un" replacement="very "/>
+</rg:create-parameter>
+```
