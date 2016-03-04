@@ -186,16 +186,10 @@ a create-response returns a response back from regurgitator via a message's ``re
 ```xml
 <rg:create-response source="parameters:response-test"/>
 
-<rg:create-response value="this is the response"/>
+<rg:create-response value="<xml>this is the response</xml>"/>
 
 <rg:create-response file="classpath:/canned_response.xml"/>
 ```
-a create-response can have the same value sources as create-parameter, namely:
-
-| attribute| value source | example |
-|:---|:---|:---|
-| ``source`` | value drawn from a source parameter | ``request-metadata:query-param`` |
-| ``value`` | value provided explicitly | ``arg1=this,arg2=that`` |
-| ``file`` | value loaded from a file | ``classpath:/query-param.txt`` |
+a create-response can have the same value sources as create-parameter, ``source``, ``value``, or ``file``. 
 
 regurgitator can be configured to return as many responses as is desired, but that may be incompatible with single response usages, such as over [http](https://github.com/talmeym/regurgitator-extensions-web#regurgitator-over-http).
