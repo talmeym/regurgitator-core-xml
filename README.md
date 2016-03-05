@@ -132,7 +132,7 @@ a create-parameter creates a parameter in the message, with a type and a value
 <rg:create-parameter name="index" type="NUMBER" value="5" merge="CONCAT"/>
 ```
 
-a create-parameter can have one of the following value source attributes:
+a create-parameter can have one of the following value sources:
 
 | attribute| value source | example |
 |:---|:---|:---|
@@ -140,7 +140,7 @@ a create-parameter can have one of the following value source attributes:
 | ``value`` | value provided explicitly | ``arg1=this,arg2=that`` |
 | ``file`` | value loaded from a file | ``classpath:/query-param.txt`` |
 
-a create-parameter can have a ``merge`` attribute that specified a ``conflict policy`` defining what to do if the parameter being created already exists in the message. both the ``merge`` and ``type`` attributes are optional, with their defaults being ``REPLACE`` and ``STRING``, respectively.
+a create-parameter can have a ``merge`` attribute that specifies a ``conflict policy`` defining what to do if the parameter being created already exists in the message. both the ``merge`` and ``type`` attributes are optional, with their defaults being ``REPLACE`` and ``STRING``, respectively.
 
 there are 4 core conflict policies available:
 
