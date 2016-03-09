@@ -6,10 +6,11 @@ import java.util.*;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
 import static com.emarte.regurgitator.core.EntityLookup.rulesBehaviour;
+import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class DecisionXmlLoader implements XmlLoader<Step> {
-	private static final Log log = Log.getLog(DecisionXmlLoader.class);
+	private static final Log log = getLog(DecisionXmlLoader.class);
 
 	private static final XmlLoaderUtil<XmlLoader<Step>> stepLoaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
 	private static final XmlLoaderUtil<XmlLoader<RulesBehaviour>> rulesBehaviourLoaderUtil = new XmlLoaderUtil<XmlLoader<RulesBehaviour>>();

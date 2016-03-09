@@ -6,10 +6,11 @@ import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.GENERATOR;
 import static com.emarte.regurgitator.core.EntityLookup.valueGenerator;
+import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class GenerateParameterXmlLoader implements XmlLoader<Step> {
-	private static final Log log = Log.getLog(GenerateParameterXmlLoader.class);
+	private static final Log log = getLog(GenerateParameterXmlLoader.class);
 
 	private static final XmlLoaderUtil<XmlLoader<ValueGenerator>> generatorLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueGenerator>>();
 

@@ -5,10 +5,11 @@ import org.dom4j.Element;
 import java.util.*;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
+import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.loadId;
 
 public class RuleXmlLoader {
-    private static final Log log = Log.getLog(RuleXmlLoader.class);
+    private static final Log log = getLog(RuleXmlLoader.class);
 
     public static Rule load(Element element, Set<Object> stepIds, Set<Object> allIds) throws RegurgitatorException {
         List<Condition> conditions = new ArrayList<Condition>();

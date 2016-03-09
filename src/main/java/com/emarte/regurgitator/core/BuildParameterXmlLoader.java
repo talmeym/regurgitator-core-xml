@@ -4,12 +4,13 @@ import org.dom4j.Element;
 
 import java.util.Set;
 
-import static com.emarte.regurgitator.core.CoreConfigConstants.*;
+import static com.emarte.regurgitator.core.CoreConfigConstants.BUILDER;
 import static com.emarte.regurgitator.core.EntityLookup.valueBuilder;
+import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class BuildParameterXmlLoader implements XmlLoader<Step> {
-    private static final Log log = Log.getLog(BuildParameterXmlLoader.class);
+    private static final Log log = getLog(BuildParameterXmlLoader.class);
 
     private static final XmlLoaderUtil<XmlLoader<ValueBuilder>> builderLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueBuilder>>();
 

@@ -5,10 +5,11 @@ import org.dom4j.Element;
 import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
+import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class CreateResponseXmlLoader extends CreateResponseLoader implements XmlLoader<Step> {
-    private static final Log log = Log.getLog(CreateResponseXmlLoader.class);
+    private static final Log log = getLog(CreateResponseXmlLoader.class);
 
 	@Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {

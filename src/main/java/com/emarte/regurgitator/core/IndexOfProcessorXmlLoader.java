@@ -5,10 +5,11 @@ import org.dom4j.Element;
 import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
+import static com.emarte.regurgitator.core.Log.getLog;
 import static java.lang.Boolean.parseBoolean;
 
 public class IndexOfProcessorXmlLoader implements XmlLoader<IndexOfProcessor> {
-	private static final Log log = Log.getLog(IndexOfProcessorXmlLoader.class);
+	private static final Log log = getLog(IndexOfProcessorXmlLoader.class);
 
 	@Override
 	public IndexOfProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {

@@ -4,11 +4,10 @@ import org.dom4j.Element;
 
 import java.util.Set;
 
-import static com.emarte.regurgitator.core.CoreConfigConstants.MAX;
-import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalInt;
+import static com.emarte.regurgitator.core.Log.getLog;
 
 public class UuidGeneratorXmlLoader implements XmlLoader<ValueGenerator> {
-	private static final Log log = Log.getLog(UuidGeneratorXmlLoader.class);
+	private static final Log log = getLog(UuidGeneratorXmlLoader.class);
 
 	@Override
 	public UuidGenerator load(Element element, Set<Object> allIds) throws RegurgitatorException {

@@ -4,10 +4,11 @@ import org.dom4j.Element;
 
 import java.util.*;
 
+import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.loadId;
 
 public class SequenceXmlLoader implements XmlLoader<Step> {
-    private static final Log log = Log.getLog(SequenceXmlLoader.class);
+    private static final Log log = getLog(SequenceXmlLoader.class);
     private static final XmlLoaderUtil<XmlLoader<Step>> loaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
 
     @Override

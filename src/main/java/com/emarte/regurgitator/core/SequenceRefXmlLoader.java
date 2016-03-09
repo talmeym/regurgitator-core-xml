@@ -5,9 +5,10 @@ import org.dom4j.Element;
 import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
+import static com.emarte.regurgitator.core.Log.getLog;
 
 public class SequenceRefXmlLoader implements XmlLoader<Step> {
-	private static final Log log = Log.getLog(SequenceRefXmlLoader.class);
+	private static final Log log = getLog(SequenceRefXmlLoader.class);
 
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {

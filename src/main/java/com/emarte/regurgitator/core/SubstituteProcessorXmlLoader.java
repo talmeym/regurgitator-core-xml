@@ -5,9 +5,10 @@ import org.dom4j.Element;
 import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
+import static com.emarte.regurgitator.core.Log.getLog;
 
 public class SubstituteProcessorXmlLoader implements XmlLoader<SubstituteProcessor> {
-	private static final Log log = Log.getLog(SubstituteProcessorXmlLoader.class);
+	private static final Log log = getLog(SubstituteProcessorXmlLoader.class);
 
 	@Override
 	public SubstituteProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
