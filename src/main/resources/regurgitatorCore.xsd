@@ -69,7 +69,8 @@
 
     <xs:complexType name="identify-session">
         <xs:attribute name="id" type="rgc:populated-string"/>
-        <xs:attribute name="source" type="rgc:populated-string" use="required"/>
+        <xs:attribute name="source" type="rgc:populated-string"/>
+        <xs:attribute name="value" type="rgc:populated-string"/>
     </xs:complexType>
 
     <xs:complexType name="build-parameter">
