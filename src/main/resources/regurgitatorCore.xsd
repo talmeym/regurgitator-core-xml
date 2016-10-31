@@ -99,6 +99,11 @@
         <xs:attribute name="id" type="rgc:populated-string"/>
     </xs:complexType>
 
+	<xs:complexType name="record-message">
+        <xs:attribute name="folder" type="xs:string"/>
+        <xs:attribute name="id" type="rgc:populated-string"/>
+    </xs:complexType>
+
     <xs:complexType name="steps">
         <xs:sequence>
             <xs:choice minOccurs="1" maxOccurs="unbounded">
@@ -171,4 +176,5 @@
 	<xs:element name="index-of-processor" type="rg:index-of-processor"/>
 	<xs:element name="index-processor" type="rg:index-processor"/>
 	<xs:element name="size-processor" type="rg:size-processor"/>
+	<xs:element name="record-message" type="rg:record-message"/>
 </xs:schema>
