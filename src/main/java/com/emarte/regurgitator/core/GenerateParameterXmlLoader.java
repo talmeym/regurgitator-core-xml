@@ -1,6 +1,6 @@
 package com.emarte.regurgitator.core;
 
-import org.dom4j.Element;
+import org.w3c.dom.Element;
 
 import java.util.Set;
 
@@ -16,18 +16,18 @@ public class GenerateParameterXmlLoader implements XmlLoader<Step> {
 
 	@Override
 	public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		String generatorAttr = element.attributeValue(GENERATOR);
+		String generatorAttr = getAttribute(element, GENERATOR);
 		ValueGenerator generator;
 		int processorIndex = 0;
 
 		if (generatorAttr != null) {
 			generator = valueGenerator(generatorAttr);
 		} else {
-			if(element.elements().size() == 0) {
+			if(getChildElements(element).size() == 0) {
 				throw new RegurgitatorException("no generator defined");
 			}
 
-			Element generatorElement = getChild(element);
+			Element generatorElement = getFirstChild(element);
 			generator = generatorLoaderUtil.deriveLoader(generatorElement).load(generatorElement, allIds);
 			processorIndex++;
 		}

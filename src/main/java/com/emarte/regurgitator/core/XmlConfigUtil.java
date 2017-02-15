@@ -1,6 +1,6 @@
 package com.emarte.regurgitator.core;
 
-import org.dom4j.Element;
+import org.w3c.dom.*;
 
 import java.util.*;
 
@@ -14,7 +14,8 @@ public class XmlConfigUtil {
 	private static XmlLoaderUtil<XmlLoader<ValueProcessor>> processorLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueProcessor>>() ;
 
     public static String loadId(Element element, Set<Object> ids) throws RegurgitatorException {
-        String id = element.attributeValue(ID) != null ? element.attributeValue(ID) : element.getName() + "-" + new Random().nextInt(100000);
+		String idAttr = getAttribute(element, ID);
+		String id = idAttr != null ? idAttr : element.getNodeName() + "-" + new Random().nextInt(100000);
 
         if(!ids.add(id)) {
             throw new RegurgitatorException("Duplicate id: " + id);
@@ -28,54 +29,92 @@ public class XmlConfigUtil {
     }
 
     public static String loadName(Element element) {
-		return new ContextLocation(element.attributeValue(NAME)).getName();
+		return new ContextLocation(getAttribute(element, NAME)).getName();
     }
 
     public static ParameterType loadType(Element element) throws RegurgitatorException {
-		String type = element.attributeValue(TYPE);
+		String type = getAttribute(element, TYPE);
 		return type != null ? parameterType(type) : STRING;
     }
 
     public static ConflictPolicy loadConflictPolicy(Element element) {
-		String conflictPolicy = element.attributeValue(MERGE);
+		String conflictPolicy = getAttribute(element, MERGE);
         return conflictPolicy != null ? ConflictPolicy.valueOf(conflictPolicy) : REPLACE;
     }
 
-	public static ContextLocation loadContextLocation(Element element) {
-		return new ContextLocation(element.attributeValue(SOURCE));
+	public static List<Element> getChildElements(Element element) {
+		return getElements(element.getChildNodes());
 	}
 
-	public static Element getChild(Element element) {
-		return (Element) element.elements().get(0);
+	public static List<Element> getChildElements(Element element, String name) {
+		return getElements(element.getElementsByTagNameNS(element.getNamespaceURI(), name));
 	}
 
-	public static Element getOptionalChild(Element element, int index) {
-		List elements = element.elements();
-		return index < elements.size() ? (Element) elements.get(index) : null;
+	private static List<Element> getElements(NodeList nodes) {
+		List<Element> elements = new ArrayList<Element>();
+
+		for(int i = 0; i < nodes.getLength(); i++) {
+			Node node = nodes.item(i);
+
+			if(node.getNodeType() == Node.ELEMENT_NODE) {
+				elements.add((Element) node);
+			}
+		}
+		return elements;
+	}
+
+	public static Element getFirstChild(Element element) throws RegurgitatorException {
+		List<Element> children = getChildElements(element);
+
+		if(children.size() > 0) {
+			return children.get(0);
+		}
+
+		throw new RegurgitatorException("Element has no children: " + element.getLocalName());
+	}
+
+	public static Element getChildElement(Element element, String name) {
+		List<Element> elements = getChildElements(element, name);
+
+		if(elements.size() > 0) {
+			return elements.get(0);
+		}
+
+		return null;
+	}
+
+	public static String getAttribute(Element element, String name) {
+		Attr attr = element.getAttributeNode(name);
+		return attr != null ? attr.getValue() : null;
 	}
 
 	public static boolean loadOptionalBoolean(Element element, String name) {
-		String value = element.attributeValue(name);
+		String value = getAttribute(element, name);
 		return value != null && parseBoolean(value);
 	}
 
 	public static Integer loadOptionalInt(Element element, String name) {
-		String value = element.attributeValue(name);
+		String value = getAttribute(element, name);
 		return value != null ? Integer.valueOf(value) : null;
 	}
 
 	public static String loadContext(Element element) {
-		return new ContextLocation(element.attributeValue(NAME)).getContext();
+		return new ContextLocation(getAttribute(element, NAME)).getContext();
+	}
+
+	private static Element getChildElement(Element element, int index) {
+		List<Element> elements = getChildElements(element);
+		return index < elements.size() ? elements.get(index) : null;
 	}
 
 	public static ValueProcessor loadOptionalValueProcessor(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
-		String processorAttr = element.attributeValue(PROCESSOR);
+		String processorAttr = getAttribute(element, PROCESSOR);
 		ValueProcessor processor = null;
 
 		if (processorAttr != null) {
 			processor = valueProcessor(processorAttr);
 		} else {
-			Element processorElement = getOptionalChild(element, expectedChildIndex);
+			Element processorElement = getChildElement(element, expectedChildIndex);
 
 			if (processorElement != null) {
 				processor = processorLoaderUtil.deriveLoader(processorElement).load(processorElement, allIds);

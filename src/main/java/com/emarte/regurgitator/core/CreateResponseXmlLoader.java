@@ -1,6 +1,6 @@
 package com.emarte.regurgitator.core;
 
-import org.dom4j.Element;
+import org.w3c.dom.Element;
 
 import java.util.Set;
 
@@ -14,9 +14,9 @@ public class CreateResponseXmlLoader extends CreateResponseLoader implements Xml
 	@Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         String id = loadId(element, allIds);
-		String source = element.attributeValue(SOURCE);
-        String value = element.attributeValue(VALUE);
-        String file = element.attributeValue(FILE);
+		String source = getAttribute(element, SOURCE);
+        String value = getAttribute(element, VALUE);
+        String file = getAttribute(element, FILE);
 		ValueProcessor processor = loadOptionalValueProcessor(element, 0, allIds);
 		return buildCreateResponse(id, source, value, file, processor, log);
     }

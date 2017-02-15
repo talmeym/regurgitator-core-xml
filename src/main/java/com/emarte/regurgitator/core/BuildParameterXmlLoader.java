@@ -1,6 +1,6 @@
 package com.emarte.regurgitator.core;
 
-import org.dom4j.Element;
+import org.w3c.dom.Element;
 
 import java.util.Set;
 
@@ -16,18 +16,18 @@ public class BuildParameterXmlLoader implements XmlLoader<Step> {
 
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		String builderAttr = element.attributeValue(BUILDER);
+		String builderAttr = getAttribute(element, BUILDER);
 		ValueBuilder valueBuilder;
 		int processorIndex = 0;
 
 		if(builderAttr != null) {
 			valueBuilder = valueBuilder(builderAttr);
 		} else {
-			if(element.elements().size() == 0) {
+			if(getChildElements(element).size() == 0) {
 				throw new RegurgitatorException("no builder defined");
 			}
 
-			Element builderElement = getChild(element);
+			Element builderElement = getFirstChild(element);
 			valueBuilder = builderLoaderUtil.deriveLoader(builderElement).load(builderElement, allIds);
 			processorIndex++;
 		}

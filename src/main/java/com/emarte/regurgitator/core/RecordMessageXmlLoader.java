@@ -1,18 +1,19 @@
 package com.emarte.regurgitator.core;
 
-import org.dom4j.Element;
+import org.w3c.dom.Element;
 
 import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.FOLDER;
 import static com.emarte.regurgitator.core.Log.getLog;
+import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
 
 public class RecordMessageXmlLoader implements XmlLoader<RecordMessage> {
 	private static final Log log = getLog(RecordMessageXmlLoader.class);
 
 	@Override
 	public RecordMessage load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		String folderPath = element.attributeValue(FOLDER);
+		String folderPath = getAttribute(element, FOLDER);
 
 		String id = XmlConfigUtil.loadId(element, allIds);
 		log.debug("Loaded record message '" + id + "'");

@@ -1,11 +1,11 @@
 package com.emarte.regurgitator.core;
 
-import org.dom4j.Element;
+import org.w3c.dom.Element;
 
 import java.util.*;
 
 import static com.emarte.regurgitator.core.Log.getLog;
-import static com.emarte.regurgitator.core.XmlConfigUtil.loadId;
+import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class SequenceXmlLoader implements XmlLoader<Step> {
     private static final Log log = getLog(SequenceXmlLoader.class);
@@ -15,8 +15,10 @@ public class SequenceXmlLoader implements XmlLoader<Step> {
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         List<Step> steps = new ArrayList<Step>();
 
-        for(Iterator<Element> iterator = element.elementIterator(); iterator.hasNext(); ) {
-            Element stepElement = iterator.next();
+		List<Element> children = getChildElements(element);
+
+		for(int i = 0; i < children.size(); i++) {
+            Element stepElement = children.get(i);
             steps.add(loaderUtil.deriveLoader(stepElement).load(stepElement, allIds));
         }
 
@@ -26,7 +28,7 @@ public class SequenceXmlLoader implements XmlLoader<Step> {
     }
 
 	private Isolate loadIsolate(Element element) {
-		String isolateStr = element.attributeValue(CoreConfigConstants.ISOLATE);
+		String isolateStr = getAttribute(element, CoreConfigConstants.ISOLATE);
 		return isolateStr != null ? new Isolate(isolateStr.contains("session"), isolateStr.contains("param")) : null;
 	}
 }

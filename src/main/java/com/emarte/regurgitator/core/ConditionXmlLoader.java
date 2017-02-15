@@ -1,6 +1,6 @@
 package com.emarte.regurgitator.core;
 
-import org.dom4j.*;
+import org.w3c.dom.*;
 
 import java.util.*;
 
@@ -14,10 +14,10 @@ public class ConditionXmlLoader {
 	private static final XmlLoaderUtil<XmlLoader<ConditionBehaviour>> conditionBehaviourLoaderUtil = new XmlLoaderUtil<XmlLoader<ConditionBehaviour>>();
 
 	public static Condition load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		String source = element.attributeValue(SOURCE);
-		String expectation = element.attributeValue(EXPECTATION);
+		String source = getAttribute(element, SOURCE);
+		String expectation = getAttribute(element, EXPECTATION);
 
-		Attribute behaviourAttr = getBehaviourAttribute(element);
+		Attr behaviourAttr = getBehaviourAttribute(element);
 		ConditionBehaviour behaviour;
 		String value;
 
@@ -25,9 +25,9 @@ public class ConditionXmlLoader {
 			behaviour = conditionBehaviour(behaviourAttr.getName());
 			value = behaviourAttr.getValue();
 		} else {
-			Element innerElement = getChild(element);
+			Element innerElement = getFirstChild(element);
 			behaviour = conditionBehaviourLoaderUtil.deriveLoader(innerElement).load(innerElement, allIds);
-			value = innerElement.getText();
+			value = innerElement.getTextContent();
 		}
 
 		String id = loadId(element, allIds);
@@ -35,18 +35,19 @@ public class ConditionXmlLoader {
 		return new Condition(id, new ContextLocation(source), value, expectation != null ? Boolean.valueOf(expectation) : true, behaviour);
 	}
 
-	private static Attribute getBehaviourAttribute(Element element) throws RegurgitatorException {
-		List<Attribute> behavioursFound = new ArrayList<Attribute>();
+	private static Attr getBehaviourAttribute(Element element) throws RegurgitatorException {
+		List<Attr> behavioursFound = new ArrayList<Attr>();
+		NamedNodeMap attributes = element.getAttributes();
 
-		for (Attribute attr : (List<Attribute>) element.attributes()) {
-			String name = attr.getName();
+		for (int i = 0; i < attributes.getLength(); i++) {
+			String name = attributes.item(i).getNodeName();
 
 			if (hasConditionBehaviour(name)) {
-				behavioursFound.add(attr);
+				behavioursFound.add(element.getAttributeNode(name));
 			}
 		}
 
-		boolean childElementFound = element.elements().size() > 0;
+		boolean childElementFound = getChildElements(element).size() > 0;
 
 		if(behavioursFound.size() == 0 && !childElementFound) {
 				throw new RegurgitatorException("no valid condition behaviour is defined");

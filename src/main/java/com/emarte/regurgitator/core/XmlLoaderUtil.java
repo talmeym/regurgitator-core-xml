@@ -1,6 +1,6 @@
 package com.emarte.regurgitator.core;
 
-import org.dom4j.Element;
+import org.w3c.dom.Element;
 
 import static com.emarte.regurgitator.core.StringUtil.*;
 
@@ -11,9 +11,9 @@ public class XmlLoaderUtil<TYPE extends Loader> extends LoaderUtil<TYPE> {
 	}
 
 	static String deriveClass(Element element) throws RegurgitatorException {
-		if (element.getNamespace() != null) {
-			String packageUri = stripOptionalBeginning(element.getNamespace().getURI(), "http://");
-			return deriveClassName(reverseAndJoinWithDots(getMandatoryParts(packageUri, '.')), dashesToCamelCase(element.getName()));
+		if (element.getNamespaceURI() != null) {
+			String packageUri = stripOptionalBeginning(element.getNamespaceURI(), "http://");
+			return deriveClassName(reverseAndJoinWithDots(getMandatoryParts(packageUri, '.')), dashesToCamelCase(element.getLocalName()));
 		}
 
 		throw new RegurgitatorException("Invalid namespace: namespace missing");

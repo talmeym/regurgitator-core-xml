@@ -1,9 +1,9 @@
 package com.emarte.regurgitator.core;
 
-import org.dom4j.*;
-import org.dom4j.io.SAXReader;
+import org.w3c.dom.*;
 import org.xml.sax.*;
 
+import javax.xml.parsers.*;
 import java.io.*;
 import java.util.HashSet;
 
@@ -12,10 +12,13 @@ public class XmlConfigurationLoader implements ConfigurationLoader {
 
 	public Step load(InputStream input) throws RegurgitatorException {
 		try {
-			SAXReader reader = new SAXReader();
-			reader.setValidation(true);
-			reader.setFeature("http://apache.org/xml/features/validation/schema", true);
-			reader.setEntityResolver(new EntityResolver() {
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			dbFactory.setValidating(true);
+			dbFactory.setNamespaceAware(true);
+			dbFactory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+
+			dBuilder.setEntityResolver(new EntityResolver() {
 				public InputSource resolveEntity(String publicId, String systemId) throws IOException {
 					String resolvePath = "classpath:/" + systemId.substring(systemId.lastIndexOf("/") + 1);
 					FileUtil.checkResource(resolvePath);
@@ -23,8 +26,9 @@ public class XmlConfigurationLoader implements ConfigurationLoader {
 				}
 			});
 
-			Document doc = reader.read(input);
-			Element rootElement = doc.getRootElement();
+			Document doc = dBuilder.parse(input);
+			Element rootElement = doc.getDocumentElement();
+			rootElement.normalize();
 			HashSet<Object> allIds = new HashSet<Object>();
 			return loaderUtil.deriveLoader(rootElement).load(rootElement, allIds);
 		} catch (Exception e) {
