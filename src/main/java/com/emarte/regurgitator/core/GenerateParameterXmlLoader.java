@@ -35,7 +35,7 @@ public class GenerateParameterXmlLoader implements XmlLoader<Step> {
 		ValueProcessor processor = loadOptionalValueProcessor(element, processorIndex, allIds);
 
 		String id = loadId(element, allIds);
-		log.debug("Loaded generate parameter extractor '" + id + "'");
+		log.debug("Loaded generate parameter '" + id + "'");
 		return new GenerateParameter(id, loadPrototype(element), loadContext(element), generator, processor);
 	}
 }

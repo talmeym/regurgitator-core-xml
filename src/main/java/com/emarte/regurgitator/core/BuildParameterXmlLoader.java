@@ -35,7 +35,7 @@ public class BuildParameterXmlLoader implements XmlLoader<Step> {
 		ValueProcessor processor = loadOptionalValueProcessor(element, processorIndex, allIds);
 
 		String id = loadId(element, allIds);
-		log.debug("Loaded built parameter extractor '" + id + '\'');
+		log.debug("Loaded built parameter '" + id + '\'');
         return new BuildParameter(id, loadPrototype(element), loadContext(element), valueBuilder, processor);
     }
 }
