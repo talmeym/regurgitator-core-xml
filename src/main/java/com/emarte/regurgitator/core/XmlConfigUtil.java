@@ -47,16 +47,20 @@ public class XmlConfigUtil {
 	}
 
 	public static List<Element> getChildElements(Element element, String name) {
-		return getElements(element.getElementsByTagNameNS(element.getNamespaceURI(), name));
+		return getElements(element.getChildNodes(), name);
 	}
 
 	private static List<Element> getElements(NodeList nodes) {
+		return getElements(nodes, null);
+	}
+
+	private static List<Element> getElements(NodeList nodes, String name) {
 		List<Element> elements = new ArrayList<Element>();
 
 		for(int i = 0; i < nodes.getLength(); i++) {
 			Node node = nodes.item(i);
 
-			if(node.getNodeType() == Node.ELEMENT_NODE) {
+			if(node.getNodeType() == Node.ELEMENT_NODE && (name == null || node.getLocalName().equals(name))) {
 				elements.add((Element) node);
 			}
 		}
