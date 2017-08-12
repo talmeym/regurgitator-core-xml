@@ -10,7 +10,7 @@ public class XmlLoaderUtil<TYPE extends Loader> extends LoaderUtil<TYPE> {
 		return buildFromClass(deriveClass(element));
 	}
 
-	static String deriveClass(Element element) throws RegurgitatorException {
+	private static String deriveClass(Element element) throws RegurgitatorException {
 		if (element.getNamespaceURI() != null) {
 			String packageUri = stripOptionalBeginning(element.getNamespaceURI(), "http://");
 			return deriveClassName(reverseAndJoinWithDots(getMandatoryParts(packageUri, '.')), dashesToCamelCase(element.getLocalName()));
@@ -19,7 +19,7 @@ public class XmlLoaderUtil<TYPE extends Loader> extends LoaderUtil<TYPE> {
 		throw new RegurgitatorException("Invalid namespace: namespace missing");
 	}
 
-	static String deriveClassName(String packageName, String className) throws RegurgitatorException {
+	private static String deriveClassName(String packageName, String className) throws RegurgitatorException {
 		if (packageName == null) {
 			throw new RegurgitatorException("Package not found for class: " + className);
 		}

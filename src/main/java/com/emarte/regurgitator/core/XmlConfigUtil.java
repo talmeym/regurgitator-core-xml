@@ -28,16 +28,16 @@ public class XmlConfigUtil {
 		return new ParameterPrototype(loadName(element), loadType(element), loadConflictPolicy(element));
     }
 
-    public static String loadName(Element element) {
+    private static String loadName(Element element) {
 		return new ContextLocation(getAttribute(element, NAME)).getName();
     }
 
-    public static ParameterType loadType(Element element) throws RegurgitatorException {
+    private static ParameterType loadType(Element element) throws RegurgitatorException {
 		String type = getAttribute(element, TYPE);
 		return type != null ? parameterType(type) : STRING;
     }
 
-    public static ConflictPolicy loadConflictPolicy(Element element) {
+    private static ConflictPolicy loadConflictPolicy(Element element) {
 		String conflictPolicy = getAttribute(element, MERGE);
         return conflictPolicy != null ? ConflictPolicy.valueOf(conflictPolicy) : REPLACE;
     }
