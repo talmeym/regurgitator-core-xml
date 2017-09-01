@@ -14,13 +14,10 @@ public class CreateParameterXmlLoader extends CreateParameterLoader implements X
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         String id = loadId(element, allIds);
-
         String source = getAttribute(element, SOURCE);
 		String value = getAttribute(element, VALUE);
         String file = getAttribute(element, FILE);
-
 		ValueProcessor processor = loadOptionalValueProcessor(element, 0, allIds);
-
 		return buildCreateParameter(id, loadPrototype(element), loadContext(element), source, value, file, processor, log);
     }
 }
