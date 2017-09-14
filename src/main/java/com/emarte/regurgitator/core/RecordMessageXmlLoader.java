@@ -7,6 +7,7 @@ import java.util.Set;
 import static com.emarte.regurgitator.core.CoreConfigConstants.FOLDER;
 import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadId;
 
 public class RecordMessageXmlLoader implements XmlLoader<RecordMessage> {
 	private static final Log log = getLog(RecordMessageXmlLoader.class);
@@ -15,7 +16,7 @@ public class RecordMessageXmlLoader implements XmlLoader<RecordMessage> {
 	public RecordMessage load(Element element, Set<Object> allIds) throws RegurgitatorException {
 		String folderPath = getAttribute(element, FOLDER);
 
-		String id = XmlConfigUtil.loadId(element, allIds);
+		String id = loadId(element, allIds);
 		log.debug("Loaded record message '" + id + "'");
 		return new RecordMessage(id, folderPath);
 	}
