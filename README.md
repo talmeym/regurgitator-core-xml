@@ -29,6 +29,8 @@ below is an example of an xml configuration file for regurgitator:
 </rg:regurgitator-configuration>
 ```
 
+#### schema validation
+
 every regurgitator xml file is schema validated upon load. all elements must be namespaced and each module of regurgitator has it's own namespace uri and schema file, eg:
 - regurgitator-core ``http://core.regurgitator.emarte.com`` ``regurgitatorCore.xsd``
 - regurgitator-extensions ``http://extensions.regurgitator.emarte.com``  ``regurgitatorExtensions.xsd``
