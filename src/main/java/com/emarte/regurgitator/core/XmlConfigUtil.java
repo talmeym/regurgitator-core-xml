@@ -11,11 +11,12 @@ import static com.emarte.regurgitator.core.EntityLookup.*;
 import static java.lang.Boolean.parseBoolean;
 
 public class XmlConfigUtil {
-	private static XmlLoaderUtil<XmlLoader<ValueProcessor>> processorLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueProcessor>>() ;
+	private static final XmlLoaderUtil<XmlLoader<ValueProcessor>> processorLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueProcessor>>() ;
+	private static final Random RANDOM = new Random();
 
     public static String loadId(Element element, Set<Object> ids) throws RegurgitatorException {
 		String idAttr = getAttribute(element, ID);
-		String id = idAttr != null ? idAttr : element.getNodeName() + "-" + new Random().nextInt(100000);
+		String id = idAttr != null ? idAttr : element.getNodeName() + "-" + RANDOM.nextInt(100000);
 
         if(!ids.add(id)) {
             throw new RegurgitatorException("Duplicate id: " + id);

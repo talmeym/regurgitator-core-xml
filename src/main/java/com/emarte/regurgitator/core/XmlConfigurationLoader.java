@@ -29,8 +29,7 @@ public class XmlConfigurationLoader implements ConfigurationLoader {
 			Document doc = dBuilder.parse(input);
 			Element rootElement = doc.getDocumentElement();
 			rootElement.normalize();
-			HashSet<Object> allIds = new HashSet<Object>();
-			return loaderUtil.deriveLoader(rootElement).load(rootElement, allIds);
+			return loaderUtil.deriveLoader(rootElement).load(rootElement, new HashSet<Object>());
 		} catch (Exception e) {
 			throw new RegurgitatorException("Error loading regurgitator configuration", e);
 		}
