@@ -17,7 +17,6 @@ public class IndexOfProcessorXmlLoader implements XmlLoader<IndexOfProcessor> {
         String source = getAttribute(element, SOURCE);
         String value = getAttribute(element, VALUE);
         String backwards = getAttribute(element, LAST);
-
         log.debug("Loaded index of processor");
         return new IndexOfProcessor(new ValueSource(source != null ? new ContextLocation(source) : null, value), parseBoolean(backwards));
     }

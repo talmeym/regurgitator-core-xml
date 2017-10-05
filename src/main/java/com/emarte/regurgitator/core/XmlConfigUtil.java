@@ -88,6 +88,16 @@ public class XmlConfigUtil {
         return null;
     }
 
+    public static String getMandatoryAttribute(Element element, String name) throws RegurgitatorException {
+        Attr attr = element.getAttributeNode(name);
+
+        if(attr != null) {
+            return attr.getValue();
+        }
+
+        throw new RegurgitatorException("Xml element missing mandatory attribute: " + name);
+    }
+
     public static String getAttribute(Element element, String name) {
         Attr attr = element.getAttributeNode(name);
         return attr != null ? attr.getValue() : null;

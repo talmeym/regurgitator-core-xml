@@ -14,9 +14,8 @@ public class RecordMessageXmlLoader implements XmlLoader<RecordMessage> {
 
     @Override
     public RecordMessage load(Element element, Set<Object> allIds) throws RegurgitatorException {
-        String folderPath = getAttribute(element, FOLDER);
-
         String id = loadId(element, allIds);
+        String folderPath = getAttribute(element, FOLDER);
         log.debug("Loaded record message '{}'", id);
         return new RecordMessage(id, folderPath);
     }

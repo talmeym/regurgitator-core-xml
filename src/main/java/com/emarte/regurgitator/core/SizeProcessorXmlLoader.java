@@ -14,7 +14,6 @@ public class SizeProcessorXmlLoader implements XmlLoader<SizeProcessor> {
     @Override
     public SizeProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
         boolean lastIndex = loadOptionalBoolean(element, AS_INDEX);
-
         log.debug("Loaded size processor");
         return new SizeProcessor(lastIndex);
     }

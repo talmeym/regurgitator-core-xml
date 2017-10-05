@@ -11,7 +11,7 @@ import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 class RuleXmlLoader {
     private static final Log log = getLog(RuleXmlLoader.class);
 
-    public static Rule load(Element element, Set<Object> stepIds, Set<Object> allIds) throws RegurgitatorException {
+    static Rule load(Element element, Set<Object> stepIds, Set<Object> allIds) throws RegurgitatorException {
         List<Condition> conditions = new ArrayList<Condition>();
         List<Element> conditionElements = getChildElements(element, CONDITION);
 
