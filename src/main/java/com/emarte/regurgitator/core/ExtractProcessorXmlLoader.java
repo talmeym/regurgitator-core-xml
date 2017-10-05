@@ -10,11 +10,11 @@ import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
 import static java.lang.Integer.parseInt;
 
 public class ExtractProcessorXmlLoader implements XmlLoader<ExtractProcessor> {
-	private static final Log log = getLog(ExtractProcessorXmlLoader.class);
+    private static final Log log = getLog(ExtractProcessorXmlLoader.class);
 
-	@Override
-	public ExtractProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		log.debug("Loaded extract processor");
-		return new ExtractProcessor(getAttribute(element, FORMAT), parseInt(getAttribute(element, INDEX)));
-	}
+    @Override
+    public ExtractProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
+        log.debug("Loaded extract processor");
+        return new ExtractProcessor(getAttribute(element, FORMAT), parseInt(getAttribute(element, INDEX)));
+    }
 }

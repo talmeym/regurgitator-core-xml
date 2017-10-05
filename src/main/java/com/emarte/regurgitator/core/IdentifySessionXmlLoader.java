@@ -14,9 +14,9 @@ public class IdentifySessionXmlLoader extends IdentifySessionLoader implements X
 
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		String id = loadId(element, allIds);
-		String source = getAttribute(element, SOURCE);
-		String value = getAttribute(element, VALUE);
-		return buildIdentifySession(id, source, value, log);
+        String id = loadId(element, allIds);
+        String source = getAttribute(element, SOURCE);
+        String value = getAttribute(element, VALUE);
+        return buildIdentifySession(id, source, value, log);
     }
 }

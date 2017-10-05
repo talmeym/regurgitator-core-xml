@@ -6,27 +6,27 @@ import static com.emarte.regurgitator.core.StringUtil.*;
 
 public class XmlLoaderUtil<TYPE extends Loader> extends LoaderUtil<Element, TYPE> {
 
-	@Override
-	public TYPE deriveLoader(Element element) throws RegurgitatorException {
-		return buildFromClass(deriveClass(element));
-	}
+    @Override
+    public TYPE deriveLoader(Element element) throws RegurgitatorException {
+        return buildFromClass(deriveClass(element));
+    }
 
-	@Override
-	String deriveClass(Element element) throws RegurgitatorException {
-		if (element.getNamespaceURI() != null) {
-			String packageUri = stripOptionalBeginning(element.getNamespaceURI(), "http://");
-			return deriveClass(reverseAndJoinWithDots(getMandatoryParts(packageUri, '.')), dashesToCamelCase(element.getLocalName()));
-		}
+    @Override
+    String deriveClass(Element element) throws RegurgitatorException {
+        if (element.getNamespaceURI() != null) {
+            String packageUri = stripOptionalBeginning(element.getNamespaceURI(), "http://");
+            return deriveClass(reverseAndJoinWithDots(getMandatoryParts(packageUri, '.')), dashesToCamelCase(element.getLocalName()));
+        }
 
-		throw new RegurgitatorException("Invalid namespace: namespace missing");
-	}
+        throw new RegurgitatorException("Invalid namespace: namespace missing");
+    }
 
-	@Override
-	String deriveClass(String packageName, String className) throws RegurgitatorException {
-		if (packageName == null) {
-			throw new RegurgitatorException("Package not found for class: " + className);
-		}
+    @Override
+    String deriveClass(String packageName, String className) throws RegurgitatorException {
+        if (packageName == null) {
+            throw new RegurgitatorException("Package not found for class: " + className);
+        }
 
-		return packageName + "." + className + "XmlLoader";
-	}
+        return packageName + "." + className + "XmlLoader";
+    }
 }

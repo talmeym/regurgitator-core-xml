@@ -10,80 +10,80 @@ import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class DecisionXmlLoader implements XmlLoader<Step> {
-	private static final Log log = getLog(DecisionXmlLoader.class);
+    private static final Log log = getLog(DecisionXmlLoader.class);
 
-	private static final XmlLoaderUtil<XmlLoader<Step>> stepLoaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
-	private static final XmlLoaderUtil<XmlLoader<RulesBehaviour>> rulesBehaviourLoaderUtil = new XmlLoaderUtil<XmlLoader<RulesBehaviour>>();
+    private static final XmlLoaderUtil<XmlLoader<Step>> stepLoaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
+    private static final XmlLoaderUtil<XmlLoader<RulesBehaviour>> rulesBehaviourLoaderUtil = new XmlLoaderUtil<XmlLoader<RulesBehaviour>>();
 
-	@Override
-	public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		String id = loadId(element, allIds);
-		List<Step> steps = loadSteps(getChildElement(element, STEPS), allIds);
-		Set<Object> stepIds = stepIds(steps);
-		Element rulesElement = getChildElement(element, RULES);
-		List<Rule> rules = loadRules(rulesElement, stepIds, allIds);
+    @Override
+    public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
+        String id = loadId(element, allIds);
+        List<Step> steps = loadSteps(getChildElement(element, STEPS), allIds);
+        Set<Object> stepIds = stepIds(steps);
+        Element rulesElement = getChildElement(element, RULES);
+        List<Rule> rules = loadRules(rulesElement, stepIds, allIds);
 
-		String behaviourAttr = getAttribute(rulesElement, BEHAVIOUR);
-		RulesBehaviour behaviour;
+        String behaviourAttr = getAttribute(rulesElement, BEHAVIOUR);
+        RulesBehaviour behaviour;
 
-		if(behaviourAttr != null) {
-			behaviour = rulesBehaviour(behaviourAttr);
-		} else {
-			Element behaviourElement = getChildElement(rulesElement, BEHAVIOUR);
+        if(behaviourAttr != null) {
+            behaviour = rulesBehaviour(behaviourAttr);
+        } else {
+            Element behaviourElement = getChildElement(rulesElement, BEHAVIOUR);
 
-			if(behaviourElement != null) {
-				Element childElement = getFirstChild(behaviourElement);
-				behaviour = rulesBehaviourLoaderUtil.deriveLoader(childElement).load(childElement, allIds);
-			} else {
-				behaviour = new FirstMatchBehaviour();
-			}
-		}
+            if(behaviourElement != null) {
+                Element childElement = getFirstChild(behaviourElement);
+                behaviour = rulesBehaviourLoaderUtil.deriveLoader(childElement).load(childElement, allIds);
+            } else {
+                behaviour = new FirstMatchBehaviour();
+            }
+        }
 
-		log.debug("Loaded decision '" + id + "'");
-		return new Decision(id, steps, rules, behaviour, checkDefaultStepId(getAttribute(rulesElement, DEFAULT_STEP), stepIds));
-	}
+        log.debug("Loaded decision '{}'", id);
+        return new Decision(id, steps, rules, behaviour, checkDefaultStepId(getAttribute(rulesElement, DEFAULT_STEP), stepIds));
+    }
 
-	private List<Step> loadSteps(Element element, Set<Object> allIds) throws RegurgitatorException {
-		List<Step> allSteps = new ArrayList<Step>();
-		List<Element> children = getChildElements(element);
+    private List<Step> loadSteps(Element element, Set<Object> allIds) throws RegurgitatorException {
+        List<Step> allSteps = new ArrayList<Step>();
+        List<Element> children = getChildElements(element);
 
-		for (int i = 0; i < children.size(); i++) {
-			Element innerElement = children.get(i);
+        for (int i = 0; i < children.size(); i++) {
+            Element innerElement = children.get(i);
 
-			if (!innerElement.getNodeName().equals(RULES)) {
-				allSteps.add(stepLoaderUtil.deriveLoader(innerElement).load(innerElement, allIds));
-			}
-		}
+            if (!innerElement.getNodeName().equals(RULES)) {
+                allSteps.add(stepLoaderUtil.deriveLoader(innerElement).load(innerElement, allIds));
+            }
+        }
 
-		return allSteps;
-	}
+        return allSteps;
+    }
 
-	private List<Rule> loadRules(Element element, Set<Object> stepIds, Set<Object> allIds) throws RegurgitatorException {
-		List<Rule> rules = new ArrayList<Rule>();
-		List<Element> rulesElements = getChildElements(element, RULE);
+    private List<Rule> loadRules(Element element, Set<Object> stepIds, Set<Object> allIds) throws RegurgitatorException {
+        List<Rule> rules = new ArrayList<Rule>();
+        List<Element> rulesElements = getChildElements(element, RULE);
 
-		for (int i = 0; i < rulesElements.size(); i++) {
-			rules.add(RuleXmlLoader.load(rulesElements.get(i), stepIds, allIds));
-		}
+        for (int i = 0; i < rulesElements.size(); i++) {
+            rules.add(RuleXmlLoader.load(rulesElements.get(i), stepIds, allIds));
+        }
 
-		return rules;
-	}
+        return rules;
+    }
 
-	private String checkDefaultStepId(String defaultStepId, Set<Object> stepIds) {
-		if (defaultStepId != null && !stepIds.contains(defaultStepId)) {
-			throw new IllegalArgumentException("Error with configuration: decision default step not found: " + defaultStepId);
-		}
+    private String checkDefaultStepId(String defaultStepId, Set<Object> stepIds) {
+        if (defaultStepId != null && !stepIds.contains(defaultStepId)) {
+            throw new IllegalArgumentException("Error with configuration: decision default step not found: " + defaultStepId);
+        }
 
-		return defaultStepId;
-	}
+        return defaultStepId;
+    }
 
-	private Set<Object> stepIds(List<Step> steps) {
-		Set<Object> stepIds = new HashSet<Object>(steps.size());
+    private Set<Object> stepIds(List<Step> steps) {
+        Set<Object> stepIds = new HashSet<Object>(steps.size());
 
-		for (Step step : steps) {
-			stepIds.add(step.getId());
-		}
+        for (Step step : steps) {
+            stepIds.add(step.getId());
+        }
 
-		return stepIds;
-	}
+        return stepIds;
+    }
 }

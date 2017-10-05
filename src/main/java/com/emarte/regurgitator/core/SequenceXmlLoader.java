@@ -15,20 +15,20 @@ public class SequenceXmlLoader implements XmlLoader<Step> {
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         List<Step> steps = new ArrayList<Step>();
 
-		List<Element> children = getChildElements(element);
+        List<Element> children = getChildElements(element);
 
-		for(int i = 0; i < children.size(); i++) {
+        for(int i = 0; i < children.size(); i++) {
             Element stepElement = children.get(i);
             steps.add(loaderUtil.deriveLoader(stepElement).load(stepElement, allIds));
         }
 
         String id = loadId(element, allIds);
-        log.debug("Loaded sequence '" + id + "'");
+        log.debug("Loaded sequence '{}'", id);
         return new Sequence(id, steps, loadIsolate(element));
     }
 
-	private Isolate loadIsolate(Element element) {
-		String isolateStr = getAttribute(element, CoreConfigConstants.ISOLATE);
-		return isolateStr != null ? new Isolate(isolateStr.contains("session"), isolateStr.contains("param")) : null;
-	}
+    private Isolate loadIsolate(Element element) {
+        String isolateStr = getAttribute(element, CoreConfigConstants.ISOLATE);
+        return isolateStr != null ? new Isolate(isolateStr.contains("session"), isolateStr.contains("param")) : null;
+    }
 }

@@ -8,30 +8,30 @@ import java.io.*;
 import java.util.HashSet;
 
 public class XmlConfigurationLoader implements ConfigurationLoader {
-	private static XmlLoaderUtil<XmlLoader<Step>> loaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
+    private static XmlLoaderUtil<XmlLoader<Step>> loaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
 
-	public Step load(InputStream input) throws RegurgitatorException {
-		try {
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			dbFactory.setValidating(true);
-			dbFactory.setNamespaceAware(true);
-			dbFactory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+    public Step load(InputStream input) throws RegurgitatorException {
+        try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            dbFactory.setValidating(true);
+            dbFactory.setNamespaceAware(true);
+            dbFactory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 
-			dBuilder.setEntityResolver(new EntityResolver() {
-				public InputSource resolveEntity(String publicId, String systemId) throws IOException {
-					String resolvePath = "classpath:/" + systemId.substring(systemId.lastIndexOf("/") + 1);
-					FileUtil.checkResource(resolvePath);
-					return new InputSource(FileUtil.getInputStreamForFile(resolvePath));
-				}
-			});
+            dBuilder.setEntityResolver(new EntityResolver() {
+                public InputSource resolveEntity(String publicId, String systemId) throws IOException {
+                    String resolvePath = "classpath:/" + systemId.substring(systemId.lastIndexOf("/") + 1);
+                    FileUtil.checkResource(resolvePath);
+                    return new InputSource(FileUtil.getInputStreamForFile(resolvePath));
+                }
+            });
 
-			Document doc = dBuilder.parse(input);
-			Element rootElement = doc.getDocumentElement();
-			rootElement.normalize();
-			return loaderUtil.deriveLoader(rootElement).load(rootElement, new HashSet<Object>());
-		} catch (Exception e) {
-			throw new RegurgitatorException("Error loading regurgitator configuration", e);
-		}
-	}
+            Document doc = dBuilder.parse(input);
+            Element rootElement = doc.getDocumentElement();
+            rootElement.normalize();
+            return loaderUtil.deriveLoader(rootElement).load(rootElement, new HashSet<Object>());
+        } catch (Exception e) {
+            throw new RegurgitatorException("Error loading regurgitator configuration", e);
+        }
+    }
 }

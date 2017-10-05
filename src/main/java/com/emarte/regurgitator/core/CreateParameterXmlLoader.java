@@ -9,15 +9,15 @@ import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class CreateParameterXmlLoader extends CreateParameterLoader implements XmlLoader<Step> {
-	private static final Log log = getLog(CreateParameterXmlLoader.class);
+    private static final Log log = getLog(CreateParameterXmlLoader.class);
 
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         String id = loadId(element, allIds);
         String source = getAttribute(element, SOURCE);
-		String value = getAttribute(element, VALUE);
+        String value = getAttribute(element, VALUE);
         String file = getAttribute(element, FILE);
-		ValueProcessor processor = loadOptionalValueProcessor(element, 0, allIds);
-		return buildCreateParameter(id, loadPrototype(element), loadContext(element), source, value, file, processor, log);
+        ValueProcessor processor = loadOptionalValueProcessor(element, 0, allIds);
+        return buildCreateParameter(id, loadPrototype(element), loadContext(element), source, value, file, processor, log);
     }
 }

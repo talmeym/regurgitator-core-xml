@@ -9,11 +9,11 @@ import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
 
 public class SubstituteProcessorXmlLoader implements XmlLoader<SubstituteProcessor> {
-	private static final Log log = getLog(SubstituteProcessorXmlLoader.class);
+    private static final Log log = getLog(SubstituteProcessorXmlLoader.class);
 
-	@Override
-	public SubstituteProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		log.debug("Loaded substitute value");
-		return new SubstituteProcessor(getAttribute(element, TOKEN), getAttribute(element, REPLACEMENT));
-	}
+    @Override
+    public SubstituteProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
+        log.debug("Loaded substitute value");
+        return new SubstituteProcessor(getAttribute(element, TOKEN), getAttribute(element, REPLACEMENT));
+    }
 }

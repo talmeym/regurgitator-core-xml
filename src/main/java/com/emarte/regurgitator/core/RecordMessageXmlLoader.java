@@ -10,14 +10,14 @@ import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
 import static com.emarte.regurgitator.core.XmlConfigUtil.loadId;
 
 public class RecordMessageXmlLoader implements XmlLoader<RecordMessage> {
-	private static final Log log = getLog(RecordMessageXmlLoader.class);
+    private static final Log log = getLog(RecordMessageXmlLoader.class);
 
-	@Override
-	public RecordMessage load(Element element, Set<Object> allIds) throws RegurgitatorException {
-		String folderPath = getAttribute(element, FOLDER);
+    @Override
+    public RecordMessage load(Element element, Set<Object> allIds) throws RegurgitatorException {
+        String folderPath = getAttribute(element, FOLDER);
 
-		String id = loadId(element, allIds);
-		log.debug("Loaded record message '" + id + "'");
-		return new RecordMessage(id, folderPath);
-	}
+        String id = loadId(element, allIds);
+        log.debug("Loaded record message '{}'", id);
+        return new RecordMessage(id, folderPath);
+    }
 }

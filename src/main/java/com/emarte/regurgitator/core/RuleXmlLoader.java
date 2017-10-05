@@ -8,7 +8,7 @@ import static com.emarte.regurgitator.core.CoreConfigConstants.*;
 import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
-public class RuleXmlLoader {
+class RuleXmlLoader {
     private static final Log log = getLog(RuleXmlLoader.class);
 
     public static Rule load(Element element, Set<Object> stepIds, Set<Object> allIds) throws RegurgitatorException {
@@ -26,7 +26,7 @@ public class RuleXmlLoader {
         }
 
         String id = loadId(element, allIds);
-        log.debug("Loaded rule '" + id + "'");
+        log.debug("Loaded rule '{}'", id);
         return new Rule(id, conditions, stepId);
     }
 }

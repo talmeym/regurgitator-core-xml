@@ -11,13 +11,13 @@ import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 public class CreateResponseXmlLoader extends CreateResponseLoader implements XmlLoader<Step> {
     private static final Log log = getLog(CreateResponseXmlLoader.class);
 
-	@Override
+    @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         String id = loadId(element, allIds);
-		String source = getAttribute(element, SOURCE);
+        String source = getAttribute(element, SOURCE);
         String value = getAttribute(element, VALUE);
         String file = getAttribute(element, FILE);
-		ValueProcessor processor = loadOptionalValueProcessor(element, 0, allIds);
-		return buildCreateResponse(id, source, value, file, processor, log);
+        ValueProcessor processor = loadOptionalValueProcessor(element, 0, allIds);
+        return buildCreateResponse(id, source, value, file, processor, log);
     }
 }
