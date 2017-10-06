@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2017 Miles Talmey. -->
+<!-- Distributed under the MIT License (license terms are at http://opensource.org/licenses/MIT). -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:rg="http://core.regurgitator.emarte.com"
            xmlns:rgc="http://common.regurgitator.emarte.com"
