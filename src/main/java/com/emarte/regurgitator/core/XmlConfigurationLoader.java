@@ -11,8 +11,8 @@ import javax.xml.parsers.*;
 import java.io.*;
 import java.util.HashSet;
 
-public class XmlConfigurationLoader implements ConfigurationLoader {
-    private static XmlLoaderUtil<XmlLoader<Step>> loaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
+class XmlConfigurationLoader implements ConfigurationLoader {
+    private static final XmlLoaderUtil<XmlLoader<Step>> loaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
 
     public Step load(InputStream input) throws RegurgitatorException {
         try {
