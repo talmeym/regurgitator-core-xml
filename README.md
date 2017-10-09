@@ -38,7 +38,7 @@ every regurgitator xml file is schema validated upon load. all elements must be 
 
 #### step ids
 
-all steps in a regurgitator configuration, from ``regurgitator-configuration`` downwards, can be given an id attribute. ids can be used for identifying which step to run next (see decision, below) and therefore must be unique. if no id attribute is given for a step, a system-generated one will be assigned ot it at load time, combining the type of the step with a 4 digit random number, eg: ``create-parameter-6557``
+all steps in a regurgitator configuration, from ``regurgitator-configuration`` downwards, can be given an id attribute. ids can be used for identifying which step to run next (see [decision](https://github.com/talmeym/regurgitator-core-xml#decision), below) and therefore must be unique. if no id attribute is given for a step, a system-generated one will be assigned ot it at load time, combining the type of the step with a 4 digit random number, eg: ``create-parameter-6557``
 
 ## core steps in xml
 
