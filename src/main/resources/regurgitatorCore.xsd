@@ -8,21 +8,21 @@
 
     <xs:import schemaLocation="regurgitatorCommon.xsd" namespace="http://common.regurgitator.emarte.com"/>
 
-	<xs:complexType name="substitute-processor">
-		<xs:attribute name="token" type="rgc:populated-string" use="required"/>
-		<xs:attribute name="replacement" type="rgc:populated-string" use="required"/>
-	</xs:complexType>
+    <xs:complexType name="substitute-processor">
+        <xs:attribute name="token" type="rgc:populated-string" use="required"/>
+        <xs:attribute name="replacement" type="rgc:populated-string" use="required"/>
+    </xs:complexType>
 
     <xs:complexType name="condition">
         <xs:sequence>
             <xs:choice>
-				<xs:any xml:base="rgc:populated-string" minOccurs="0"/>
+                <xs:any xml:base="rgc:populated-string" minOccurs="0"/>
             </xs:choice>
         </xs:sequence>
-		<xs:attribute name="id" type="rgc:populated-string"/>
-		<xs:attribute name="source" type="rgc:populated-string" use="required"/>
+        <xs:attribute name="id" type="rgc:populated-string"/>
+        <xs:attribute name="source" type="rgc:populated-string" use="required"/>
         <xs:attribute name="expectation" type="xs:boolean"/>
-		<xs:anyAttribute processContents="skip"/>
+        <xs:anyAttribute processContents="skip"/>
     </xs:complexType>
 
     <xs:complexType name="rule">
@@ -35,7 +35,7 @@
 
     <xs:complexType name="rules">
         <xs:sequence>
-			<xs:element name="behaviour" type="rgc:contains-one-child" minOccurs="0"/>
+            <xs:element name="behaviour" type="rgc:contains-one-child" minOccurs="0"/>
             <xs:element name="rule" type="rg:rule" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="default-step" type="rgc:populated-string"/>
@@ -43,31 +43,31 @@
     </xs:complexType>
 
     <xs:complexType name="create-parameter">
-		<xs:sequence>
-			<xs:any minOccurs="0" maxOccurs="1"/>
-		</xs:sequence>
+        <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
         <xs:attribute name="source" type="rgc:populated-string"/>
         <xs:attribute name="value" type="rgc:populated-string"/>
         <xs:attribute name="file" type="rgc:populated-string"/>
-		<xs:attribute name="processor" type="rgc:populated-string"/>
+        <xs:attribute name="processor" type="rgc:populated-string"/>
         <xs:attributeGroup ref="rgc:prototyped"/>
     </xs:complexType>
 
-	<xs:complexType name="create-response">
-		<xs:sequence>
-			<xs:any minOccurs="0" maxOccurs="1"/>
-		</xs:sequence>
-		<xs:attribute name="source" type="rgc:populated-string"/>
-		<xs:attribute name="value" type="rgc:populated-string"/>
-		<xs:attribute name="file" type="rgc:populated-string"/>
-		<xs:attribute name="processor" type="rgc:populated-string"/>
-		<xs:attribute name="id" type="rgc:populated-string"/>
-	</xs:complexType>
+    <xs:complexType name="create-response">
+        <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="source" type="rgc:populated-string"/>
+        <xs:attribute name="value" type="rgc:populated-string"/>
+        <xs:attribute name="file" type="rgc:populated-string"/>
+        <xs:attribute name="processor" type="rgc:populated-string"/>
+        <xs:attribute name="id" type="rgc:populated-string"/>
+    </xs:complexType>
 
     <xs:complexType name="extract-processor">
-		<xs:attribute name="format" type="rgc:populated-string" use="required"/>
-		<xs:attribute name="index" type="xs:integer" use="required"/>
-	</xs:complexType>
+        <xs:attribute name="format" type="rgc:populated-string" use="required"/>
+        <xs:attribute name="index" type="xs:integer" use="required"/>
+    </xs:complexType>
 
     <xs:complexType name="identify-session">
         <xs:attribute name="id" type="rgc:populated-string"/>
@@ -77,21 +77,21 @@
 
     <xs:complexType name="build-parameter">
         <xs:sequence>
-			<xs:any minOccurs="0" maxOccurs="2"/>
+            <xs:any minOccurs="0" maxOccurs="2"/>
         </xs:sequence>
-		<xs:attribute name="builder" type="rgc:populated-string"/>
-		<xs:attribute name="processor" type="rgc:populated-string"/>
+        <xs:attribute name="builder" type="rgc:populated-string"/>
+        <xs:attribute name="processor" type="rgc:populated-string"/>
         <xs:attributeGroup ref="rgc:prototyped"/>
-	</xs:complexType>
+    </xs:complexType>
 
     <xs:complexType name="generate-parameter">
         <xs:sequence>
-			<xs:any minOccurs="0" maxOccurs="2"/>
+            <xs:any minOccurs="0" maxOccurs="2"/>
         </xs:sequence>
-		<xs:attribute name="generator" type="rgc:populated-string"/>
-		<xs:attribute name="processor" type="rgc:populated-string"/>
+        <xs:attribute name="generator" type="rgc:populated-string"/>
+        <xs:attribute name="processor" type="rgc:populated-string"/>
         <xs:attributeGroup ref="rgc:prototyped"/>
-	</xs:complexType>
+    </xs:complexType>
 
     <xs:complexType name="Decision">
         <xs:sequence>
@@ -101,7 +101,7 @@
         <xs:attribute name="id" type="rgc:populated-string"/>
     </xs:complexType>
 
-	<xs:complexType name="record-message">
+    <xs:complexType name="record-message">
         <xs:attribute name="folder" type="xs:string"/>
         <xs:attribute name="id" type="rgc:populated-string"/>
     </xs:complexType>
@@ -109,7 +109,7 @@
     <xs:complexType name="steps">
         <xs:sequence>
             <xs:choice minOccurs="1" maxOccurs="unbounded">
-				<xs:any maxOccurs="unbounded"/>
+                <xs:any maxOccurs="unbounded"/>
             </xs:choice>
         </xs:sequence>
     </xs:complexType>
@@ -128,55 +128,55 @@
         <xs:attribute name="file" type="rgc:populated-string" use="required"/>
     </xs:complexType>
 
-	<xs:complexType name="number-generator">
-		<xs:attribute name="max" type="xs:integer"/>
-	</xs:complexType>
+    <xs:complexType name="number-generator">
+        <xs:attribute name="max" type="xs:integer"/>
+    </xs:complexType>
 
-	<xs:complexType name="uuid-generator">
-	</xs:complexType>
+    <xs:complexType name="uuid-generator">
+    </xs:complexType>
 
-	<xs:complexType name="index-of-processor">
-		<xs:attribute name="source" type="rgc:populated-string"/>
-		<xs:attribute name="value" type="rgc:populated-string"/>
-		<xs:attribute name="last" type="xs:boolean"/>
-	</xs:complexType>
+    <xs:complexType name="index-of-processor">
+        <xs:attribute name="source" type="rgc:populated-string"/>
+        <xs:attribute name="value" type="rgc:populated-string"/>
+        <xs:attribute name="last" type="xs:boolean"/>
+    </xs:complexType>
 
-	<xs:complexType name="index-processor">
-		<xs:attribute name="source" type="rgc:populated-string"/>
-		<xs:attribute name="value" type="rgc:populated-string"/>
-	</xs:complexType>
+    <xs:complexType name="index-processor">
+        <xs:attribute name="source" type="rgc:populated-string"/>
+        <xs:attribute name="value" type="rgc:populated-string"/>
+    </xs:complexType>
 
-	<xs:complexType name="size-processor">
-		<xs:attribute name="as-index" type="xs:boolean"/>
-	</xs:complexType>
+    <xs:complexType name="size-processor">
+        <xs:attribute name="as-index" type="xs:boolean"/>
+    </xs:complexType>
 
-	<xs:simpleType name="isolate">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="true"/>
-			<xs:enumeration value="with-session"/>
-			<xs:enumeration value="with-parameters"/>
-			<xs:enumeration value="with-session-and-parameters"/>
-		</xs:restriction>
-	</xs:simpleType>
+    <xs:simpleType name="isolate">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="with-session"/>
+            <xs:enumeration value="with-parameters"/>
+            <xs:enumeration value="with-session-and-parameters"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:element name="regurgitator-configuration" type="rg:sequence"/>
-	<xs:element name="sequence" type="rg:sequence"/>
-	<xs:element name="sequence-ref" type="rg:sequence-ref"/>
-	<xs:element name="decision" type="rg:Decision"/>
-	<xs:element name="create-response" type="rg:create-response"/>
-	<xs:element name="build-parameter" type="rg:build-parameter"/>
-	<xs:element name="generate-parameter" type="rg:generate-parameter"/>
-	<xs:element name="identify-session" type="rg:identify-session"/>
-	<xs:element name="create-parameter" type="rg:create-parameter"/>
-	<xs:element name="extract-processor" type="rg:extract-processor"/>
-	<xs:element name="substitute-processor" type="rg:substitute-processor"/>
-	<xs:element name="equals" type="rgc:populated-string"/>
-	<xs:element name="contains" type="rgc:populated-string"/>
-	<xs:element name="exists" type="xs:boolean"/>
-	<xs:element name="number-generator" type="rg:number-generator"/>
-	<xs:element name="uuid-generator" type="rg:uuid-generator"/>
-	<xs:element name="index-of-processor" type="rg:index-of-processor"/>
-	<xs:element name="index-processor" type="rg:index-processor"/>
-	<xs:element name="size-processor" type="rg:size-processor"/>
-	<xs:element name="record-message" type="rg:record-message"/>
+    <xs:element name="sequence" type="rg:sequence"/>
+    <xs:element name="sequence-ref" type="rg:sequence-ref"/>
+    <xs:element name="decision" type="rg:Decision"/>
+    <xs:element name="create-response" type="rg:create-response"/>
+    <xs:element name="build-parameter" type="rg:build-parameter"/>
+    <xs:element name="generate-parameter" type="rg:generate-parameter"/>
+    <xs:element name="identify-session" type="rg:identify-session"/>
+    <xs:element name="create-parameter" type="rg:create-parameter"/>
+    <xs:element name="extract-processor" type="rg:extract-processor"/>
+    <xs:element name="substitute-processor" type="rg:substitute-processor"/>
+    <xs:element name="equals" type="rgc:populated-string"/>
+    <xs:element name="contains" type="rgc:populated-string"/>
+    <xs:element name="exists" type="xs:boolean"/>
+    <xs:element name="number-generator" type="rg:number-generator"/>
+    <xs:element name="uuid-generator" type="rg:uuid-generator"/>
+    <xs:element name="index-of-processor" type="rg:index-of-processor"/>
+    <xs:element name="index-processor" type="rg:index-processor"/>
+    <xs:element name="size-processor" type="rg:size-processor"/>
+    <xs:element name="record-message" type="rg:record-message"/>
 </xs:schema>

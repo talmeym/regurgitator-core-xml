@@ -12,7 +12,7 @@
 
     <xs:simpleType name="capital-string">
         <xs:restriction base="xs:string">
-			<xs:pattern value="[A-Z_]*"/>
+            <xs:pattern value="[A-Z_]*"/>
         </xs:restriction>
     </xs:simpleType>
 
@@ -25,17 +25,17 @@
         </xs:restriction>
     </xs:simpleType>
 
-	<xs:complexType name="contains-one-child">
-		<xs:sequence>
-			<xs:any maxOccurs="1" minOccurs="1"/>
-		</xs:sequence>
-	</xs:complexType>
+    <xs:complexType name="contains-one-child">
+        <xs:sequence>
+            <xs:any maxOccurs="1" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
 
     <xs:attributeGroup name="prototyped">
         <xs:attribute name="id" type="rgc:populated-string"/>
         <xs:attribute name="name" type="rgc:populated-string" use="required"/>
         <xs:attribute name="type" type="rgc:capital-string"/>
         <xs:attribute name="merge" type="rgc:conflict-policy"/>
-	</xs:attributeGroup>
+    </xs:attributeGroup>
 
 </xs:schema>
