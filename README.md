@@ -11,21 +11,21 @@ below is an example of an xml configuration file for regurgitator:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <rg:regurgitator-configuration
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xmlns:rg="http://core.regurgitator.emarte.com"
-		xmlns:rge="http://extensions.regurgitator.emarte.com"
-		xmlns:rgw="http://web.extensions.regurgitator.emarte.com"
-		xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:rg="http://core.regurgitator.emarte.com"
+        xmlns:rge="http://extensions.regurgitator.emarte.com"
+        xmlns:rgw="http://web.extensions.regurgitator.emarte.com"
+        xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd
                             http://extensions.regurgitator.emarte.com regurgitatorExtensions.xsd
                             http://web.extensions.regurgitator.emarte.com regurgitatorExtensionsWeb.xsd"
-		id="my-configuration">
+        id="my-configuration">
 
-	<rg:create-parameter name="response" value="quick">
-		<rge:freemarker-processor>That was ${value}</rge:freemarker-processor>
-	</rg:create-parameter>
+    <rg:create-parameter name="response" value="quick">
+        <rge:freemarker-processor>That was ${value}</rge:freemarker-processor>
+    </rg:create-parameter>
 
-	<rgw:create-http-response content-type="text/plain" status-code="200" source="response"/>
-	
+    <rgw:create-http-response content-type="text/plain" status-code="200" source="response"/>
+    
 </rg:regurgitator-configuration>
 ```
 
@@ -46,8 +46,8 @@ a sequence executes a series of child steps, one after another in order
 
 ```xml
 <rg:sequence id="my-sequence">
-	<rg:create-parameter id="my-step-1" name="response" value="this is the response"/>
-	<rg:create-response id="my-step-2" source="response"/>
+    <rg:create-parameter id="my-step-1" name="response" value="this is the response"/>
+    <rg:create-response id="my-step-2" source="response"/>
 </rg:sequence>
 ```
 
@@ -55,8 +55,8 @@ by default, when each child step executes, it is passed the same message object 
 
 ```xml
 <rg:sequence id="my-sequence" isolate="with-parameter">
-	<rg:create-parameter id="my-step-1" name="response" value="this is the response"/>
-	<rg:create-response id="my-step-2" source="response"/>
+    <rg:create-parameter id="my-step-1" name="response" value="this is the response"/>
+    <rg:create-response id="my-step-2" source="response"/>
 </rg:sequence>
 ```
 
@@ -75,15 +75,15 @@ a decision executes one or more child steps, using ``rules`` and ``conditions`` 
 
 ```xml
 <rg:decision>
-	<rg:steps>
-		<rg:create-response id="default-step" value="this is the default response">
-		<rg:create-response id="special-step" value="this is the special response"/>
-	</rg:steps>
-	<rg:rules default-step="default-step">
-		<rg:rule step="special-step">
-			<rg:condition source="parameters:special" equals="true"/>
-		</rg:rule>
-	</rg:rules>
+    <rg:steps>
+        <rg:create-response id="default-step" value="this is the default response">
+        <rg:create-response id="special-step" value="this is the special response"/>
+    </rg:steps>
+    <rg:rules default-step="default-step">
+        <rg:rule step="special-step">
+            <rg:condition source="parameters:special" equals="true"/>
+        </rg:rule>
+    </rg:rules>
 </rg:decision>
 ```
 
@@ -102,16 +102,16 @@ each rule has one or more conditions that must be satisfied to make the rule pas
 the behaviour of a condition can also be specified as a child element of the parent condition, as shown below:
 
 ```xml
-	...
-	<rg:rules default-step="no-id-found">
-		<rg:rule step="found-id">
-			<rg:condition source="parameters:xml">
-				<rge:contains-xpath namespaces="rg=http://url.com">/rg:config/@id</rge:contains-xpath>
-			</rg:condition>
-		</rg:rule>
-	</rg:rules>
+    ...
+    <rg:rules default-step="no-id-found">
+        <rg:rule step="found-id">
+            <rg:condition source="parameters:xml">
+                <rge:contains-xpath namespaces="rg=http://url.com">/rg:config/@id</rge:contains-xpath>
+            </rg:condition>
+        </rg:rule>
+    </rg:rules>
 
-	...
+    ...
 ```
 
 this allows certain condition behaviours to have attributes beyond the operand (in the example above, "/rg:config/@id") which is always the text of the child element.
@@ -175,7 +175,7 @@ all steps that create parameters (as well as ``create-response``) have the abili
 
 ```xml 
 <rg:create-parameter name="positive-spin" value="you are unhappy">
-	<rg:substitute-processor token="un" replacement="very "/>
+    <rg:substitute-processor token="un" replacement="very "/>
 </rg:create-parameter>
 ```
 
@@ -187,7 +187,7 @@ a build-parameter creates a parameter in the message, with it's value built by a
 
 ```xml
 <rg:build-parameter name="response" type="STRING" merge="CONCAT">
-	<rge:freemarker-builder file="classpath:/response_file.ftl"/>
+    <rge:freemarker-builder file="classpath:/response_file.ftl"/>
 </rg:build-parameter>
 ```
 
@@ -199,7 +199,7 @@ a generate-parameter creates a parameter in the message, with it's value generat
 
 ```xml
 <rg:generate-parameter name="random-number" type="NUMBER" merge="REPLACE">
-	<rg:number-generator max="10"/>
+    <rg:number-generator max="10"/>
 </rg:generate-parameter>
 ```
 
@@ -250,7 +250,7 @@ a number-generator generates a random number parameter value.
 
 ```xml
 <rg:generate-parameter name="param-name" type="NUMBER">
-	<rg:number-generator max="1000"/>
+    <rg:number-generator max="1000"/>
 </rg:generate-parameter>
 ```
 
@@ -268,7 +268,7 @@ a uuid-generator generates a uuid parameter value.
 
 ```xml
 <rg:generate-parameter name="new-id" type="STRING">
-	<rg:uuid-generator/>
+    <rg:uuid-generator/>
 </rg:generate-parameter>
 
 <rg:generate-parameter name="new-id" type="STRING" generator="uuid-generator"/>
@@ -282,7 +282,7 @@ an extract-processor extracts a value from another value, using the [java.text.M
 
 ```xml
 <rg:create-parameter name="customer-id" source="request-metadata:query-string">
-	<rg:extract-processor format="order={0}&amp;customer={1}" index="1"/>
+    <rg:extract-processor format="order={0}&amp;customer={1}" index="1"/>
 </rg:create-parameter>
 ```
 
@@ -294,7 +294,7 @@ a substitute-processor manipulates ``STRING`` values, replacing occurrences of o
 
 ```xml
 <rg:create-parameter name="positive-spin" value="you are unhappy">
-	<rg:substitute-processor token="un" replacement="very "/>
+    <rg:substitute-processor token="un" replacement="very "/>
 </rg:create-parameter>
 ```
 
@@ -308,7 +308,7 @@ an index-processor manipulates collection parameter values, such as ``LIST_OF_ST
 <rg:create-parameter name="data" type="LIST_OF_STRING" value="not this one,or this one,but this one"/>
 
 <rg:create-parameter name="the-one" type="STRING" source="data">
-	<rg:index-processor value="2"/>
+    <rg:index-processor value="2"/>
 </rg:create-parameter>
 ```
 
@@ -324,7 +324,7 @@ an index-of-processor manipulates collection parameter values, such as ``LIST_OF
 <rg:create-parameter name="data" type="LIST_OF_STRING" value="not this one,or this one,but this one"/>
 
 <rg:create-parameter name="index-of-the-one" type="NUMBER" source="data">
-	<rg:index-of-processor value="but this one"/>
+    <rg:index-of-processor value="but this one"/>
 </rg:create-parameter>
 ```
 
@@ -348,7 +348,7 @@ the optional ``as-index`` attribute returns the size zero-indexed, eg. 3 items r
 <rg:create-parameter name="data" type="LIST_OF_STRING" value="one,two,three,four"/>
 
 <rg:create-parameter name="four" type="STRING" source="data">
-	<rg:size-processor as-index="true"/>
+    <rg:size-processor as-index="true"/>
 </rg:create-parameter>
 ```
 
