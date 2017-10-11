@@ -11,6 +11,7 @@ import java.util.*;
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
 import static com.emarte.regurgitator.core.EntityLookup.rulesBehaviour;
 import static com.emarte.regurgitator.core.Log.getLog;
+import static com.emarte.regurgitator.core.RuleXmlLoader.loadRule;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class DecisionXmlLoader implements XmlLoader<Step> {
@@ -67,7 +68,7 @@ public class DecisionXmlLoader implements XmlLoader<Step> {
         List<Element> rulesElements = getChildElements(element, RULE);
 
         for (int i = 0; i < rulesElements.size(); i++) {
-            rules.add(RuleXmlLoader.load(rulesElements.get(i), stepIds, allIds));
+            rules.add(loadRule(rulesElements.get(i), stepIds, allIds));
         }
 
         return rules;
