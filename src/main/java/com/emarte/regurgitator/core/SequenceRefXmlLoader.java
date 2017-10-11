@@ -8,7 +8,8 @@ import org.w3c.dom.Element;
 
 import java.util.Set;
 
-import static com.emarte.regurgitator.core.CoreConfigConstants.*;
+import static com.emarte.regurgitator.core.CoreConfigConstants.FILE;
+import static com.emarte.regurgitator.core.CoreConfigConstants.ID;
 import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
 

@@ -4,7 +4,7 @@
  */
 package com.emarte.regurgitator.core;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Element;
 
 import java.util.*;
 

@@ -8,8 +8,10 @@ import org.w3c.dom.*;
 
 import java.util.*;
 
-import static com.emarte.regurgitator.core.CoreConfigConstants.*;
-import static com.emarte.regurgitator.core.EntityLookup.*;
+import static com.emarte.regurgitator.core.CoreConfigConstants.EXPECTATION;
+import static com.emarte.regurgitator.core.CoreConfigConstants.SOURCE;
+import static com.emarte.regurgitator.core.EntityLookup.conditionBehaviour;
+import static com.emarte.regurgitator.core.EntityLookup.hasConditionBehaviour;
 import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 

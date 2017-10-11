@@ -4,11 +4,12 @@
  */
 package com.emarte.regurgitator.core;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Element;
 
 import java.util.*;
 
-import static com.emarte.regurgitator.core.CoreConfigConstants.*;
+import static com.emarte.regurgitator.core.CoreConfigConstants.CONDITION;
+import static com.emarte.regurgitator.core.CoreConfigConstants.STEP;
 import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
