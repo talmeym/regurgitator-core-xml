@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashSet;
 
+import static com.emarte.regurgitator.core.FileUtil.getInputStreamForFile;
+
 class XmlConfigurationLoader implements ConfigurationLoader {
     private static final XmlLoaderUtil<XmlLoader<Step>> loaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
 
@@ -29,8 +31,7 @@ class XmlConfigurationLoader implements ConfigurationLoader {
             dBuilder.setEntityResolver(new EntityResolver() {
                 public InputSource resolveEntity(String publicId, String systemId) throws IOException {
                     String resolvePath = "classpath:/" + systemId.substring(systemId.lastIndexOf("/") + 1);
-                    FileUtil.checkResource(resolvePath);
-                    return new InputSource(FileUtil.getInputStreamForFile(resolvePath));
+                    return new InputSource(getInputStreamForFile(resolvePath));
                 }
             });
 
