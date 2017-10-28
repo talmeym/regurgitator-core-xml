@@ -20,7 +20,7 @@ public class GenerateParameterXmlLoader implements XmlLoader<Step> {
 
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
-        String generatorAttr = getAttribute(element, GENERATOR);
+        String generatorAttr = loadOptionalStr(element, GENERATOR);
         ValueGenerator generator;
         int processorIndex = 0;
 

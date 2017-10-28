@@ -11,7 +11,7 @@ import java.util.Set;
 import static com.emarte.regurgitator.core.CoreConfigConstants.SOURCE;
 import static com.emarte.regurgitator.core.CoreConfigConstants.VALUE;
 import static com.emarte.regurgitator.core.Log.getLog;
-import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 import static com.emarte.regurgitator.core.XmlConfigUtil.loadId;
 
 public class IdentifySessionXmlLoader extends IdentifySessionLoader implements XmlLoader<Step> {
@@ -20,8 +20,8 @@ public class IdentifySessionXmlLoader extends IdentifySessionLoader implements X
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         String id = loadId(element, allIds);
-        String source = getAttribute(element, SOURCE);
-        String value = getAttribute(element, VALUE);
+        String source = loadOptionalStr(element, SOURCE);
+        String value = loadOptionalStr(element, VALUE);
         return buildIdentifySession(id, source, value, log);
     }
 }

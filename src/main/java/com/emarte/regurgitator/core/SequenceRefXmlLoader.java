@@ -11,7 +11,7 @@ import java.util.Set;
 import static com.emarte.regurgitator.core.CoreConfigConstants.FILE;
 import static com.emarte.regurgitator.core.CoreConfigConstants.ID;
 import static com.emarte.regurgitator.core.Log.getLog;
-import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 
 public class SequenceRefXmlLoader implements XmlLoader<Step> {
     private static final Log log = getLog(SequenceRefXmlLoader.class);
@@ -19,8 +19,8 @@ public class SequenceRefXmlLoader implements XmlLoader<Step> {
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         log.debug("Loading sequence ref");
-        Sequence sequence = (Sequence) ConfigurationFile.loadFile(getAttribute(element, FILE));
-        String newId = getAttribute(element, ID);
+        Sequence sequence = (Sequence) ConfigurationFile.loadFile(loadOptionalStr(element, FILE));
+        String newId = loadOptionalStr(element, ID);
 
         if(newId != null) {
             log.debug("Repackaged sequence '{}' as '{}'", sequence.getId(), newId);

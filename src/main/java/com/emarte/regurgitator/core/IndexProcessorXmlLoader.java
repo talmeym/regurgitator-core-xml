@@ -11,15 +11,15 @@ import java.util.Set;
 import static com.emarte.regurgitator.core.CoreConfigConstants.SOURCE;
 import static com.emarte.regurgitator.core.CoreConfigConstants.VALUE;
 import static com.emarte.regurgitator.core.Log.getLog;
-import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 
 public class IndexProcessorXmlLoader implements XmlLoader<IndexProcessor> {
     private static final Log log = getLog(IndexProcessorXmlLoader.class);
 
     @Override
     public IndexProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
-        String source = getAttribute(element, SOURCE);
-        String value = getAttribute(element, VALUE);
+        String source = loadOptionalStr(element, SOURCE);
+        String value = loadOptionalStr(element, VALUE);
 
         log.debug("Loaded index processor");
         return new IndexProcessor(new ValueSource(source != null ? new ContextLocation(source) : null, value));

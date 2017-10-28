@@ -20,8 +20,8 @@ class ConditionXmlLoader {
     private static final XmlLoaderUtil<XmlLoader<ConditionBehaviour>> conditionBehaviourLoaderUtil = new XmlLoaderUtil<XmlLoader<ConditionBehaviour>>();
 
     static Condition load(Element element, Set<Object> allIds) throws RegurgitatorException {
-        String source = getAttribute(element, SOURCE);
-        String expectation = getAttribute(element, EXPECTATION);
+        String source = loadOptionalStr(element, SOURCE);
+        String expectation = loadOptionalStr(element, EXPECTATION);
 
         Attr behaviourAttr = getBehaviourAttribute(element);
         ConditionBehaviour behaviour;

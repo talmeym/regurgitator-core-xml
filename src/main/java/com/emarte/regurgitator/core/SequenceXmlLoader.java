@@ -32,7 +32,7 @@ public class SequenceXmlLoader implements XmlLoader<Step> {
     }
 
     private Isolate loadIsolate(Element element) {
-        String isolateStr = getAttribute(element, CoreConfigConstants.ISOLATE);
+        String isolateStr = loadOptionalStr(element, CoreConfigConstants.ISOLATE);
         return isolateStr != null ? new Isolate(isolateStr.contains("session"), isolateStr.contains("param")) : null;
     }
 }

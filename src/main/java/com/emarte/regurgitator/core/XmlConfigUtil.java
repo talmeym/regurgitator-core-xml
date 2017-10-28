@@ -20,7 +20,7 @@ public class XmlConfigUtil {
     private static final Random RANDOM = new Random();
 
     public static String loadId(Element element, Set<Object> ids) throws RegurgitatorException {
-        String idAttr = getAttribute(element, ID);
+        String idAttr = loadOptionalStr(element, ID);
         String id = idAttr != null ? idAttr : element.getNodeName() + "-" + RANDOM.nextInt(100000);
 
         if(!ids.add(id)) {
@@ -35,16 +35,16 @@ public class XmlConfigUtil {
     }
 
     private static String loadName(Element element) {
-        return new ContextLocation(getAttribute(element, NAME)).getName();
+        return new ContextLocation(loadOptionalStr(element, NAME)).getName();
     }
 
     private static ParameterType loadType(Element element) throws RegurgitatorException {
-        String type = getAttribute(element, TYPE);
+        String type = loadOptionalStr(element, TYPE);
         return type != null ? parameterType(type) : STRING;
     }
 
     private static ConflictPolicy loadConflictPolicy(Element element) {
-        String conflictPolicy = getAttribute(element, MERGE);
+        String conflictPolicy = loadOptionalStr(element, MERGE);
         return conflictPolicy != null ? ConflictPolicy.valueOf(conflictPolicy) : REPLACE;
     }
 
@@ -93,7 +93,7 @@ public class XmlConfigUtil {
         return null;
     }
 
-    public static String getMandatoryAttribute(Element element, String name) throws RegurgitatorException {
+    public static String loadMandatoryStr(Element element, String name) throws RegurgitatorException {
         Attr attr = element.getAttributeNode(name);
 
         if(attr != null) {
@@ -103,23 +103,28 @@ public class XmlConfigUtil {
         throw new RegurgitatorException("Xml element missing mandatory attribute: " + name);
     }
 
-    public static String getAttribute(Element element, String name) {
+    public static String loadOptionalStr(Element element, String name) {
         Attr attr = element.getAttributeNode(name);
         return attr != null ? attr.getValue() : null;
     }
 
-    public static boolean loadOptionalBoolean(Element element, String name) {
-        String value = getAttribute(element, name);
+    public static boolean loadOptionalBool(Element element, String name) {
+        String value = loadOptionalStr(element, name);
         return value != null && parseBoolean(value);
     }
 
     public static Integer loadOptionalInt(Element element, String name) {
-        String value = getAttribute(element, name);
-        return value != null ? Integer.valueOf(value) : null;
+        String value = loadOptionalStr(element, name);
+        return value != null ? Integer.parseInt(value) : null;
+    }
+
+    public static Long loadOptionalLong(Element element, String name) {
+        String value = loadOptionalStr(element, name);
+        return value != null ? Long.parseLong(value) : null;
     }
 
     public static String loadContext(Element element) {
-        return new ContextLocation(getAttribute(element, NAME)).getContext();
+        return new ContextLocation(loadOptionalStr(element, NAME)).getContext();
     }
 
     private static Element getChildElement(Element element, int index) {
@@ -128,7 +133,7 @@ public class XmlConfigUtil {
     }
 
     public static ValueProcessor loadOptionalValueProcessor(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
-        String processorAttr = getAttribute(element, PROCESSOR);
+        String processorAttr = loadOptionalStr(element, PROCESSOR);
         ValueProcessor processor = null;
 
         if (processorAttr != null) {

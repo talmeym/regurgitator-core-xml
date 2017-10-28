@@ -28,7 +28,7 @@ public class DecisionXmlLoader implements XmlLoader<Step> {
         Element rulesElement = getChildElement(element, RULES);
         List<Rule> rules = loadRules(rulesElement, stepIds, allIds);
 
-        String behaviourAttr = getAttribute(rulesElement, BEHAVIOUR);
+        String behaviourAttr = loadOptionalStr(rulesElement, BEHAVIOUR);
         RulesBehaviour behaviour;
 
         if(behaviourAttr != null) {
@@ -45,7 +45,7 @@ public class DecisionXmlLoader implements XmlLoader<Step> {
         }
 
         log.debug("Loaded decision '{}'", id);
-        return new Decision(id, steps, rules, behaviour, checkDefaultStepId(getAttribute(rulesElement, DEFAULT_STEP), stepIds));
+        return new Decision(id, steps, rules, behaviour, checkDefaultStepId(loadOptionalStr(rulesElement, DEFAULT_STEP), stepIds));
     }
 
     private List<Step> loadSteps(Element element, Set<Object> allIds) throws RegurgitatorException {

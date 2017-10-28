@@ -10,7 +10,7 @@ import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
 import static com.emarte.regurgitator.core.Log.getLog;
-import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 import static java.lang.Boolean.parseBoolean;
 
 public class IndexOfProcessorXmlLoader implements XmlLoader<IndexOfProcessor> {
@@ -18,9 +18,9 @@ public class IndexOfProcessorXmlLoader implements XmlLoader<IndexOfProcessor> {
 
     @Override
     public IndexOfProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
-        String source = getAttribute(element, SOURCE);
-        String value = getAttribute(element, VALUE);
-        String backwards = getAttribute(element, LAST);
+        String source = loadOptionalStr(element, SOURCE);
+        String value = loadOptionalStr(element, VALUE);
+        String backwards = loadOptionalStr(element, LAST);
         log.debug("Loaded index of processor");
         return new IndexOfProcessor(new ValueSource(source != null ? new ContextLocation(source) : null, value), parseBoolean(backwards));
     }

@@ -11,8 +11,8 @@ import java.util.Set;
 import static com.emarte.regurgitator.core.CoreConfigConstants.FORMAT;
 import static com.emarte.regurgitator.core.CoreConfigConstants.INDEX;
 import static com.emarte.regurgitator.core.Log.getLog;
-import static com.emarte.regurgitator.core.XmlConfigUtil.getAttribute;
-import static com.emarte.regurgitator.core.XmlConfigUtil.getMandatoryAttribute;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadMandatoryStr;
 import static java.lang.Integer.parseInt;
 
 public class ExtractProcessorXmlLoader implements XmlLoader<ExtractProcessor> {
@@ -21,6 +21,6 @@ public class ExtractProcessorXmlLoader implements XmlLoader<ExtractProcessor> {
     @Override
     public ExtractProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
         log.debug("Loaded extract processor");
-        return new ExtractProcessor(getAttribute(element, FORMAT), parseInt(getMandatoryAttribute(element, INDEX)));
+        return new ExtractProcessor(loadOptionalStr(element, FORMAT), parseInt(loadMandatoryStr(element, INDEX)));
     }
 }

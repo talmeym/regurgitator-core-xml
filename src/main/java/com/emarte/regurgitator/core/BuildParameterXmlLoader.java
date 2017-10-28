@@ -20,7 +20,7 @@ public class BuildParameterXmlLoader implements XmlLoader<Step> {
 
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
-        String builderAttr = getAttribute(element, BUILDER);
+        String builderAttr = loadOptionalStr(element, BUILDER);
         ValueBuilder valueBuilder;
         int processorIndex = 0;
 

@@ -24,7 +24,7 @@ class RuleXmlLoader {
             conditions.add(ConditionXmlLoader.load(conditionElements.get(i), allIds));
         }
 
-        String stepId = getAttribute(element, STEP);
+        String stepId = loadOptionalStr(element, STEP);
 
         if(!stepIds.contains(stepId)) {
             throw new RegurgitatorException("Error with configuration: rule step not found: " + stepId);
