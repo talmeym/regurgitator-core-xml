@@ -118,7 +118,7 @@ the behaviour of a condition can also be specified as a child element of the par
 
 this allows certain condition behaviours to have attributes beyond the operand (in the example above, "/rg:config/@id") which is always the text of the child element.
 
-there are 5 core condition behaviours:
+there are 6 core condition behaviours:
 
 | value | behaviour |
 | :--- | :--- |
@@ -127,6 +127,7 @@ there are 5 core condition behaviours:
 | ``exists`` | checks the parameter value exists (read as 'parameter exists') |
 | ``contains`` | checks the parameter value contains the operand |
 | ``contains-param`` | checks the parameter value contains the value of another parameter |
+| ``matches`` | checks the parameter values matches a regex |
 
 ### create-parameter
 
