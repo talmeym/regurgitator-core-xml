@@ -125,6 +125,7 @@
     </xs:complexType>
 
     <xs:complexType name="sequence-ref">
+        <xs:attribute name="id" type="rgc:populated-string"/>
         <xs:attribute name="file" type="rgc:populated-string" use="required"/>
     </xs:complexType>
 
