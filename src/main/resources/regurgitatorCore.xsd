@@ -44,7 +44,7 @@
 
     <xs:complexType name="create-parameter">
         <xs:sequence>
-            <xs:any minOccurs="0"/>
+            <xs:any minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="source" type="rgc:populated-string"/>
         <xs:attribute name="value" type="rgc:populated-string"/>
@@ -55,7 +55,7 @@
 
     <xs:complexType name="create-response">
         <xs:sequence>
-            <xs:any minOccurs="0"/>
+            <xs:any minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="source" type="rgc:populated-string"/>
         <xs:attribute name="value" type="rgc:populated-string"/>
@@ -77,7 +77,7 @@
 
     <xs:complexType name="build-parameter">
         <xs:sequence>
-            <xs:any minOccurs="0" maxOccurs="2"/>
+            <xs:any minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="builder" type="rgc:populated-string"/>
         <xs:attribute name="processor" type="rgc:populated-string"/>
@@ -86,7 +86,7 @@
 
     <xs:complexType name="generate-parameter">
         <xs:sequence>
-            <xs:any minOccurs="0" maxOccurs="2"/>
+            <xs:any minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="generator" type="rgc:populated-string"/>
         <xs:attribute name="processor" type="rgc:populated-string"/>
