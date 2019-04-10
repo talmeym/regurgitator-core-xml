@@ -6,6 +6,7 @@ package com.emarte.regurgitator.core;
 
 import org.w3c.dom.Element;
 
+import java.util.List;
 import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
@@ -21,7 +22,7 @@ public class CreateParameterXmlLoader extends CreateParameterLoader implements X
         String source = loadOptionalStr(element, SOURCE);
         String value = loadOptionalStr(element, VALUE);
         String file = loadOptionalStr(element, FILE);
-        ValueProcessor processor = loadOptionalValueProcessor(element, 0, allIds);
-        return buildCreateParameter(id, loadPrototype(element), loadContext(element), source, value, file, processor, log);
+        List<ValueProcessor> processors = loadOptionalValueProcessors(element, 0, allIds);
+        return buildCreateParameter(id, loadPrototype(element), loadContext(element), source, value, file, processors, log);
     }
 }

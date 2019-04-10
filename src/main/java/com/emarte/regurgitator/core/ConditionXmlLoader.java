@@ -4,9 +4,13 @@
  */
 package com.emarte.regurgitator.core;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.EXPECTATION;
 import static com.emarte.regurgitator.core.CoreConfigConstants.SOURCE;

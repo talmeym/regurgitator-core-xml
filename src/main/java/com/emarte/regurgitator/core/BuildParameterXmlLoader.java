@@ -6,6 +6,7 @@ package com.emarte.regurgitator.core;
 
 import org.w3c.dom.Element;
 
+import java.util.List;
 import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.BUILDER;
@@ -36,10 +37,10 @@ public class BuildParameterXmlLoader implements XmlLoader<Step> {
             processorIndex++;
         }
 
-        ValueProcessor processor = loadOptionalValueProcessor(element, processorIndex, allIds);
+        List<ValueProcessor> processors = loadOptionalValueProcessors(element, processorIndex, allIds);
 
         String id = loadId(element, allIds);
         log.debug("Loaded built parameter '{}'", id);
-        return new BuildParameter(id, loadPrototype(element), loadContext(element), valueBuilder, processor);
+        return new BuildParameter(id, loadPrototype(element), loadContext(element), valueBuilder, processors);
     }
 }

@@ -6,7 +6,9 @@ package com.emarte.regurgitator.core;
 
 import org.w3c.dom.Element;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.*;

@@ -6,7 +6,9 @@ package com.emarte.regurgitator.core;
 
 import org.w3c.dom.Element;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.CONDITION;
 import static com.emarte.regurgitator.core.CoreConfigConstants.STEP;

@@ -4,9 +4,15 @@
  */
 package com.emarte.regurgitator.core;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 import static com.emarte.regurgitator.core.ConflictPolicy.REPLACE;
 import static com.emarte.regurgitator.core.CoreConfigConstants.*;
@@ -34,8 +40,8 @@ public class XmlConfigUtil {
         return new ParameterPrototype(loadName(element), loadType(element), loadConflictPolicy(element));
     }
 
-    private static String loadName(Element element) {
-        return new ContextLocation(loadOptionalStr(element, NAME)).getName();
+    private static String loadName(Element element) throws RegurgitatorException {
+        return new ContextLocation(loadMandatoryStr(element, NAME)).getName();
     }
 
     private static ParameterType loadType(Element element) throws RegurgitatorException {
@@ -123,29 +129,29 @@ public class XmlConfigUtil {
         return value != null ? Long.parseLong(value) : null;
     }
 
-    public static String loadContext(Element element) {
-        return new ContextLocation(loadOptionalStr(element, NAME)).getContext();
+    public static String loadContext(Element element) throws RegurgitatorException {
+        return new ContextLocation(loadMandatoryStr(element, NAME)).getContext();
     }
 
-    private static Element getChildElement(Element element, int index) {
+    private static List<Element> getChildElements(Element element, int startIndex) {
         List<Element> elements = getChildElements(element);
-        return index < elements.size() ? elements.get(index) : null;
+        return startIndex < elements.size() ? elements.subList(startIndex, elements.size()) : new ArrayList<Element>();
     }
 
-    public static ValueProcessor loadOptionalValueProcessor(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
+    public static List<ValueProcessor> loadOptionalValueProcessors(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
+        List<ValueProcessor> processors = new ArrayList<ValueProcessor>();
         String processorAttr = loadOptionalStr(element, PROCESSOR);
-        ValueProcessor processor = null;
 
         if (processorAttr != null) {
-            processor = valueProcessor(processorAttr);
+            processors.add(valueProcessor(processorAttr));
         } else {
-            Element processorElement = getChildElement(element, expectedChildIndex);
+            List<Element> processorElements = getChildElements(element, expectedChildIndex);
 
-            if (processorElement != null) {
-                processor = processorLoaderUtil.deriveLoader(processorElement).load(processorElement, allIds);
+            for(Element processorElement: processorElements) {
+                processors.add(processorLoaderUtil.deriveLoader(processorElement).load(processorElement, allIds));
             }
         }
 
-        return processor;
+        return processors;
     }
 }

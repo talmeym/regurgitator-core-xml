@@ -27,7 +27,7 @@
 
     <xs:complexType name="contains-one-child">
         <xs:sequence>
-            <xs:any maxOccurs="1" minOccurs="1"/>
+            <xs:any/>
         </xs:sequence>
     </xs:complexType>
 

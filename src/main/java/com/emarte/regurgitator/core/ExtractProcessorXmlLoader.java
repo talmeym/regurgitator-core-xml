@@ -11,8 +11,8 @@ import java.util.Set;
 import static com.emarte.regurgitator.core.CoreConfigConstants.FORMAT;
 import static com.emarte.regurgitator.core.CoreConfigConstants.INDEX;
 import static com.emarte.regurgitator.core.Log.getLog;
-import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 import static com.emarte.regurgitator.core.XmlConfigUtil.loadMandatoryStr;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 import static java.lang.Integer.parseInt;
 
 public class ExtractProcessorXmlLoader implements XmlLoader<ExtractProcessor> {

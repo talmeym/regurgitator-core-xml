@@ -6,6 +6,7 @@ package com.emarte.regurgitator.core;
 
 import org.w3c.dom.Element;
 
+import java.util.List;
 import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.GENERATOR;
@@ -36,10 +37,10 @@ public class GenerateParameterXmlLoader implements XmlLoader<Step> {
             processorIndex++;
         }
 
-        ValueProcessor processor = loadOptionalValueProcessor(element, processorIndex, allIds);
+        List<ValueProcessor> processors = loadOptionalValueProcessors(element, processorIndex, allIds);
 
         String id = loadId(element, allIds);
         log.debug("Loaded generate parameter '{}'", id);
-        return new GenerateParameter(id, loadPrototype(element), loadContext(element), generator, processor);
+        return new GenerateParameter(id, loadPrototype(element), loadContext(element), generator, processors);
     }
 }

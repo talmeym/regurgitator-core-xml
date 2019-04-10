@@ -10,8 +10,8 @@ import java.util.Set;
 
 import static com.emarte.regurgitator.core.CoreConfigConstants.FOLDER;
 import static com.emarte.regurgitator.core.Log.getLog;
-import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 import static com.emarte.regurgitator.core.XmlConfigUtil.loadId;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 
 public class RecordMessageXmlLoader implements XmlLoader<RecordMessage> {
     private static final Log log = getLog(RecordMessageXmlLoader.class);

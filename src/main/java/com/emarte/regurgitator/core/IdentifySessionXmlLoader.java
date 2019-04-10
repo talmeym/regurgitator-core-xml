@@ -11,8 +11,8 @@ import java.util.Set;
 import static com.emarte.regurgitator.core.CoreConfigConstants.SOURCE;
 import static com.emarte.regurgitator.core.CoreConfigConstants.VALUE;
 import static com.emarte.regurgitator.core.Log.getLog;
-import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 import static com.emarte.regurgitator.core.XmlConfigUtil.loadId;
+import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 
 public class IdentifySessionXmlLoader extends IdentifySessionLoader implements XmlLoader<Step> {
     private static final Log log = getLog(IdentifySessionXmlLoader.class);
