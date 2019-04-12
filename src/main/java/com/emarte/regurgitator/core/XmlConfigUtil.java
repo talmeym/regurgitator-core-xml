@@ -141,15 +141,28 @@ public class XmlConfigUtil {
     public static List<ValueProcessor> loadOptionalValueProcessors(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
         List<ValueProcessor> processors = new ArrayList<ValueProcessor>();
         String processorAttr = loadOptionalStr(element, PROCESSOR);
+        String processorsAttr = loadOptionalStr(element, PROCESSORS);
+
+        if(processorAttr != null && processorsAttr != null) {
+            throw new RegurgitatorException("One of processor or processors is required");
+        }
 
         if (processorAttr != null) {
             processors.add(valueProcessor(processorAttr));
-        } else {
-            List<Element> processorElements = getChildElements(element, expectedChildIndex);
-
-            for(Element processorElement: processorElements) {
-                processors.add(processorLoaderUtil.deriveLoader(processorElement).load(processorElement, allIds));
+        } else if(processorsAttr != null) {
+            for(String part: processorsAttr.split(",")) {
+                processors.add(valueProcessor(part));
             }
+        }
+
+        List<Element> processorElements = getChildElements(element, expectedChildIndex);
+
+        if(processorElements.size() > 0 && processors.size() > 0) {
+            throw new RegurgitatorException("One of processor[s] attribute or child element required");
+        }
+
+        for(Element processorElement: processorElements) {
+            processors.add(processorLoaderUtil.deriveLoader(processorElement).load(processorElement, allIds));
         }
 
         return processors;

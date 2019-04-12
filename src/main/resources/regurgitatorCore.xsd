@@ -50,6 +50,7 @@
         <xs:attribute name="value" type="rgc:populated-string"/>
         <xs:attribute name="file" type="rgc:populated-string"/>
         <xs:attribute name="processor" type="rgc:populated-string"/>
+        <xs:attribute name="processors" type="rgc:populated-string"/>
         <xs:attributeGroup ref="rgc:prototyped"/>
     </xs:complexType>
 
@@ -61,6 +62,7 @@
         <xs:attribute name="value" type="rgc:populated-string"/>
         <xs:attribute name="file" type="rgc:populated-string"/>
         <xs:attribute name="processor" type="rgc:populated-string"/>
+        <xs:attribute name="processors" type="rgc:populated-string"/>
         <xs:attribute name="id" type="rgc:populated-string"/>
     </xs:complexType>
 
@@ -81,6 +83,7 @@
         </xs:sequence>
         <xs:attribute name="builder" type="rgc:populated-string"/>
         <xs:attribute name="processor" type="rgc:populated-string"/>
+        <xs:attribute name="processors" type="rgc:populated-string"/>
         <xs:attributeGroup ref="rgc:prototyped"/>
     </xs:complexType>
 
@@ -90,6 +93,7 @@
         </xs:sequence>
         <xs:attribute name="generator" type="rgc:populated-string"/>
         <xs:attribute name="processor" type="rgc:populated-string"/>
+        <xs:attribute name="processors" type="rgc:populated-string"/>
         <xs:attributeGroup ref="rgc:prototyped"/>
     </xs:complexType>
 
@@ -108,7 +112,7 @@
 
     <xs:complexType name="steps">
         <xs:sequence>
-            <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:choice maxOccurs="unbounded">
                 <xs:any maxOccurs="unbounded"/>
             </xs:choice>
         </xs:sequence>
