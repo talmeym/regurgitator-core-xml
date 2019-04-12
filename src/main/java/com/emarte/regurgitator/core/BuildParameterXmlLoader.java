@@ -22,18 +22,18 @@ public class BuildParameterXmlLoader implements XmlLoader<Step> {
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         String builderAttr = loadOptionalStr(element, BUILDER);
-        ValueBuilder valueBuilder;
+        ValueBuilder builder;
         int processorIndex = 0;
 
         if(builderAttr != null) {
-            valueBuilder = valueBuilder(builderAttr);
+            builder = valueBuilder(builderAttr);
         } else {
             if(getChildElements(element).size() == 0) {
                 throw new RegurgitatorException("No builder defined");
             }
 
             Element builderElement = getFirstChild(element);
-            valueBuilder = builderLoaderUtil.deriveLoader(builderElement).load(builderElement, allIds);
+            builder = builderLoaderUtil.deriveLoader(builderElement).load(builderElement, allIds);
             processorIndex++;
         }
 
@@ -41,6 +41,6 @@ public class BuildParameterXmlLoader implements XmlLoader<Step> {
 
         String id = loadId(element, allIds);
         log.debug("Loaded built parameter '{}'", id);
-        return new BuildParameter(id, loadPrototype(element), loadContext(element), valueBuilder, processors);
+        return new BuildParameter(id, loadPrototype(element), loadContext(element), builder, processors);
     }
 }
