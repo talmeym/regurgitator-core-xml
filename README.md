@@ -288,7 +288,7 @@ the output is a json document representing the message state, showing each ``con
 }
 ```
 
-if a folder is ommitted, the message state is output to standard out. 
+if a folder is omitted, the ``message`` state is output to standard out. 
 
 ## core constructs in xml
 
