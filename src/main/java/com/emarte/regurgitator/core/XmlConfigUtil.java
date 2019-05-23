@@ -138,6 +138,16 @@ public class XmlConfigUtil {
         return startIndex < elements.size() ? elements.subList(startIndex, elements.size()) : new ArrayList<Element>();
     }
 
+    public static List<ValueProcessor> loadMandatoryValueProcessors(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
+        List<ValueProcessor> processors = loadOptionalValueProcessors(element, expectedChildIndex, allIds);
+
+        if(processors != null && processors.size() > 0) {
+            return processors;
+        }
+
+        throw new RegurgitatorException("element missing mandatory processor or processors");
+    }
+
     public static List<ValueProcessor> loadOptionalValueProcessors(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
         List<ValueProcessor> processors = new ArrayList<ValueProcessor>();
         String processorAttr = loadOptionalStr(element, PROCESSOR);
