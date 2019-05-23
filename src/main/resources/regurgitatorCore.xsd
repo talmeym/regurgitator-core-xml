@@ -151,6 +151,12 @@
         <xs:attribute name="value" type="rgc:populated-string"/>
     </xs:complexType>
 
+    <xs:complexType name="list-processor">
+        <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="size-processor">
         <xs:attribute name="as-index" type="xs:boolean"/>
     </xs:complexType>
@@ -184,4 +190,5 @@
     <xs:element name="index-processor" type="rg:index-processor"/>
     <xs:element name="size-processor" type="rg:size-processor"/>
     <xs:element name="record-message" type="rg:record-message"/>
+    <xs:element name="list-processor" type="rg:list-processor"/>
 </xs:schema>
