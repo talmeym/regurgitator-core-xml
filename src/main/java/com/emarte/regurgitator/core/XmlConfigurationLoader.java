@@ -6,8 +6,7 @@ package com.emarte.regurgitator.core;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.xml.sax.EntityResolver;
-import org.xml.sax.InputSource;
+import org.xml.sax.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -32,6 +31,23 @@ class XmlConfigurationLoader implements ConfigurationLoader {
                 public InputSource resolveEntity(String publicId, String systemId) throws IOException {
                     String resolvePath = "classpath:/" + systemId.substring(systemId.lastIndexOf("/") + 1);
                     return new InputSource(getInputStreamForFile(resolvePath));
+                }
+            });
+
+            dBuilder.setErrorHandler(new ErrorHandler() {
+                @Override
+                public void warning(SAXParseException exception) throws SAXException {
+
+                }
+
+                @Override
+                public void error(SAXParseException exception) throws SAXException {
+                    throw new SAXException("Error: ", exception);
+                }
+
+                @Override
+                public void fatalError(SAXParseException exception) throws SAXException {
+                    throw new SAXException("Error: ", exception);
                 }
             });
 
