@@ -146,7 +146,7 @@
         <xs:attribute name="last" type="xs:boolean"/>
     </xs:complexType>
 
-    <xs:complexType name="index-processor">
+    <xs:complexType name="at-index-processor">
         <xs:attribute name="source" type="rgc:populated-string"/>
         <xs:attribute name="value" type="rgc:populated-string"/>
     </xs:complexType>
@@ -155,6 +155,18 @@
         <xs:sequence>
             <xs:any minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="set-at-index-processor">
+        <xs:attribute name="index-source" type="rgc:populated-string"/>
+        <xs:attribute name="index" type="rgc:populated-string"/>
+        <xs:attribute name="value-source" type="rgc:populated-string"/>
+        <xs:attribute name="value" type="rgc:populated-string"/>
+    </xs:complexType>
+
+    <xs:complexType name="remove-at-index-processor">
+        <xs:attribute name="source" type="rgc:populated-string"/>
+        <xs:attribute name="value" type="rgc:populated-string"/>
     </xs:complexType>
 
     <xs:complexType name="size-processor">
@@ -187,8 +199,10 @@
     <xs:element name="number-generator" type="rg:number-generator"/>
     <xs:element name="uuid-generator" type="rg:uuid-generator"/>
     <xs:element name="index-of-processor" type="rg:index-of-processor"/>
-    <xs:element name="index-processor" type="rg:index-processor"/>
+    <xs:element name="at-index-processor" type="rg:at-index-processor"/>
     <xs:element name="size-processor" type="rg:size-processor"/>
     <xs:element name="record-message" type="rg:record-message"/>
     <xs:element name="list-processor" type="rg:list-processor"/>
+    <xs:element name="set-at-index-processor" type="rg:set-at-index-processor"/>
+    <xs:element name="remove-at-index-processor" type="rg:remove-at-index-processor"/>
 </xs:schema>

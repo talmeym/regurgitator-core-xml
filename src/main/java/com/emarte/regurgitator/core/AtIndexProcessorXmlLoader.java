@@ -13,15 +13,11 @@ import static com.emarte.regurgitator.core.CoreConfigConstants.VALUE;
 import static com.emarte.regurgitator.core.Log.getLog;
 import static com.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 
-public class IndexProcessorXmlLoader implements XmlLoader<IndexProcessor> {
-    private static final Log log = getLog(IndexProcessorXmlLoader.class);
+public class AtIndexProcessorXmlLoader extends AtIndexProcessorLoader implements XmlLoader<AtIndexProcessor> {
+    private static final Log log = getLog(AtIndexProcessorXmlLoader.class);
 
     @Override
-    public IndexProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
-        String source = loadOptionalStr(element, SOURCE);
-        String value = loadOptionalStr(element, VALUE);
-
-        log.debug("Loaded index processor");
-        return new IndexProcessor(new ValueSource(source != null ? new ContextLocation(source) : null, value));
+    public AtIndexProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
+        return buildAtIndexProcessor(loadOptionalStr(element, SOURCE), loadOptionalStr(element, VALUE), log);
     }
 }
