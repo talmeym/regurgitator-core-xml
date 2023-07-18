@@ -42,7 +42,7 @@ class ConditionXmlLoader {
 
         String id = loadId(element, allIds);
         log.debug("Loaded condition '{}'", id);
-        return new Condition(id, new ContextLocation(source), value, expectation != null ? Boolean.valueOf(expectation) : true, behaviour);
+        return new Condition(id, new ContextLocation(source), value, expectation == null || Boolean.parseBoolean(expectation), behaviour);
     }
 
     private static Attr getBehaviourAttribute(Element element) throws RegurgitatorException {

@@ -23,8 +23,7 @@ public class SequenceXmlLoader implements XmlLoader<Step> {
 
         List<Element> children = getChildElements(element);
 
-        for(int i = 0; i < children.size(); i++) {
-            Element stepElement = children.get(i);
+        for (Element stepElement : children) {
             steps.add(loaderUtil.deriveLoader(stepElement).load(stepElement, allIds));
         }
 

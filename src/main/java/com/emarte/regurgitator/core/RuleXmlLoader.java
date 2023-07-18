@@ -22,8 +22,8 @@ class RuleXmlLoader {
         List<Condition> conditions = new ArrayList<Condition>();
         List<Element> conditionElements = getChildElements(element, CONDITION);
 
-        for (int i = 0; i < conditionElements.size(); i++) {
-            conditions.add(ConditionXmlLoader.load(conditionElements.get(i), allIds));
+        for (Element conditionElement : conditionElements) {
+            conditions.add(ConditionXmlLoader.load(conditionElement, allIds));
         }
 
         String stepId = loadOptionalStr(element, STEP);

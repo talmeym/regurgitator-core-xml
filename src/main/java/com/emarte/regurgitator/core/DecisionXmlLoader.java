@@ -26,9 +26,9 @@ public class DecisionXmlLoader implements XmlLoader<Step> {
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
         String id = loadId(element, allIds);
-        List<Step> steps = loadSteps(getChildElement(element, STEPS), allIds);
+        List<Step> steps = loadSteps(getMandatoryChildElement(element, STEPS), allIds);
         Set<Object> stepIds = stepIds(steps);
-        Element rulesElement = getChildElement(element, RULES);
+        Element rulesElement = getMandatoryChildElement(element, RULES);
         List<Rule> rules = loadRules(rulesElement, stepIds, allIds);
 
         String behaviourAttr = loadOptionalStr(rulesElement, BEHAVIOUR);
@@ -37,7 +37,7 @@ public class DecisionXmlLoader implements XmlLoader<Step> {
         if(behaviourAttr != null) {
             behaviour = rulesBehaviour(behaviourAttr);
         } else {
-            Element behaviourElement = getChildElement(rulesElement, BEHAVIOUR);
+            Element behaviourElement = getOptionalChildElement(rulesElement, BEHAVIOUR);
 
             if(behaviourElement != null) {
                 Element childElement = getFirstChild(behaviourElement);
@@ -55,9 +55,7 @@ public class DecisionXmlLoader implements XmlLoader<Step> {
         List<Step> allSteps = new ArrayList<Step>();
         List<Element> children = getChildElements(element);
 
-        for (int i = 0; i < children.size(); i++) {
-            Element innerElement = children.get(i);
-
+        for (Element innerElement : children) {
             if (!innerElement.getNodeName().equals(RULES)) {
                 allSteps.add(stepLoaderUtil.deriveLoader(innerElement).load(innerElement, allIds));
             }
@@ -70,8 +68,8 @@ public class DecisionXmlLoader implements XmlLoader<Step> {
         List<Rule> rules = new ArrayList<Rule>();
         List<Element> rulesElements = getChildElements(element, RULE);
 
-        for (int i = 0; i < rulesElements.size(); i++) {
-            rules.add(loadRule(rulesElements.get(i), stepIds, allIds));
+        for (Element rulesElement : rulesElements) {
+            rules.add(loadRule(rulesElement, stepIds, allIds));
         }
 
         return rules;

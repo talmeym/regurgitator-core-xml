@@ -44,7 +44,7 @@ public class XmlConfigUtil {
         return new ContextLocation(loadMandatoryStr(element, NAME)).getName();
     }
 
-    private static ParameterType loadType(Element element) throws RegurgitatorException {
+    private static ParameterType<?> loadType(Element element) throws RegurgitatorException {
         String type = loadOptionalStr(element, TYPE);
         return type != null ? parameterType(type) : STRING;
     }
@@ -76,6 +76,7 @@ public class XmlConfigUtil {
                 elements.add((Element) node);
             }
         }
+
         return elements;
     }
 
@@ -89,7 +90,17 @@ public class XmlConfigUtil {
         throw new RegurgitatorException("Element has no children: " + element.getLocalName());
     }
 
-    public static Element getChildElement(Element element, String name) {
+    public static Element getMandatoryChildElement(Element element, String name) throws RegurgitatorException {
+        List<Element> elements = getChildElements(element, name);
+
+        if(elements.size() > 0) {
+            return elements.get(0);
+        }
+
+        throw new RegurgitatorException("Xml element missing mandatory child element: " + name);
+    }
+
+    public static Element getOptionalChildElement(Element element, String name) {
         List<Element> elements = getChildElements(element, name);
 
         if(elements.size() > 0) {
@@ -116,7 +127,7 @@ public class XmlConfigUtil {
 
     public static boolean loadOptionalBool(Element element, String name) {
         String value = loadOptionalStr(element, name);
-        return value != null && parseBoolean(value);
+        return parseBoolean(value);
     }
 
     public static Integer loadOptionalInt(Element element, String name) {
@@ -141,7 +152,7 @@ public class XmlConfigUtil {
     public static List<ValueProcessor> loadMandatoryValueProcessors(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
         List<ValueProcessor> processors = loadOptionalValueProcessors(element, expectedChildIndex, allIds);
 
-        if(processors != null && processors.size() > 0) {
+        if(processors.size() > 0) {
             return processors;
         }
 

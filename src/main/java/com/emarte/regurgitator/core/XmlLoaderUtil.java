@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
 
 import static com.emarte.regurgitator.core.StringUtil.*;
 
-public class XmlLoaderUtil<TYPE extends Loader> extends LoaderUtil<Element, TYPE> {
+public class XmlLoaderUtil<TYPE extends Loader<?, ?>> extends LoaderUtil<Element, TYPE> {
 
     @Override
     public TYPE deriveLoader(Element element) throws RegurgitatorException {
