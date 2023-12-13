@@ -17,7 +17,7 @@ public class IndexOfProcessorXmlLoader implements XmlLoader<IndexOfProcessor> {
     private static final Log log = getLog(IndexOfProcessorXmlLoader.class);
 
     @Override
-    public IndexOfProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
+    public IndexOfProcessor load(Element element, Set<Object> allIds) {
         String source = loadOptionalStr(element, SOURCE);
         String value = loadOptionalStr(element, VALUE);
         String backwards = loadOptionalStr(element, LAST);

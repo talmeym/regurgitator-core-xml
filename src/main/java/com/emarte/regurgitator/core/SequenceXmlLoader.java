@@ -15,11 +15,11 @@ import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 public class SequenceXmlLoader implements XmlLoader<Step> {
     private static final Log log = getLog(SequenceXmlLoader.class);
-    private static final XmlLoaderUtil<XmlLoader<Step>> loaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
+    private static final XmlLoaderUtil<XmlLoader<Step>> loaderUtil = new XmlLoaderUtil<>();
 
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
-        List<Step> steps = new ArrayList<Step>();
+        List<Step> steps = new ArrayList<>();
 
         List<Element> children = getChildElements(element);
 

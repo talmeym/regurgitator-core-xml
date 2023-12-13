@@ -10,14 +10,13 @@ import org.xml.sax.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashSet;
 
 import static com.emarte.regurgitator.core.FileUtil.getInputStreamForFile;
 
 class XmlConfigurationLoader implements ConfigurationLoader {
-    private static final XmlLoaderUtil<XmlLoader<Step>> loaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
+    private static final XmlLoaderUtil<XmlLoader<Step>> loaderUtil = new XmlLoaderUtil<>();
 
     public Step load(InputStream input) throws RegurgitatorException {
         try {
@@ -27,16 +26,14 @@ class XmlConfigurationLoader implements ConfigurationLoader {
             dbFactory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 
-            dBuilder.setEntityResolver(new EntityResolver() {
-                public InputSource resolveEntity(String publicId, String systemId) throws IOException {
-                    String resolvePath = "classpath:/" + systemId.substring(systemId.lastIndexOf("/") + 1);
-                    return new InputSource(getInputStreamForFile(resolvePath));
-                }
+            dBuilder.setEntityResolver((publicId, systemId) -> {
+                String resolvePath = "classpath:/" + systemId.substring(systemId.lastIndexOf("/") + 1);
+                return new InputSource(getInputStreamForFile(resolvePath));
             });
 
             dBuilder.setErrorHandler(new ErrorHandler() {
                 @Override
-                public void warning(SAXParseException exception) throws SAXException {
+                public void warning(SAXParseException exception) {
 
                 }
 
@@ -54,7 +51,7 @@ class XmlConfigurationLoader implements ConfigurationLoader {
             Document doc = dBuilder.parse(input);
             Element rootElement = doc.getDocumentElement();
             rootElement.normalize();
-            return loaderUtil.deriveLoader(rootElement).load(rootElement, new HashSet<Object>());
+            return loaderUtil.deriveLoader(rootElement).load(rootElement, new HashSet<>());
         } catch (Exception e) {
             throw new RegurgitatorException("Error loading regurgitator configuration", e);
         }

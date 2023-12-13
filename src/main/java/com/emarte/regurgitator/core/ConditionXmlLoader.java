@@ -21,7 +21,7 @@ import static com.emarte.regurgitator.core.XmlConfigUtil.*;
 
 class ConditionXmlLoader {
     private static final Log log = getLog(ConditionXmlLoader.class);
-    private static final XmlLoaderUtil<XmlLoader<ConditionBehaviour>> conditionBehaviourLoaderUtil = new XmlLoaderUtil<XmlLoader<ConditionBehaviour>>();
+    private static final XmlLoaderUtil<XmlLoader<ConditionBehaviour>> conditionBehaviourLoaderUtil = new XmlLoaderUtil<>();
 
     static Condition load(Element element, Set<Object> allIds) throws RegurgitatorException {
         String source = loadMandatoryStr(element, SOURCE);
@@ -46,7 +46,7 @@ class ConditionXmlLoader {
     }
 
     private static Attr getBehaviourAttribute(Element element) throws RegurgitatorException {
-        List<Attr> behavioursFound = new ArrayList<Attr>();
+        List<Attr> behavioursFound = new ArrayList<>();
         NamedNodeMap attributes = element.getAttributes();
 
         for (int i = 0; i < attributes.getLength(); i++) {
