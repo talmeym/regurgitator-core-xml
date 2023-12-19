@@ -220,9 +220,13 @@ a create-response returns a response back from regurgitator via a message's ``re
 
 ```xml
 <rg:create-response source="parameters:response-test"/>
+```
 
+```xml
 <rg:create-response value="<xml>this is the response</xml>"/>
+```
 
+```xml
 <rg:create-response file="classpath:/canned_response.xml"/>
 ```
 a create-response can have the same value sources as create-parameter, ``source``, ``value``, or ``file``. 
@@ -318,7 +322,9 @@ a uuid-generator generates a uuid parameter value.
 <rg:generate-parameter name="new-id" type="STRING">
     <rg:uuid-generator/>
 </rg:generate-parameter>
+```
 
+```xml
 <rg:generate-parameter name="new-id" type="STRING" generator="uuid-generator"/>
 ```
 
@@ -354,7 +360,9 @@ an index-processor manipulates collection parameter values, such as ``LIST_OF_ST
 
 ```xml
 <rg:create-parameter name="data" type="LIST_OF_STRING" value="not this one,or this one,but this one"/>
+```
 
+```xml
 <rg:create-parameter name="the-one" type="STRING" source="data">
     <rg:index-processor value="2"/>
 </rg:create-parameter>
@@ -370,7 +378,9 @@ an index-of-processor manipulates collection parameter values, such as ``LIST_OF
 
 ```xml
 <rg:create-parameter name="data" type="LIST_OF_STRING" value="not this one,or this one,but this one"/>
+```
 
+```xml
 <rg:create-parameter name="index-of-the-one" type="NUMBER" source="data">
     <rg:index-of-processor value="but this one"/>
 </rg:create-parameter>
@@ -386,7 +396,9 @@ a size-processor manipulates collection parameter values, such as ``LIST_OF_STRI
 
 ```xml
 <rg:create-parameter name="data" type="LIST_OF_STRING" source="one,two,three,four"/>
+```
 
+```xml
 <rg:create-parameter name="data-size" type="NUMBER" source="data" processor="size-processor"/>
 ```
 
@@ -394,7 +406,9 @@ the optional ``as-index`` attribute returns the size zero-indexed, e.g. 3 items 
 
 ```xml
 <rg:create-parameter name="data" type="LIST_OF_STRING" value="one,two,three,four"/>
+```
 
+```xml
 <rg:create-parameter name="four" type="STRING" source="data">
     <rg:size-processor as-index="true"/>
 </rg:create-parameter>
