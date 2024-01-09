@@ -12,12 +12,12 @@ below is an example of an xml configuration file for regurgitator:
 <?xml version="1.0" encoding="UTF-8"?>
 <rg:regurgitator-configuration
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:rg="http://core.regurgitator.emarte.com"
-        xmlns:rge="http://extensions.regurgitator.emarte.com"
-        xmlns:rgw="http://web.extensions.regurgitator.emarte.com"
-        xsi:schemaLocation="http://core.regurgitator.emarte.com regurgitatorCore.xsd
-                            http://extensions.regurgitator.emarte.com regurgitatorExtensions.xsd
-                            http://web.extensions.regurgitator.emarte.com regurgitatorExtensionsWeb.xsd"
+        xmlns:rg="http://core.regurgitator.emarte.uk"
+        xmlns:rge="http://extensions.regurgitator.emarte.uk"
+        xmlns:rgw="http://web.extensions.regurgitator.emarte.uk"
+        xsi:schemaLocation="http://core.regurgitator.emarte.uk regurgitatorCore.xsd
+                            http://extensions.regurgitator.emarte.uk regurgitatorExtensions.xsd
+                            http://web.extensions.regurgitator.emarte.uk regurgitatorExtensionsWeb.xsd"
         id="my-configuration">
 
     <rg:create-parameter name="response" value="quick">
@@ -32,9 +32,9 @@ below is an example of an xml configuration file for regurgitator:
 #### schema validation
 
 every regurgitator xml file is schema validated upon load. all elements must be namespaced and each module of regurgitator has it's own namespace uri and schema file, eg:
-- regurgitator-core ``http://core.regurgitator.emarte.com`` ``regurgitatorCore.xsd``
-- regurgitator-extensions ``http://extensions.regurgitator.emarte.com``  ``regurgitatorExtensions.xsd``
-- regurgitator-extensions-web ``http://web.extensions.regurgitator.emarte.com``  ``regurgitatorExtensionsWeb.xsd``
+- regurgitator-core ``http://core.regurgitator.emarte.uk`` ``regurgitatorCore.xsd``
+- regurgitator-extensions ``http://extensions.regurgitator.emarte.uk``  ``regurgitatorExtensions.xsd``
+- regurgitator-extensions-web ``http://web.extensions.regurgitator.emarte.uk``  ``regurgitatorExtensionsWeb.xsd``
 
 #### step ids
 
