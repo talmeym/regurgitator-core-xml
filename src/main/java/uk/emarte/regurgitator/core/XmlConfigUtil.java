@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import static uk.emarte.regurgitator.core.ConflictPolicy.*;
+import static java.lang.Boolean.parseBoolean;
+import static uk.emarte.regurgitator.core.ConflictPolicy.REPLACE;
 import static uk.emarte.regurgitator.core.CoreConfigConstants.*;
-import static uk.emarte.regurgitator.core.CoreTypes.*;
+import static uk.emarte.regurgitator.core.CoreTypes.STRING;
 import static uk.emarte.regurgitator.core.EntityLookup.parameterType;
 import static uk.emarte.regurgitator.core.EntityLookup.valueProcessor;
-import static java.lang.Boolean.parseBoolean;
 
 public class XmlConfigUtil {
     private static final XmlLoaderUtil<XmlLoader<ValueProcessor>> processorLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueProcessor>>() ;

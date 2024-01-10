@@ -8,9 +8,9 @@ import org.w3c.dom.Element;
 
 import java.util.Set;
 
+import static java.lang.Boolean.parseBoolean;
 import static uk.emarte.regurgitator.core.CoreConfigConstants.*;
 import static uk.emarte.regurgitator.core.Log.getLog;
-import static java.lang.Boolean.parseBoolean;
 import static uk.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 
 public class IndexOfProcessorXmlLoader implements XmlLoader<IndexOfProcessor> {

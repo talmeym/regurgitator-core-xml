@@ -8,10 +8,10 @@ import org.w3c.dom.Element;
 
 import java.util.Set;
 
+import static java.lang.Integer.parseInt;
 import static uk.emarte.regurgitator.core.CoreConfigConstants.FORMAT;
 import static uk.emarte.regurgitator.core.CoreConfigConstants.INDEX;
 import static uk.emarte.regurgitator.core.Log.getLog;
-import static java.lang.Integer.parseInt;
 import static uk.emarte.regurgitator.core.XmlConfigUtil.loadMandatoryStr;
 import static uk.emarte.regurgitator.core.XmlConfigUtil.loadOptionalStr;
 
