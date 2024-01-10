@@ -2,11 +2,11 @@
 <!-- Copyright (C) 2017 Miles Talmey. -->
 <!-- Distributed under the MIT License (license terms are at http://opensource.org/licenses/MIT). -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:rg="http://core.regurgitator.emarte.com"
-           xmlns:rgc="http://common.regurgitator.emarte.com"
-           targetNamespace="http://core.regurgitator.emarte.com" elementFormDefault="qualified">
+           xmlns:rg="http://core.regurgitator.emarte.uk"
+           xmlns:rgc="http://common.regurgitator.emarte.uk"
+           targetNamespace="http://core.regurgitator.emarte.uk" elementFormDefault="qualified">
 
-    <xs:import schemaLocation="regurgitatorCommon.xsd" namespace="http://common.regurgitator.emarte.com"/>
+    <xs:import schemaLocation="regurgitatorCommon.xsd" namespace="http://common.regurgitator.emarte.uk"/>
 
     <xs:complexType name="substitute-processor">
         <xs:attribute name="token" type="rgc:populated-string" use="required"/>
