@@ -19,7 +19,7 @@ class RuleXmlLoader {
     private static final Log log = getLog(RuleXmlLoader.class);
 
     static Rule loadRule(Element element, Set<Object> stepIds, Set<Object> allIds) throws RegurgitatorException {
-        List<Condition> conditions = new ArrayList<Condition>();
+        List<Condition> conditions = new ArrayList<>();
         List<Element> conditionElements = getChildElements(element, CONDITION);
 
         for (Element conditionElement : conditionElements) {

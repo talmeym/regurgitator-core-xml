@@ -20,8 +20,8 @@ import static uk.emarte.regurgitator.core.XmlConfigUtil.*;
 public class DecisionXmlLoader implements XmlLoader<Step> {
     private static final Log log = getLog(DecisionXmlLoader.class);
 
-    private static final XmlLoaderUtil<XmlLoader<Step>> stepLoaderUtil = new XmlLoaderUtil<XmlLoader<Step>>();
-    private static final XmlLoaderUtil<XmlLoader<RulesBehaviour>> rulesBehaviourLoaderUtil = new XmlLoaderUtil<XmlLoader<RulesBehaviour>>();
+    private static final XmlLoaderUtil<XmlLoader<Step>> stepLoaderUtil = new XmlLoaderUtil<>();
+    private static final XmlLoaderUtil<XmlLoader<RulesBehaviour>> rulesBehaviourLoaderUtil = new XmlLoaderUtil<>();
 
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {
@@ -52,7 +52,7 @@ public class DecisionXmlLoader implements XmlLoader<Step> {
     }
 
     private List<Step> loadSteps(Element element, Set<Object> allIds) throws RegurgitatorException {
-        List<Step> allSteps = new ArrayList<Step>();
+        List<Step> allSteps = new ArrayList<>();
         List<Element> children = getChildElements(element);
 
         for (Element innerElement : children) {
@@ -65,7 +65,7 @@ public class DecisionXmlLoader implements XmlLoader<Step> {
     }
 
     private List<Rule> loadRules(Element element, Set<Object> stepIds, Set<Object> allIds) throws RegurgitatorException {
-        List<Rule> rules = new ArrayList<Rule>();
+        List<Rule> rules = new ArrayList<>();
         List<Element> rulesElements = getChildElements(element, RULE);
 
         for (Element rulesElement : rulesElements) {
@@ -84,7 +84,7 @@ public class DecisionXmlLoader implements XmlLoader<Step> {
     }
 
     private Set<Object> stepIds(List<Step> steps) {
-        Set<Object> stepIds = new HashSet<Object>(steps.size());
+        Set<Object> stepIds = new HashSet<>(steps.size());
 
         for (Step step : steps) {
             stepIds.add(step.getId());

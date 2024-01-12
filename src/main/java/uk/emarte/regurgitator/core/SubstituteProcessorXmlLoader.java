@@ -17,7 +17,7 @@ public class SubstituteProcessorXmlLoader implements XmlLoader<SubstituteProcess
     private static final Log log = getLog(SubstituteProcessorXmlLoader.class);
 
     @Override
-    public SubstituteProcessor load(Element element, Set<Object> allIds) throws RegurgitatorException {
+    public SubstituteProcessor load(Element element, Set<Object> allIds) {
         log.debug("Loaded substitute value");
         return new SubstituteProcessor(loadOptionalStr(element, TOKEN), loadOptionalStr(element, REPLACEMENT));
     }

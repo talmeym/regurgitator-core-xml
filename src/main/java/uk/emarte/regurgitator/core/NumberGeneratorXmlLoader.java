@@ -16,7 +16,7 @@ public class NumberGeneratorXmlLoader implements XmlLoader<ValueGenerator> {
     private static final Log log = getLog(NumberGeneratorXmlLoader.class);
 
     @Override
-    public ValueGenerator load(Element element, Set<Object> allIds) throws RegurgitatorException {
+    public ValueGenerator load(Element element, Set<Object> allIds) {
         log.debug("Loaded number generator");
         return new NumberGenerator(loadOptionalInt(element, MAX));
     }

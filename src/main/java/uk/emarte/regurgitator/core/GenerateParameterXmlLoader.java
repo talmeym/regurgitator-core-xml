@@ -17,7 +17,7 @@ import static uk.emarte.regurgitator.core.XmlConfigUtil.*;
 public class GenerateParameterXmlLoader implements XmlLoader<Step> {
     private static final Log log = getLog(GenerateParameterXmlLoader.class);
 
-    private static final XmlLoaderUtil<XmlLoader<ValueGenerator>> generatorLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueGenerator>>();
+    private static final XmlLoaderUtil<XmlLoader<ValueGenerator>> generatorLoaderUtil = new XmlLoaderUtil<>();
 
     @Override
     public Step load(Element element, Set<Object> allIds) throws RegurgitatorException {

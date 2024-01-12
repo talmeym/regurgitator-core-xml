@@ -22,7 +22,7 @@ import static uk.emarte.regurgitator.core.EntityLookup.parameterType;
 import static uk.emarte.regurgitator.core.EntityLookup.valueProcessor;
 
 public class XmlConfigUtil {
-    private static final XmlLoaderUtil<XmlLoader<ValueProcessor>> processorLoaderUtil = new XmlLoaderUtil<XmlLoader<ValueProcessor>>() ;
+    private static final XmlLoaderUtil<XmlLoader<ValueProcessor>> processorLoaderUtil = new XmlLoaderUtil<>() ;
     private static final Random RANDOM = new Random();
 
     public static String loadId(Element element, Set<Object> ids) throws RegurgitatorException {
@@ -67,7 +67,7 @@ public class XmlConfigUtil {
     }
 
     private static List<Element> getElements(NodeList nodes, String name) {
-        List<Element> elements = new ArrayList<Element>();
+        List<Element> elements = new ArrayList<>();
 
         for(int i = 0; i < nodes.getLength(); i++) {
             Node node = nodes.item(i);
@@ -146,7 +146,7 @@ public class XmlConfigUtil {
 
     private static List<Element> getChildElements(Element element, int startIndex) {
         List<Element> elements = getChildElements(element);
-        return startIndex < elements.size() ? elements.subList(startIndex, elements.size()) : new ArrayList<Element>();
+        return startIndex < elements.size() ? elements.subList(startIndex, elements.size()) : new ArrayList<>();
     }
 
     public static List<ValueProcessor> loadMandatoryValueProcessors(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
@@ -160,7 +160,7 @@ public class XmlConfigUtil {
     }
 
     public static List<ValueProcessor> loadOptionalValueProcessors(Element element, int expectedChildIndex, Set<Object> allIds) throws RegurgitatorException {
-        List<ValueProcessor> processors = new ArrayList<ValueProcessor>();
+        List<ValueProcessor> processors = new ArrayList<>();
         String processorAttr = loadOptionalStr(element, PROCESSOR);
         String processorsAttr = loadOptionalStr(element, PROCESSORS);
 
