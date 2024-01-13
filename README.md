@@ -38,7 +38,7 @@ every regurgitator xml file is schema validated upon load. all elements must be 
 
 #### step ids
 
-all steps in a regurgitator configuration, from ``regurgitator-configuration`` downwards, can be given an id attribute. ids can be used for identifying which step to run next (see [decision](https://github.com/talmeym/regurgitator-core-xml#decision), below) and therefore must be unique. if no id attribute is given for a step, a system-generated one will be assigned to it at load time, combining the type of the step with a 4 digit random number, eg: ``create-parameter-6557``
+all steps in a regurgitator configuration, from ``regurgitator-configuration`` downwards, can be given an id attribute. ids can be used for identifying which step to run next (see [decision](https://talmeym.github.io/regurgitator-core-xml#decision), below) and therefore must be unique. if no id attribute is given for a step, a system-generated one will be assigned to it at load time, combining the type of the step with a 4 digit random number, eg: ``create-parameter-6557``
 
 ## core steps in xml
 
@@ -158,7 +158,7 @@ there are 4 core conflict policies available:
 
 when using ``NUMBER`` and ``DECIMAL`` parameter types, ``CONCAT`` and ``REMOVE`` conflict policies behave as addition and subtraction operators. when collection-based parameter types are used, ``CONCAT`` and ``REMOVE`` behaves like java collection ``add-all`` and ``remove-all`` operations, respectively.
 
-find more details on parameter types in [regurgitator-core](https://github.com/talmeym/regurgitator-core#parameter-types).
+find more details on parameter types in [regurgitator-core](https://talmeym.github.io/regurgitator-core#parameter-types).
 
 to create a parameter in a particular parameter context, simple prepend your parameters name with the desired context, separated by a colon, eg: 
 
@@ -231,7 +231,7 @@ a create-response returns a response back from regurgitator via a message's ``re
 ```
 a create-response can have the same value sources as create-parameter, ``source``, ``value``, or ``file``. 
 
-regurgitator can be configured to return as many responses as is desired, but that may be incompatible with some single request / response usages, such as over [http](https://github.com/talmeym/regurgitator-extensions-web#regurgitator-over-http).
+regurgitator can be configured to return as many responses as is desired, but that may be incompatible with some single request / response usages, such as over [http](https://talmeym.github.io/regurgitator-extensions-web#regurgitator-over-http).
 
 ### identify-session
 
@@ -312,7 +312,7 @@ the ``max`` attribute is optional:
 <rg:generate-parameter name="param-name" type="NUMBER" generator="number-generator"/>
 ```
 
-more info on ``value-generator`` [here](https://github.com/talmeym/regurgitator-core-xml#generate-parameter).
+more info on ``value-generator`` [here](https://talmeym.github.io/regurgitator-core-xml#generate-parameter).
 
 ### uuid-generator
 
@@ -328,7 +328,7 @@ a uuid-generator generates a uuid parameter value.
 <rg:generate-parameter name="new-id" type="STRING" generator="uuid-generator"/>
 ```
 
-more info on ``value-generator`` [here](https://github.com/talmeym/regurgitator-core-xml#generate-parameter).
+more info on ``value-generator`` [here](https://talmeym.github.io/regurgitator-core-xml#generate-parameter).
 
 ### extract-processor
 
@@ -340,7 +340,7 @@ an extract-processor extracts a value from another value, using the [java.text.M
 </rg:create-parameter>
 ```
 
-more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-xml#value-processors).
+more info on ``value-processor`` [here](https://talmeym.github.io/regurgitator-core-xml#value-processors).
 
 ### substitute-processor
 
@@ -352,7 +352,7 @@ a substitute-processor manipulates ``STRING`` values, replacing occurrences of o
 </rg:create-parameter>
 ```
 
-more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-xml#value-processors).
+more info on ``value-processor`` [here](https://talmeym.github.io/regurgitator-core-xml#value-processors).
 
 ### index-processor
 
@@ -370,7 +370,7 @@ an index-processor manipulates collection parameter values, such as ``LIST_OF_ST
 
 the index to be looked up can be specified using either a ``value`` attribute, or ``source`` to retrieve the index from a parameter.
 
-more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-xml#value-processors).
+more info on ``value-processor`` [here](https://talmeym.github.io/regurgitator-core-xml#value-processors).
 
 ### index-of-processor
 
@@ -388,7 +388,7 @@ an index-of-processor manipulates collection parameter values, such as ``LIST_OF
 
 the data value to be looked up can be specified using either a ``value`` attribute, or ``source`` to retrieve the data value from a parameter.
 
-more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-xml#value-processors).
+more info on ``value-processor`` [here](https://talmeym.github.io/regurgitator-core-xml#value-processors).
 
 ### size-processor
 
@@ -414,4 +414,4 @@ the optional ``as-index`` attribute returns the size zero-indexed, e.g. 3 items 
 </rg:create-parameter>
 ```
 
-more info on ``value-processor`` [here](https://github.com/talmeym/regurgitator-core-xml#value-processors).
+more info on ``value-processor`` [here](https://talmeym.github.io/regurgitator-core-xml#value-processors).
