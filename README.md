@@ -116,7 +116,6 @@ the behaviour of a condition can also be specified as a child element of the par
             </rg:condition>
         </rg:rule>
     </rg:rules>
-
     ...
 ```
 
