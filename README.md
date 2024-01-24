@@ -134,6 +134,8 @@ there are 6 core condition behaviours:
 | ``contains-param`` | checks the parameter value contains the value of another parameter |
 | ``matches`` | checks the parameter value matches a regex |
 
+more ``condition behaviour`` are available through [``regurgitator-extensions``](https://talmeym.github.io/regurgitator-extensions#condition-behaviours)
+
 ### create-parameter
 
 a create-parameter creates a parameter in the message, with a type and a value
