@@ -132,7 +132,7 @@ there are 6 core condition behaviours:
 | ``exists`` | checks the parameter value exists (read as 'parameter exists') |
 | ``contains`` | checks the parameter value contains the operand |
 | ``contains-param`` | checks the parameter value contains the value of another parameter |
-| ``matches`` | checks the parameter values matches a regex |
+| ``matches`` | checks the parameter value matches a regex |
 
 ### create-parameter
 
