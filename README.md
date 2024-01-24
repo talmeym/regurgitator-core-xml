@@ -93,6 +93,8 @@ a decision executes one or more child steps, using ``rules`` and ``conditions`` 
 
 upon execution a decision evaluates all of its rules to see which pass. it then uses its ``rules behaviour`` to determines which of the passed rules should have their corresponding step executed. the default rules behaviour is ``first-match`` whereby the first rule that passes provides the step to be executed.
 
+#### rules behaviours
+
 there are 3 core rules behaviours:
 
 | value | behaviour |
@@ -119,6 +121,8 @@ the behaviour of a condition can also be specified as a child element of the par
 ```
 
 this allows certain condition behaviours to have attributes beyond the operand (in the example above, "/rg:config/@id") which is always the text of the child element.
+
+#### condition behaviours
 
 there are 6 core condition behaviours:
 
