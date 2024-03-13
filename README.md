@@ -361,9 +361,9 @@ a substitute-processor manipulates ``STRING`` values, replacing occurrences of o
 
 more info on ``value-processor`` [here](https://talmeym.github.io/regurgitator-core-xml#value-processors).
 
-### index-processor
+### at-index-processor
 
-an index-processor manipulates collection parameter values, such as ``LIST_OF_STRING``, returning the data value at a given index, starting from zero.
+an at-index-processor manipulates collection parameter values, such as ``LIST_OF_STRING``, returning the data value at a given index, starting from zero.
 
 ```xml
 <rg:create-parameter name="data" type="LIST_OF_STRING" value="not this one,or this one,but this one"/>
@@ -371,7 +371,7 @@ an index-processor manipulates collection parameter values, such as ``LIST_OF_ST
 
 ```xml
 <rg:create-parameter name="the-one" type="STRING" source="data">
-    <rg:index-processor value="2"/>
+    <rg:at-index-processor value="2"/>
 </rg:create-parameter>
 ```
 
