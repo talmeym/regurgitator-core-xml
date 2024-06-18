@@ -22,7 +22,7 @@ import static uk.emarte.regurgitator.core.EntityLookup.parameterType;
 import static uk.emarte.regurgitator.core.EntityLookup.valueProcessor;
 
 public class XmlConfigUtil {
-    private static final XmlLoaderUtil<XmlLoader<ValueProcessor>> processorLoaderUtil = new XmlLoaderUtil<>() ;
+    private static final XmlLoaderUtil<XmlLoader<ValueProcessor>> processorLoaderUtil = new XmlLoaderUtil<>();
     private static final Random RANDOM = new Random();
 
     public static String loadId(Element element, Set<Object> ids) throws RegurgitatorException {

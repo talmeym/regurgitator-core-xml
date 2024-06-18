@@ -41,6 +41,6 @@ public class BuildParameterXmlLoader implements XmlLoader<Step> {
 
         String id = loadId(element, allIds);
         log.debug("Loaded built parameter '{}'", id);
-        return new BuildParameter(id, loadPrototype(element), loadContext(element), builder, processors);
+        return new BuildParameter(id, loadPrototype(element), loadContext(element), builder, processors, loadOptionalBool(element, CoreConfigConstants.OPTIONAL));
     }
 }

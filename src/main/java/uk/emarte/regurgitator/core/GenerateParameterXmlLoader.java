@@ -41,6 +41,6 @@ public class GenerateParameterXmlLoader implements XmlLoader<Step> {
 
         String id = loadId(element, allIds);
         log.debug("Loaded generate parameter '{}'", id);
-        return new GenerateParameter(id, loadPrototype(element), loadContext(element), generator, processors);
+        return new GenerateParameter(id, loadPrototype(element), loadContext(element), generator, processors, loadOptionalBool(element, CoreConfigConstants.OPTIONAL));
     }
 }
