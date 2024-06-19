@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import static uk.emarte.regurgitator.core.CoreConfigConstants.BUILDER;
+import static uk.emarte.regurgitator.core.CoreConfigConstants.OPTIONAL;
 import static uk.emarte.regurgitator.core.EntityLookup.valueBuilder;
 import static uk.emarte.regurgitator.core.Log.getLog;
 import static uk.emarte.regurgitator.core.XmlConfigUtil.*;
@@ -41,6 +42,6 @@ public class BuildParameterXmlLoader implements XmlLoader<Step> {
 
         String id = loadId(element, allIds);
         log.debug("Loaded built parameter '{}'", id);
-        return new BuildParameter(id, loadPrototype(element), loadContext(element), builder, processors, loadOptionalBool(element, CoreConfigConstants.OPTIONAL));
+        return new BuildParameter(id, loadPrototype(element), loadContext(element), builder, processors, loadOptionalBool(element, OPTIONAL));
     }
 }
