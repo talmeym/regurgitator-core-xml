@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import static uk.emarte.regurgitator.core.CoreConfigConstants.GENERATOR;
+import static uk.emarte.regurgitator.core.CoreConfigConstants.OPTIONAL;
 import static uk.emarte.regurgitator.core.EntityLookup.valueGenerator;
 import static uk.emarte.regurgitator.core.Log.getLog;
 import static uk.emarte.regurgitator.core.XmlConfigUtil.*;
@@ -41,6 +42,6 @@ public class GenerateParameterXmlLoader implements XmlLoader<Step> {
 
         String id = loadId(element, allIds);
         log.debug("Loaded generate parameter '{}'", id);
-        return new GenerateParameter(id, loadPrototype(element), loadContext(element), generator, processors, loadOptionalBool(element, CoreConfigConstants.OPTIONAL));
+        return new GenerateParameter(id, loadPrototype(element), loadContext(element), generator, processors, loadOptionalBool(element, OPTIONAL));
     }
 }
