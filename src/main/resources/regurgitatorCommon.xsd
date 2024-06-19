@@ -36,6 +36,7 @@
         <xs:attribute name="name" type="rgc:populated-string" use="required"/>
         <xs:attribute name="type" type="rgc:capital-string"/>
         <xs:attribute name="merge" type="rgc:conflict-policy"/>
+        <xs:attribute name="optional" type="xs:boolean"/>
     </xs:attributeGroup>
 
 </xs:schema>
