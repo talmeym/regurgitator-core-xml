@@ -23,6 +23,6 @@ public class CreateParameterXmlLoader extends CreateParameterLoader implements X
         String value = loadOptionalStr(element, VALUE);
         String file = loadOptionalStr(element, FILE);
         List<ValueProcessor> processors = loadOptionalValueProcessors(element, 0, allIds);
-        return buildCreateParameter(id, loadPrototype(element), loadContext(element), source, value, file, processors, log);
+        return buildCreateParameter(id, loadPrototype(element), loadContext(element), source, value, file, processors, loadOptionalBool(element, OPTIONAL), log);
     }
 }
